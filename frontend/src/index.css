@@ -1,0 +1,329 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;700&display=swap');
+
+:root {
+  --bg-color: #0a0f18;
+  --panel-bg: #121a29;
+  --border-color: #1e293b;
+  
+  --text-primary: #ffffff;
+  --text-muted: #94a3b8;
+  
+  --accent-cyan: #00b4d8;
+  --accent-cyan-hover: #06b6d4;
+  --accent-blue: #0284c7;
+  
+  --danger-red: #dc2626;
+  --danger-bg: rgba(220, 38, 38, 0.15);
+  
+  --alert-amber: #f59e0b;
+  --safe-green: #10b981;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: var(--bg-color);
+  background-image: 
+    linear-gradient(rgba(30, 41, 59, 0.3) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(30, 41, 59, 0.3) 1px, transparent 1px);
+  background-size: 20px 20px;
+  color: var(--text-primary);
+  height: 100vh;
+  overflow: hidden;
+}
+
+.mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Layout */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+}
+
+.top-nav {
+  height: 80px;
+  background-color: rgba(10, 15, 24, 0.9);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+}
+
+.nav-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1.5rem;
+  flex: 1;
+}
+
+.nav-telemetry {
+  height: 24px;
+  background-color: #0d131f;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  padding: 0 1.5rem;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  gap: 2rem;
+}
+
+.pill {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--panel-bg);
+  border: 1px solid var(--border-color);
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.pill.danger {
+  background: var(--danger-red);
+  border-color: var(--danger-red);
+  color: white;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-cyan);
+  box-shadow: 0 0 8px var(--accent-cyan);
+}
+
+.main-content {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 260px;
+  background-color: rgba(18, 26, 41, 0.95);
+  border-right: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 1rem;
+  z-index: 10;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  color: var(--text-muted);
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.nav-item:hover {
+  background: rgba(255,255,255,0.05);
+}
+
+.nav-item.active {
+  background: var(--accent-cyan);
+  color: var(--bg-color);
+}
+
+/* Center Column */
+.center-panel {
+  width: 450px;
+  background-color: rgba(10, 15, 24, 0.7);
+  backdrop-filter: blur(8px);
+  border-right: 1px solid var(--border-color);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  overflow-y: auto;
+  z-index: 10;
+}
+
+.card {
+  background: var(--panel-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.25rem;
+}
+
+.defcon-banner {
+  background: var(--danger-bg);
+  border: 1px solid var(--danger-red);
+  color: #fca5a5;
+  padding: 0.75rem;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+/* Simulator Grid */
+.severity-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.severity-box {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border-color);
+  padding: 0.5rem;
+  text-align: center;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  color: var(--text-muted);
+}
+
+.severity-box.active {
+  background: var(--danger-red);
+  border-color: var(--danger-red);
+  color: white;
+  font-weight: 700;
+}
+
+.severity-box.active-nominal {
+  background: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+  color: var(--bg-color);
+  font-weight: 700;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.stat-box {
+  background: rgba(0,0,0,0.2);
+  border: 1px solid var(--border-color);
+  padding: 0.75rem;
+  border-radius: 4px;
+}
+
+.stat-box .val {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+.stat-box .lbl {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+}
+
+button.primary {
+  width: 100%;
+  background: var(--accent-cyan);
+  color: var(--bg-color);
+  border: none;
+  padding: 0.75rem;
+  border-radius: 4px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: 'JetBrains Mono', monospace;
+  text-transform: uppercase;
+}
+
+button.primary:hover {
+  background: var(--accent-cyan-hover);
+}
+
+button.danger {
+  background: var(--danger-red);
+  color: white;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-weight: 700;
+  cursor: pointer;
+  width: 100%;
+  font-size: 0.8rem;
+}
+
+button.outline {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  font-size: 0.8rem;
+}
+
+/* Map Area */
+.map-area {
+  flex: 1;
+  position: relative;
+}
+
+.leaflet-container {
+  height: 100%;
+  width: 100%;
+  background: var(--bg-color) !important;
+}
+
+/* Floating Overlay Card */
+.overlay-card {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 350px;
+  background: rgba(18, 26, 41, 0.95);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.25rem;
+  z-index: 400;
+}
+
+.overlay-tag {
+  background: var(--danger-red);
+  color: white;
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-color); 
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-color); 
+  border-radius: 3px;
+}
