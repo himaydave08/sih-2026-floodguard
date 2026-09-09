@@ -18,7 +18,6 @@ import os
 
 app = FastAPI(title="SIH26071 Assam Flood Early Warning Platform API", version="2.0.0")
 
-<<<<<<< HEAD
 def send_alert_sms(city_name, people_affected):
     """
     Mock function to send SMS alerts.
@@ -77,10 +76,7 @@ def send_alert_sms(city_name, people_affected):
         error_details = e.read().decode('utf-8') if hasattr(e, 'read') else str(e)
         print(f"❌ Failed to send real SMS: {error_details}")
 
-# Allow CORS for local development
-=======
 # CORS Configuration
->>>>>>> 3dba725 (feat: integrate Assam revenue circles ML models and live inference API)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -89,22 +85,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-<<<<<<< HEAD
-from fastapi import HTTPException
-
-# Load Model
-try:
-    with open("models/real_flood_rf_model.pkl", "rb") as f:
-        model = pickle.load(f)
-    print("✅ Loaded REAL ML model successfully.")
-except Exception as e:
-    print(f"❌ Failed to load ML model: {e}")
-    model = None
-=======
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 MODELS_DIR = os.path.join(BASE_DIR, "models")
 DATA_DIR = os.path.join(BASE_DIR, "data")
->>>>>>> 3dba725 (feat: integrate Assam revenue circles ML models and live inference API)
+
 
 # Global Models and Data
 circles = []
@@ -178,6 +162,7 @@ class SimulationRequest(BaseModel):
     severity_multiplier: float = 1.0  # 1.0 = normal, 2.0 = heavy rain, 3.0 = extreme
     use_live_weather: bool = False
     custom_rainfall_mm: float = None
+    city_or_district: str = None  # City or district filter
 
 @app.get("/api/state")
 def get_current_state():
@@ -196,10 +181,23 @@ def simulate_storm(req: SimulationRequest):
     # Target circles (180 Assam Revenue Circles) or default cities fallback
     items = circles if circles else cities
 
+    # Filter items if user entered a specific city or district name
+    if req.city_or_district and req.city_or_district.strip():
+        q = req.city_or_district.strip().lower()
+        matched = [
+            item for item in items
+            if q in item.get("name", "").lower() 
+            or q in item.get("district", "").lower()
+            or q in item.get("City", "").lower()
+        ]
+        if matched:
+            items = matched
+
     # Fetch live weather once if requested to avoid 180 sequential network calls
     global_live_rain = 0.0
     if req.use_live_weather:
         global_live_rain = fetch_live_rain(26.2006, 92.9376)
+
 
     for item in items:
         lat = item.get("lat", 26.2)
@@ -419,16 +417,22 @@ def get_state_summary():
     critical_circles = [item for item in all_sims if item["risk_score"] == 3]
     high_circles = [item for item in all_sims if item["risk_score"] == 2]
     
+@app.get("/api/predict/{location_name}")
+def get_prediction_by_location(location_name: str, severity: float = 1.0):
+    """Retrieves model prediction parameters specifically for a requested city or district."""
+    sim_req = SimulationRequest(severity_multiplier=severity, city_or_district=location_name)
+    res = simulate_storm(sim_req)
+    matches = res.get("simulation", [])
+    if not matches:
+        raise HTTPException(status_code=404, detail=f"No revenue circle or district found matching '{location_name}'")
     return {
-        "total_revenue_circles": len(all_sims),
-        "critical_count": len(critical_circles),
-        "high_risk_count": len(high_circles),
-        "total_population_at_risk": total_pop_at_risk,
-        "total_crop_ha_damaged": round(total_crop_ha, 1),
-        "timestamp": pd.Timestamp.now().isoformat()
+        "query": location_name,
+        "matched_count": len(matches),
+        "predictions": matches
     }
 
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+
 
