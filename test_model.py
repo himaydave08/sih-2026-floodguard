@@ -7,7 +7,7 @@ import numpy as np
 from src.data_loader import load_master_dataset
 from src.feature_engineering import add_engineered_features
 
-def test_all_circles(period_filter="2026_06", export_csv=True):
+def test_all_circles(period_filter="today", export_csv=True, city_filter=None):
     clf_path = os.path.join("models", "best_flood_classifier.joblib")
     reg_path = os.path.join("models", "best_rainfall_regressor.joblib")
 
@@ -39,12 +39,12 @@ def test_all_circles(period_filter="2026_06", export_csv=True):
         print(f" RUNNING FLOOD & RAINFALL PREDICTIONS FOR TODAY (09-09-2026)")
         print(f"==========================================================")
         
-        latest_period = df['timeperiod'].max() # 2026_07
+        latest_period = df['timeperiod'].max()
         period_df = df[df['timeperiod'] == latest_period].copy()
         period_df['timeperiod'] = '2026_09 (Today)'
         period_df['month'] = 9
         period_df['year'] = 2026
-        period_df['is_monsoon_season'] = 1  # September is monsoon in Assam
+        period_df['is_monsoon_season'] = 1
         period_df['monsoon_rainfall_intensity'] = period_df['rainfall_monthly_sum_mm'] * period_df['is_monsoon_season']
     else:
         print(f"\n==========================================================")
@@ -56,7 +56,20 @@ def test_all_circles(period_filter="2026_06", export_csv=True):
             period_filter = df['timeperiod'].max()
             period_df = df[df['timeperiod'] == period_filter].copy()
 
-    print(f"\n[Dataset] Loaded {len(period_df)} Revenue Circles for target date: {period_df['timeperiod'].iloc[0]}")
+    # Apply City / District Filter if requested by user
+    if city_filter and city_filter.strip() and city_filter.upper() != 'ALL':
+        q = city_filter.strip().lower()
+        matched = period_df[
+            period_df['revenue_circle'].str.lower().str.contains(q, na=False) | 
+            period_df['district'].str.lower().str.contains(q, na=False)
+        ]
+        if len(matched) > 0:
+            print(f"\n[*] [FILTER APPLIED] Showing predictions matching city/district query: '{city_filter}' ({len(matched)} circle/s)")
+            period_df = matched.copy()
+        else:
+            print(f"\n[!] No revenue circles matched '{city_filter}'. Showing all revenue circles.")
+
+    print(f"\n[Dataset] Loaded {len(period_df)} Revenue Circles for evaluation.")
 
     # 1. Predict Flood Risk
     X_clf_imp = pd.DataFrame(clf_imputer.transform(period_df[clf_features]), columns=clf_features, index=period_df.index)
@@ -68,7 +81,7 @@ def test_all_circles(period_filter="2026_06", export_csv=True):
     X_reg_scaled = pd.DataFrame(reg_scaler.transform(X_reg_imp), columns=reg_features, index=period_df.index)
     rain_preds = reg_model.predict(X_reg_scaled)
 
-    # 3. Results DataFrame (Using calibrated decision threshold)
+    # 3. Results DataFrame
     results_df = pd.DataFrame({
         'object_id': period_df['object_id'],
         'revenue_circle': period_df['revenue_circle'],
@@ -108,25 +121,32 @@ def test_all_circles(period_filter="2026_06", export_csv=True):
         
         results_df.to_csv(os.path.join("reports", circle_csv), index=False)
         district_summary.to_csv(os.path.join("reports", district_csv))
-        
-        print(f"\n[Exported] Circle-level predictions saved to: reports/{circle_csv}")
-        print(f"[Exported] District-level summary saved to: reports/{district_csv}")
 
     print("\n-------------------------------------------------------------------------------------------------")
-    print(f" TOP HIGH-RISK REVENUE CIRCLES IN ASSAM FOR {period_df['timeperiod'].iloc[0]}")
+    print(f" AI MODEL PREDICTION PARAMETERS FOR MATCHED CIRCLES ({len(results_df)})")
     print("-------------------------------------------------------------------------------------------------")
     print(f"{'Revenue Circle':<25} | {'District':<18} | {'Flood Prob':<10} | {'Alert Level':<10} | {'Pred Rain (mm)':<14}")
     print("-" * 88)
     
     for idx, row in results_df.iterrows():
-        if idx < 20 or row['predicted_flood_prob_%'] >= 50.0:
-            print(f"{row['revenue_circle']:<25} | {row['district']:<18} | {row['predicted_flood_prob_%']:>8.2f}% | {row['flood_alert_level']:<10} | {row['predicted_rainfall_mm']:>14.1f}")
+        print(f"{row['revenue_circle']:<25} | {row['district']:<18} | {row['predicted_flood_prob_%']:>8.2f}% | {row['flood_alert_level']:<10} | {row['predicted_rainfall_mm']:>14.1f}")
 
     print("\n---------------------------------------------------------")
-    print(f" DISTRICT-WISE SUMMARY FOR {period_df['timeperiod'].iloc[0]}")
+    print(f" DISTRICT-WISE SUMMARY")
     print("---------------------------------------------------------")
     print(district_summary.to_string())
 
 if __name__ == "__main__":
-    target = sys.argv[1] if len(sys.argv) > 1 else "today"
-    test_all_circles(period_filter=target)
+    print("=" * 80)
+    print(" [AI MODEL] SIH26071 FLOOD MODEL TESTER & TERMINAL INFERENCE RUNNER")
+    print("=" * 80)
+    
+    if len(sys.argv) > 1:
+        city_query = sys.argv[1].strip()
+    else:
+        try:
+            city_query = input("[?] Enter City or Revenue Circle Name (e.g. Guwahati, Gossaigaon, Dhubri, Barpeta, or press Enter for ALL): ").strip()
+        except EOFError:
+            city_query = ""
+    
+    test_all_circles(period_filter="today", city_filter=city_query)

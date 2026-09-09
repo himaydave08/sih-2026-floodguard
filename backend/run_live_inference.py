@@ -1,6 +1,6 @@
 """
 Run Live AI/ML Inference Runner for Assam Heavy Rainfall & Flood Prediction (SIH26071)
-Executes model inference across all 180 Revenue Circles of Assam using the trained models.
+Executes terminal interactive inference for specific requested cities/districts or all 180 circles.
 """
 
 import sys
@@ -14,61 +14,77 @@ sys.path.append(BASE_DIR)
 
 from main import simulate_storm, SimulationRequest, get_state_summary
 
-def run_model_inference():
-    print("=" * 80)
-    print(" RUNNING LIVE AI/ML FLOOD PREDICTION MODEL FOR ASSAM (180 REVENUE CIRCLES)")
-    print("=" * 80)
+def run_interactive_terminal_inference():
+    print("=" * 85)
+    print(" [AI MODEL] SIH26071 FLOOD PREDICTION (TERMINAL INTERACTIVE MODE)")
+    print("=" * 85)
 
-    # 1. Normal Rainfall Run
-    print("\n--- 1. Baseline Rainfall Scenario (Normal Monsoon) ---")
-    req_normal = SimulationRequest(severity_multiplier=1.0, use_live_weather=False)
-    res_normal = simulate_storm(req_normal)
-    sims_normal = res_normal["simulation"]
+    if len(sys.argv) > 1 and sys.argv[1].strip():
+        city_input = sys.argv[1].strip()
+        severity_val = float(sys.argv[2]) if len(sys.argv) > 2 else 1.0
+        print(f"\n[CLI Argument Received] Target Location: '{city_input}', Severity: {severity_val}x")
+    else:
+        try:
+            city_input = input("\n[?] Enter City or Revenue Circle Name (e.g. Guwahati, Dhubri, Gossaigaon, Barpeta, or press Enter for ALL): ").strip()
+        except (EOFError, KeyboardInterrupt):
+            city_input = ""
+        
+        try:
+            severity_str = input("[?] Enter Rainfall Severity Multiplier (1.0 = Normal, 2.0 = Heavy, 3.0 = Extreme) [Default 1.0]: ").strip()
+            severity_val = float(severity_str) if severity_str else 1.0
+        except (ValueError, EOFError, KeyboardInterrupt):
+            severity_val = 1.0
 
-    # 2. Extreme Storm Multiplier Run (2.5x Heavy Rain Scenario)
-    print("\n--- 2. Extreme Storm Scenario (2.5x Heavy Rainfall & River Surge) ---")
-    req_extreme = SimulationRequest(severity_multiplier=2.5, use_live_weather=False)
-    res_extreme = simulate_storm(req_extreme)
-    sims_extreme = res_extreme["simulation"]
 
-    # Calculate summary metrics
-    df_res = pd.DataFrame(sims_extreme)
+    print("\n[Crunching AI Models... Running Inference...]")
     
-    print(f"\nTotal Revenue Circles Evaluated: {len(sims_extreme)}")
-    print("\nFlood Severity Risk Level Breakdown (Extreme Scenario):")
-    risk_counts = df_res["risk_label"].value_counts()
-    for risk, count in risk_counts.items():
-        print(f"  - {risk:<12}: {count:3d} Revenue Circles ({(count/len(sims_extreme))*100:.1f}%)")
+    req = SimulationRequest(
+        severity_multiplier=severity_val, 
+        use_live_weather=False,
+        city_or_district=city_input if city_input and city_input.upper() != 'ALL' else None
+    )
+    
+    res = simulate_storm(req)
+    sims = res.get("simulation", [])
 
-    # High and Critical Circle Examples
-    critical_circles = df_res[df_res["risk_score"] == 3]
-    high_circles = df_res[df_res["risk_score"] == 2]
+    if not sims:
+        print(f"\n[!] No Revenue Circle or District found matching '{city_input}'. Please check spelling.")
+        return
 
-    print("\nTop Critical & High Risk Revenue Circles Flagged by AI Model:")
-    print("-" * 80)
-    print(f"{'Revenue Circle':<25} {'District':<18} {'Rain (mm)':<10} {'Risk':<10} {'Inundation %':<12} {'At Risk Pop':<12}")
-    print("-" * 80)
+    print("\n" + "=" * 85)
+    print(f" AI MODEL PREDICTION RESULTS ({len(sims)} MATCHED LOCATION/S)")
+    print("=" * 85)
 
-    for idx, row in df_res.sort_values(by="risk_score", ascending=False).head(12).iterrows():
-        pop_fmt = f"{row['impact']['population_at_risk']:,}"
-        print(f"{row['name']:<25} {row['district']:<18} {row['sim_rain_mm']:<10.1f} {row['risk_label']:<10} {row['inundation_pct']:<12.1f}% {pop_fmt:<12}")
+    for item in sims:
+        pop = item.get('impact', {}).get('population_at_risk', 0)
+        hospitals = item.get('impact', {}).get('hospitals_affected', 0)
+        schools = item.get('impact', {}).get('schools_affected', 0)
+        crop = item.get('impact', {}).get('crop_area_damaged_ha', 0.0)
+        roads = item.get('impact', {}).get('road_km_blocked', 0.0)
 
-    print("-" * 80)
+        print(f"\n[*] LOCATION: {item.get('name', 'Circle').upper()} ({item.get('district', 'Assam')} District)")
+        print(f"  - Latitude / Longitude    : {item.get('lat')}, {item.get('lon')}")
+        print(f"  - Terrain Elevation      : {item.get('elevation_m', 50)} m")
+        print(f"  - Simulated Rainfall     : {item.get('sim_rain_mm', 0.0):.1f} mm")
+        print(f"  - River Water Level      : {item.get('sim_river_m', 0.0):.1f} m")
+        print(f"  - Soil Moisture          : {item.get('sim_soil_pct', 45)} %")
+        print(f"  - AI Flood Status        : {'FLOOD PREDICTED' if item.get('flood_occurred') else 'NO FLOOD'}")
+        print(f"  - Risk Category & Score  : {item.get('risk_label', 'SAFE')} ({item.get('risk_score', 0)}/3)")
+        print(f"  - Inundation Extent      : {item.get('inundation_pct', 0.0):.1f} %")
+        print("  -------------------------------------------------------------")
+        print("  [IMPACT ASSESSMENT]:")
+        print(f"    - Civilians at Risk    : {pop:,} people")
+        print(f"    - Medical Facilities   : {hospitals} hospitals")
+        print(f"    - Schools Impacted     : {schools} schools")
+        print(f"    - Crop Land Damaged    : {crop:,.1f} hectares")
+        print(f"    - Roads Blocked        : {roads:.1f} km")
+        print(f"  [OFFICIAL ADVISORY]     : {item.get('alert', '')}")
+        print("-" * 85)
 
-    total_at_risk_pop = sum(r["impact"]["population_at_risk"] for r in sims_extreme)
-    total_crop_ha = sum(r["impact"]["crop_area_damaged_ha"] for r in sims_extreme)
-
-    print(f"\nStatewide Flood Impact Assessment:")
-    print(f"  - Estimated Population at Risk: {total_at_risk_pop:,} people")
-    print(f"  - Submerged Agricultural Land:  {total_crop_ha:,.1f} hectares")
-    print(f"  - Hospitals Operating in High Risk Zones: {sum(r['impact']['hospitals_affected'] for r in sims_extreme)} facilities")
-
-    # Save output simulation to backend predictions file
     out_preds = os.path.join(BASE_DIR, "data", "latest_live_predictions.json")
     with open(out_preds, "w", encoding="utf-8") as f:
-        json.dump(res_extreme, f, indent=2)
-    print(f"\nSaved latest live inference output to: {out_preds}")
-    print("\nLive Model Execution Completed Successfully!")
+        json.dump(res, f, indent=2)
+    print(f"\n[Saved] Latest prediction output written to: {out_preds}")
 
 if __name__ == "__main__":
-    run_model_inference()
+    run_interactive_terminal_inference()
