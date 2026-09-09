@@ -24,7 +24,7 @@ function App() {
       const response = await fetch(`${API_BASE}/api/simulate`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ severity_multiplier: simSeverity, use_live_weather: true })
+        body: JSON.stringify({ severity_multiplier: simSeverity, use_live_weather: false })
       });
       const data = await response.json();
       setCities(data.simulation);
@@ -74,16 +74,16 @@ function App() {
               </div>
               <div className="stats-grid mono">
                 <div className="stat-box">
-                  <div className="val">{activeCity ? Math.round(activeCity.sim_rain) : 0}</div>
+                  <div className="val">{activeCity ? Math.round(activeCity.sim_rain_mm || activeCity.sim_rain || 0) : 0}</div>
                   <div className="lbl">PRECIP (MM)</div>
                 </div>
                 <div className="stat-box">
-                  <div className="val">{activeCity ? Math.round(activeCity.sim_river) : 0}</div>
-                  <div className="lbl">BASIN (M)</div>
+                  <div className="val">{activeCity ? Math.round(activeCity.sim_river_m || activeCity.sim_river || 0) : 0}</div>
+                  <div className="lbl">RIVER LEVEL (M)</div>
                 </div>
                 <div className="stat-box">
-                  <div className="val">{severity * 25}%</div>
-                  <div className="lbl">DAM HOLD</div>
+                  <div className="val">{activeCity ? (activeCity.inundation_pct || 0) : 0}%</div>
+                  <div className="lbl">INUNDATED</div>
                 </div>
               </div>
               <button className="primary" onClick={() => simulateStorm(severity)} disabled={loading}>
@@ -110,14 +110,23 @@ function App() {
           </div>
 
           <div className="map-area">
-            <MapContainer center={[22.5937, 78.9629]} zoom={5} style={{ height: "100%", width: "100%" }} zoomControl={false}>
-              <TileLayer url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png" />
+            <MapContainer center={[26.2006, 92.9376]} zoom={7} style={{ height: "100%", width: "100%" }} zoomControl={false}>
+              <TileLayer url="https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png" />
               {cities.map((city, idx) => (
                 <CircleMarker 
-                  key={idx} center={[city.lat, city.lon]} radius={city.risk_score === 3 ? 20 : city.risk_score === 2 ? 12 : 6}
-                  pathOptions={{ color: getRiskColor(city.risk_score), fillColor: getRiskColor(city.risk_score), fillOpacity: 0.6 }}
+                  key={idx} center={[city.lat, city.lon]} radius={city.risk_score === 3 ? 14 : city.risk_score === 2 ? 10 : 5}
+                  pathOptions={{ color: getRiskColor(city.risk_score), fillColor: getRiskColor(city.risk_score), fillOpacity: 0.7 }}
                   eventHandlers={{ click: () => setActiveCity(city) }}
-                />
+                >
+                  <Popup>
+                    <div style={{ color: '#000' }}>
+                      <strong>{city.name} ({city.district})</strong><br/>
+                      Risk Level: {city.risk_label || (city.risk_score === 3 ? 'Critical' : city.risk_score === 2 ? 'High' : 'Low')}<br/>
+                      Inundation Extent: {city.inundation_pct || 0}%<br/>
+                      Population at Risk: {city.impact?.population_at_risk?.toLocaleString() || 0}
+                    </div>
+                  </Popup>
+                </CircleMarker>
               ))}
             </MapContainer>
             {activeCity && (
@@ -255,7 +264,9 @@ function App() {
           <span>LON: 78.9629 E</span>
           <span>SATELLITE: CONNECTED</span>
           <span>OPEN-METEO FEED: LIVE</span>
-          <span style={{ color: 'var(--accent-cyan)' }}>RUNNING PREDICTIVE MODELS...</span>
+          <span style={{ color: loading ? '#f59e0b' : 'var(--accent-cyan)' }}>
+            {loading ? 'CALCULATING INFERENCES...' : 'AI MODEL: ONLINE & READY'}
+          </span>
         </div>
       </div>
 

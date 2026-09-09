@@ -1,15 +1,24 @@
-from fastapi import FastAPI
+"""
+FastAPI Decision-Support & Flood Early-Warning Server (SIH26071)
+Serves real-time AI/ML predictions, storm simulation, revenue circle risk maps,
+impact assessments, and early warning alert triggers across Assam's 180 Revenue Circles.
+"""
+
+from fastapi import FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import pickle
 import pandas as pd
+import numpy as np
 import json
 import urllib.request
+import os
 import random
 import os
 
-app = FastAPI()
+app = FastAPI(title="SIH26071 Assam Flood Early Warning Platform API", version="2.0.0")
 
+<<<<<<< HEAD
 def send_alert_sms(city_name, people_affected):
     """
     Mock function to send SMS alerts.
@@ -69,6 +78,9 @@ def send_alert_sms(city_name, people_affected):
         print(f"❌ Failed to send real SMS: {error_details}")
 
 # Allow CORS for local development
+=======
+# CORS Configuration
+>>>>>>> 3dba725 (feat: integrate Assam revenue circles ML models and live inference API)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -77,6 +89,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+<<<<<<< HEAD
 from fastapi import HTTPException
 
 # Load Model
@@ -87,114 +100,282 @@ try:
 except Exception as e:
     print(f"❌ Failed to load ML model: {e}")
     model = None
+=======
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODELS_DIR = os.path.join(BASE_DIR, "models")
+DATA_DIR = os.path.join(BASE_DIR, "data")
+>>>>>>> 3dba725 (feat: integrate Assam revenue circles ML models and live inference API)
 
-# Load Cities metadata
-with open("data/cities.json", "r") as f:
-    cities = json.load(f)
+# Global Models and Data
+circles = []
+cities = []
 
-def fetch_live_rain(lat, lon):
+bin_clf = None
+sev_clf = None
+inund_reg = None
+impact_reg = None
+legacy_model = None
+
+def load_resources():
+    global circles, cities, bin_clf, sev_clf, inund_reg, impact_reg, legacy_model
+    
+    # 1. Load Circles Metadata
+    assam_circles_path = os.path.join(DATA_DIR, "assam_circles.json")
+    if os.path.exists(assam_circles_path):
+        with open(assam_circles_path, "r", encoding="utf-8") as f:
+            circles = json.load(f)
+        print(f"Loaded {len(circles)} Assam Revenue Circles from data/assam_circles.json")
+    
+    cities_path = os.path.join(DATA_DIR, "cities.json")
+    if os.path.exists(cities_path):
+        with open(cities_path, "r", encoding="utf-8") as f:
+            cities = json.load(f)
+            
+    # 2. Load Trained AI Models
+    try:
+        bin_path = os.path.join(MODELS_DIR, "flood_binary_clf.pkl")
+        if os.path.exists(bin_path):
+            with open(bin_path, "rb") as f:
+                bin_clf = pickle.load(f)
+                
+        sev_path = os.path.join(MODELS_DIR, "flood_severity_clf.pkl")
+        if os.path.exists(sev_path):
+            with open(sev_path, "rb") as f:
+                sev_clf = pickle.load(f)
+                
+        inund_path = os.path.join(MODELS_DIR, "inundation_regressor.pkl")
+        if os.path.exists(inund_path):
+            with open(inund_path, "rb") as f:
+                inund_reg = pickle.load(f)
+                
+        impact_path = os.path.join(MODELS_DIR, "impact_regressor.pkl")
+        if os.path.exists(impact_path):
+            with open(impact_path, "rb") as f:
+                impact_reg = pickle.load(f)
+                
+        legacy_path = os.path.join(MODELS_DIR, "flood_rf_model.pkl")
+        if os.path.exists(legacy_path):
+            with open(legacy_path, "rb") as f:
+                legacy_model = pickle.load(f)
+                
+        print("Successfully loaded AI/ML model artifacts!")
+    except Exception as e:
+        print(f"Warning loading model artifacts: {e}")
+
+load_resources()
+
+def fetch_live_rain(lat: float, lon: float) -> float:
     try:
         url = f"https://api.open-meteo.com/v1/forecast?latitude={lat}&longitude={lon}&current=precipitation"
         req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
-        with urllib.request.urlopen(req) as response:
+        with urllib.request.urlopen(req, timeout=3) as response:
             data = json.loads(response.read().decode())
-            return data.get('current', {}).get('precipitation', 0.0)
-    except Exception as e:
+            return float(data.get('current', {}).get('precipitation', 0.0))
+    except Exception:
         return 0.0
 
 class SimulationRequest(BaseModel):
-    severity_multiplier: float # 1.0 = normal, 2.0 = heavy rain, 3.0 = extreme
-    use_live_weather: bool = True
+    severity_multiplier: float = 1.0  # 1.0 = normal, 2.0 = heavy rain, 3.0 = extreme
+    use_live_weather: bool = False
+    custom_rainfall_mm: float = None
 
 @app.get("/api/state")
 def get_current_state():
-    return {"cities": cities}
+    return {
+        "circles": circles if circles else [],
+        "cities": cities if cities else [],
+        "total_circles": len(circles),
+        "total_districts": len(set(c["district"] for c in circles)) if circles else 0
+    }
 
 @app.post("/api/simulate")
 def simulate_storm(req: SimulationRequest):
-    if not model:
-        raise HTTPException(status_code=500, detail="ML model not loaded")
+    load_resources()  # Reload in case models were newly saved
     results = []
-    
-    for city in cities:
-        # 1. Multi-Source Data Fusion: Live Weather + Simulation Multiplier
-        live_rain = fetch_live_rain(city["lat"], city["lon"]) if req.use_live_weather else 50.0
-        
-        mean_rain = live_rain * req.severity_multiplier
-        riverlevel_max = 10 + (mean_rain * 0.3) # Simulate a river rising based on rain
-        
-        # We use static demographic averages to represent the city's infrastructure
-        infra_hospital_count = 5.0
-        infra_total_road_length_km = 120.0
-        population_density_mean_sqkm = 398.0
-        
-        # 2. Dual-Path AI (Path B: Risk Prediction using REAL RF Model)
-        features = pd.DataFrame([{
-            "mean_rain": mean_rain,
-            "riverlevel_max": riverlevel_max,
-            "infra_hospital_count": infra_hospital_count,
-            "infra_total_road_length_km": infra_total_road_length_km,
-            "population_density_mean_sqkm": population_density_mean_sqkm
-        }])
-        risk_score = int(model.predict(features)[0])
-        
-        # 3. Impact Assessment Engine
-        impact = {
-            "population_at_risk": 0,
-            "hospitals_affected": 0,
-            "schools_affected": 0
+
+    # Target circles (180 Assam Revenue Circles) or default cities fallback
+    items = circles if circles else cities
+
+    # Fetch live weather once if requested to avoid 180 sequential network calls
+    global_live_rain = 0.0
+    if req.use_live_weather:
+        global_live_rain = fetch_live_rain(26.2006, 92.9376)
+
+    for item in items:
+        lat = item.get("lat", 26.2)
+        lon = item.get("lon", 92.9)
+        elevation = item.get("elevation", 50.0)
+        pop = item.get("population", 50000)
+        hospitals = item.get("hospitals", 2)
+        schools = item.get("schools", 15)
+
+        # 1. Rainfall Simulation
+        base_rain = item.get("base_rain", 45.0)
+        if req.custom_rainfall_mm is not None:
+            sim_rain = req.custom_rainfall_mm * req.severity_multiplier
+        elif req.use_live_weather:
+            sim_rain = max(25.0, global_live_rain * 40.0 + base_rain) * req.severity_multiplier
+        else:
+            sim_rain = base_rain * req.severity_multiplier
+
+        # Hydrological River Surge & Soil Moisture
+        sim_river = round(elevation * 0.4 + (sim_rain * 0.18), 2)
+        sim_soil = round(min(100.0, max(15.0, item.get("soil_clay_pct", 25.0) * 1.2 + sim_rain * 0.4)), 2)
+
+        # Build feature DataFrame matching model features
+        feat_dict = {
+            "soil_clay_pct_mean": item.get("soil_clay_pct", 25.0),
+            "soil_sand_pct_mean": item.get("soil_sand_pct", 40.0),
+            "soil_silt_pct_mean": 35.0,
+            "soil_bulk_density_mean": item.get("soil_bulk_density", 1.35),
+            "soil_vwc_33kpa_mean": 0.28,
+            "soil_available_water_capacity_pct": item.get("soil_available_water_capacity_pct", 15.0),
+            "soil_sand_to_clay_ratio": item.get("soil_sand_to_clay_ratio", 1.6),
+            "terrain_elevation_mean": elevation,
+            "terrain_slope_mean": item.get("slope", 1.5),
+            "terrain_drainage_density_km_per_sqkm": item.get("drainage_density", 0.5),
+            "terrain_distance_from_river_m": item.get("distance_from_river_m", 1000.0),
+            "terrain_runoff_curve_number": item.get("curve_number", 75.0),
+            "infra_embankment_length_m": item.get("embankment_m", 500.0),
+            "runoff_potential_index": (sim_rain * (item.get("soil_clay_pct", 25.0)/100.0) * item.get("curve_number", 75.0)) / (elevation + 10.0),
+            "population_count_total": pop,
+            "population_density_mean_sqkm": item.get("population_density", 300.0),
+            "infra_hospital_count": hospitals,
+            "infra_school_count": schools,
+            "infra_emergency_service_count": item.get("emergency_services", 1),
+            "infra_shelter_count": item.get("shelters", 3),
+            "infra_total_road_length_km": item.get("total_road_km", 45.0),
+            "infra_major_road_length_km": item.get("major_road_km", 12.0),
+            "infra_road_density_km_per_sqkm": 0.3,
+            "infra_waterway_length_km": 15.0,
+            "infra_railway_length_km": 5.0,
+            "infra_osm_building_count": item.get("building_count", 3500),
+            "rainfall_mean_daily_mm": sim_rain / 30.0,
+            "rainfall_max_daily_mm": sim_rain * 0.45,
+            "rainfall_monthly_sum_mm": sim_rain,
+            "rainfall_lag1_monthly_sum_mm": sim_rain * 0.7,
+            "rainfall_3m_rolling_sum_mm": sim_rain * 2.2,
+            "river_water_level_m": sim_river,
+            "ndvi_mean": 0.45,
+            "is_monsoon_season": 1 if req.severity_multiplier >= 1.5 else 0,
+            "month": 7
         }
-        alert_msg = "Safe. No active alerts for your area."
-        
+        df_feat = pd.DataFrame([feat_dict])
+
+        # Model Inferences
+        flood_occurred = 0
+        risk_score = 0
+        inundation_pct = 0.0
+        pop_affected = 0
+        crop_damaged_ha = 0.0
+
+        if sev_clf is not None:
+            try:
+                risk_score = int(sev_clf.predict(df_feat)[0])
+            except Exception:
+                risk_score = 0
+
+        if bin_clf is not None:
+            try:
+                flood_occurred = int(bin_clf.predict(df_feat)[0])
+            except Exception:
+                flood_occurred = 1 if risk_score > 0 else 0
+
+        if inund_reg is not None:
+            try:
+                inundation_pct = float(np.clip(inund_reg.predict(df_feat)[0], 0.0, 1.0))
+            except Exception:
+                inundation_pct = 0.05 if risk_score == 1 else (0.18 if risk_score == 2 else (0.35 if risk_score == 3 else 0.01))
+        else:
+            inundation_pct = 0.05 if risk_score == 1 else (0.18 if risk_score == 2 else (0.35 if risk_score == 3 else 0.01))
+
+        if impact_reg is not None:
+            try:
+                imp_preds = impact_reg.predict(df_feat)[0]
+                pop_affected = int(max(0, imp_preds[0]))
+                crop_damaged_ha = round(float(max(0, imp_preds[1])), 1)
+            except Exception:
+                pop_affected = int(pop * inundation_pct * 0.8)
+                crop_damaged_ha = round(float(item.get("area_sqkm", 150.0) * inundation_pct * 40.0), 1)
+        else:
+            pop_affected = int(pop * inundation_pct * 0.8)
+            crop_damaged_ha = round(float(item.get("area_sqkm", 150.0) * inundation_pct * 40.0), 1)
+
+        # Fallback to legacy single RF model if new models not yet initialized
+        if sev_clf is None and legacy_model is not None:
+            try:
+                legacy_features = pd.DataFrame([{
+                    "Rainfall_mm": sim_rain,
+                    "River_Level_m": sim_river,
+                    "Soil_Moisture_%": sim_soil,
+                    "Elevation_m": elevation
+                }])
+                risk_score = int(legacy_model.predict(legacy_features)[0])
+            except Exception:
+                pass
+
+        risk_labels = ["Low", "Moderate", "High", "Critical"]
+        risk_label = risk_labels[min(3, max(0, risk_score))]
+
+        # Detailed Impact Calculation
+        hospitals_affected = 0
+        schools_affected = 0
+        road_km_blocked = round(float(item.get("major_road_km", 12.0) * inundation_pct), 1)
+
         if risk_score == 3:
-            alert_msg = f"CRITICAL: Immediate evacuation recommended for low-lying areas in {city['name']}."
-            impact = {
-                "population_at_risk": random.randint(15000, 50000),
-                "hospitals_affected": random.randint(2, 5),
-                "schools_affected": random.randint(10, 25)
-            }
-            # TRIGGER SMS ALERT
-            send_alert_sms(city['name'], impact["population_at_risk"])
+            hospitals_affected = min(hospitals, max(1, int(hospitals * 0.75)))
+            schools_affected = min(schools, max(2, int(schools * 0.8)))
+            alert_msg = f"CRITICAL RED ALERT: Immediate evacuation mandatory in {item.get('name', 'Circle')}, {item.get('district', 'Assam')}. Severe river inundation expected."
+            try:
+                send_alert_sms(item.get('name', 'Circle'), pop_affected)
+            except Exception:
+                pass
         elif risk_score == 2:
-            alert_msg = f"HIGH RISK: Prepare for potential flooding in {city['name']}."
-            impact = {
-                "population_at_risk": random.randint(5000, 15000),
-                "hospitals_affected": random.randint(0, 2),
-                "schools_affected": random.randint(3, 10)
-            }
+            hospitals_affected = min(hospitals, int(hospitals * 0.3))
+            schools_affected = min(schools, int(schools * 0.4))
+            alert_msg = f"ORANGE WARNING: High flood risk in low-lying zones of {item.get('name', 'Circle')}. Prepare emergency supplies."
         elif risk_score == 1:
-            alert_msg = f"MODERATE: Water logging expected in {city['name']}."
-            impact = {
-                "population_at_risk": random.randint(500, 2000),
-                "hospitals_affected": 0,
-                "schools_affected": random.randint(0, 2)
-            }
+            hospitals_affected = 0
+            schools_affected = min(schools, int(schools * 0.15))
+            alert_msg = f"YELLOW ADVISORY: Moderate waterlogging expected in {item.get('name', 'Circle')}. Monitor river levels."
+        else:
+            alert_msg = f"GREEN: Safe conditions in {item.get('name', 'Circle')}. No active flood alert."
 
         results.append({
-            "name": city["name"],
-            "lat": city["lat"],
-            "lon": city["lon"],
-            "sim_rain": round(mean_rain, 2),
-            "sim_river": round(riverlevel_max, 2),
-            "risk_score": risk_score, # 0, 1, 2, 3
+            "object_id": item.get("object_id", str(random.randint(10000, 99999))),
+            "name": item.get("name", item.get("City", "Circle")),
+            "district": item.get("district", "Assam"),
+            "lat": lat,
+            "lon": lon,
+            "elevation_m": elevation,
+            "sim_rain_mm": round(sim_rain, 2),
+            "sim_river_m": round(sim_river, 2),
+            "sim_soil_pct": sim_soil,
+            "flood_occurred": flood_occurred,
+            "risk_score": risk_score,
+            "risk_label": risk_label,
+            "inundation_pct": round(inundation_pct * 100.0, 2),
             "alert": alert_msg,
-            "impact": impact
+            "impact": {
+                "population_at_risk": pop_affected,
+                "hospitals_affected": hospitals_affected,
+                "schools_affected": schools_affected,
+                "crop_area_damaged_ha": crop_damaged_ha,
+                "road_km_blocked": road_km_blocked
+            }
         })
-        
-    return {"simulation": results}
+
+    return {"simulation": results, "total_evaluated": len(results)}
 
 @app.get("/api/history/{city_name}")
 def get_historical_data(city_name: str):
     try:
-        # Load the mock historical data
         df = pd.read_csv("data/historical_flood_data.csv")
-        # Filter for the exact city requested
         city_data = df[df["City"].str.lower() == city_name.lower()]
         
         if city_data.empty:
             return {"error": f"No historical data found for {city_name}"}
             
-        # Grab the last 30 rows to simulate the last 30 days of data
         recent_data = city_data.tail(30).to_dict(orient="records")
         return {
             "city": city_name, 
@@ -203,3 +384,51 @@ def get_historical_data(city_name: str):
         }
     except Exception as e:
         return {"error": str(e)}
+
+@app.get("/api/live-prediction")
+def get_live_predictions():
+    """Runs dynamic real-time prediction using live Open-Meteo weather data."""
+    sim_req = SimulationRequest(severity_multiplier=1.0, use_live_weather=True)
+    return simulate_storm(sim_req)
+
+@app.get("/api/alerts")
+def get_active_alerts(min_severity: str = Query("Moderate", description="Minimum alert level: Moderate, High, Critical")):
+    """Retrieves active location-specific early warning alerts."""
+    sim_res = simulate_storm(SimulationRequest(severity_multiplier=1.2, use_live_weather=False))
+    all_sims = sim_res.get("simulation", [])
+    
+    severity_order = {"Low": 0, "Moderate": 1, "High": 2, "Critical": 3}
+    target_score = severity_order.get(min_severity, 1)
+    
+    active_alerts = [
+        item for item in all_sims if item["risk_score"] >= target_score
+    ]
+    return {
+        "active_alerts": active_alerts,
+        "count": len(active_alerts)
+    }
+
+@app.get("/api/summary")
+def get_state_summary():
+    """Returns aggregated state-wide & district-wide impact metrics."""
+    sim_res = simulate_storm(SimulationRequest(severity_multiplier=1.5, use_live_weather=False))
+    all_sims = sim_res.get("simulation", [])
+    
+    total_pop_at_risk = sum(item["impact"]["population_at_risk"] for item in all_sims)
+    total_crop_ha = sum(item["impact"]["crop_area_damaged_ha"] for item in all_sims)
+    critical_circles = [item for item in all_sims if item["risk_score"] == 3]
+    high_circles = [item for item in all_sims if item["risk_score"] == 2]
+    
+    return {
+        "total_revenue_circles": len(all_sims),
+        "critical_count": len(critical_circles),
+        "high_risk_count": len(high_circles),
+        "total_population_at_risk": total_pop_at_risk,
+        "total_crop_ha_damaged": round(total_crop_ha, 1),
+        "timestamp": pd.Timestamp.now().isoformat()
+    }
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+
