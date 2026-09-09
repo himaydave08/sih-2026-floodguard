@@ -57,7 +57,9 @@ def run_interactive_terminal_inference():
 
     for item in sims:
         pop = item.get('impact', {}).get('population_at_risk', 0)
+        tot_hospitals = item.get('impact', {}).get('total_hospitals', item.get('hospitals', 2))
         hospitals = item.get('impact', {}).get('hospitals_affected', 0)
+        tot_schools = item.get('impact', {}).get('total_schools', item.get('schools', 15))
         schools = item.get('impact', {}).get('schools_affected', 0)
         crop = item.get('impact', {}).get('crop_area_damaged_ha', 0.0)
         roads = item.get('impact', {}).get('road_km_blocked', 0.0)
@@ -74,8 +76,8 @@ def run_interactive_terminal_inference():
         print("  -------------------------------------------------------------")
         print("  [IMPACT ASSESSMENT]:")
         print(f"    - Civilians at Risk    : {pop:,} people")
-        print(f"    - Medical Facilities   : {hospitals} hospitals")
-        print(f"    - Schools Impacted     : {schools} schools")
+        print(f"    - Medical Facilities   : {hospitals} / {tot_hospitals} hospitals impacted ({tot_hospitals} total in circle)")
+        print(f"    - Schools Impacted     : {schools} / {tot_schools} schools impacted ({tot_schools} total in circle)")
         print(f"    - Crop Land Damaged    : {crop:,.1f} hectares")
         print(f"    - Roads Blocked        : {roads:.1f} km")
         print(f"  [OFFICIAL ADVISORY]     : {item.get('alert', '')}")

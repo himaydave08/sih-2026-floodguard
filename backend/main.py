@@ -318,26 +318,29 @@ def simulate_storm(req: SimulationRequest):
         # Detailed Impact Calculation
         hospitals_affected = 0
         schools_affected = 0
-        road_km_blocked = round(float(item.get("major_road_km", 12.0) * inundation_pct), 1)
+        road_km_blocked = round(float(item.get("major_road_km", 12.0) * max(0.05, inundation_pct)), 1)
 
         if risk_score == 3:
-            hospitals_affected = min(hospitals, max(1, int(hospitals * 0.75)))
-            schools_affected = min(schools, max(2, int(schools * 0.8)))
+            hospitals_affected = max(1, int(np.ceil(hospitals * min(1.0, inundation_pct * 1.5 + 0.35))))
+            schools_affected = max(2, int(np.ceil(schools * min(1.0, inundation_pct * 1.5 + 0.4))))
             alert_msg = f"CRITICAL RED ALERT: Immediate evacuation mandatory in {item.get('name', 'Circle')}, {item.get('district', 'Assam')}. Severe river inundation expected."
             try:
                 send_alert_sms(item.get('name', 'Circle'), pop_affected)
             except Exception:
                 pass
         elif risk_score == 2:
-            hospitals_affected = min(hospitals, int(hospitals * 0.3))
-            schools_affected = min(schools, int(schools * 0.4))
+            hospitals_affected = max(1, int(np.ceil(hospitals * min(0.6, inundation_pct * 1.2 + 0.2))))
+            schools_affected = max(1, int(np.ceil(schools * min(0.6, inundation_pct * 1.2 + 0.25))))
             alert_msg = f"ORANGE WARNING: High flood risk in low-lying zones of {item.get('name', 'Circle')}. Prepare emergency supplies."
         elif risk_score == 1:
-            hospitals_affected = 0
-            schools_affected = min(schools, int(schools * 0.15))
+            hospitals_affected = max(1, int(np.ceil(hospitals * max(0.08, inundation_pct * 0.5))))
+            schools_affected = max(1, int(np.ceil(schools * max(0.12, inundation_pct * 0.5))))
             alert_msg = f"YELLOW ADVISORY: Moderate waterlogging expected in {item.get('name', 'Circle')}. Monitor river levels."
         else:
+            hospitals_affected = 0
+            schools_affected = 0
             alert_msg = f"GREEN: Safe conditions in {item.get('name', 'Circle')}. No active flood alert."
+
 
         results.append({
             "object_id": item.get("object_id", str(random.randint(10000, 99999))),
@@ -356,7 +359,9 @@ def simulate_storm(req: SimulationRequest):
             "alert": alert_msg,
             "impact": {
                 "population_at_risk": pop_affected,
+                "total_hospitals": hospitals,
                 "hospitals_affected": hospitals_affected,
+                "total_schools": schools,
                 "schools_affected": schools_affected,
                 "crop_area_damaged_ha": crop_damaged_ha,
                 "road_km_blocked": road_km_blocked

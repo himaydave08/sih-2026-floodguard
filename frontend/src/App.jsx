@@ -215,8 +215,8 @@ function App() {
                       <div style={{ color: 'white', fontWeight: 'bold', marginBottom: '0.3rem' }}>ESTIMATED LOCAL IMPACT:</div>
                       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '0.4rem', color: 'var(--text-muted)' }}>
                         <div>👥 Civilians at Risk: <strong style={{ color: 'var(--danger-red)' }}>{activeCity.impact.population_at_risk?.toLocaleString() || 0}</strong></div>
-                        <div>🏥 Hospitals: <strong style={{ color: 'var(--alert-amber)' }}>{activeCity.impact.hospitals_affected || 0}</strong></div>
-                        <div>🏫 Schools: <strong style={{ color: 'var(--accent-cyan)' }}>{activeCity.impact.schools_affected || 0}</strong></div>
+                        <div>🏥 Hospitals: <strong style={{ color: 'var(--alert-amber)' }}>{activeCity.impact.hospitals_affected || 0} / {activeCity.impact.total_hospitals || 4} impacted</strong></div>
+                        <div>🏫 Schools: <strong style={{ color: 'var(--accent-cyan)' }}>{activeCity.impact.schools_affected || 0} / {activeCity.impact.total_schools || 30} impacted</strong></div>
                         <div>🌾 Crop Damaged: <strong>{activeCity.impact.crop_area_damaged_ha || 0} HA</strong></div>
                       </div>
                     </div>
@@ -296,10 +296,10 @@ function App() {
                       <span>CIVILIANS AT RISK:</span><span>{activeCity.impact.population_at_risk?.toLocaleString() || 0}</span>
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem', color: 'var(--alert-amber)', marginBottom: '0.2rem' }}>
-                      <span>HOSPITALS IMPACTED:</span><span>{activeCity.impact.hospitals_affected || 0}</span>
+                      <span>MEDICAL FACILITIES:</span><span>{activeCity.impact.hospitals_affected || 0} / {activeCity.impact.total_hospitals || 4} IMPACTED</span>
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem', color: 'var(--accent-cyan)', marginBottom: '0.2rem' }}>
-                      <span>SCHOOLS AFFECTED:</span><span>{activeCity.impact.schools_affected || 0}</span>
+                      <span>SCHOOLS AFFECTED:</span><span>{activeCity.impact.schools_affected || 0} / {activeCity.impact.total_schools || 30} IMPACTED</span>
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem', color: '#f472b6', marginBottom: '0.2rem' }}>
                       <span>CROP AREA DAMAGED:</span><span>{activeCity.impact.crop_area_damaged_ha || 0} HA</span>
