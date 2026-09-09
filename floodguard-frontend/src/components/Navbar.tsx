@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Bell, Search, MapPin, Layers, Info, Radio, AlertTriangle, BarChart3, Activity, Clock, FileText } from 'lucide-react';
+import { Bell, MapPin, Layers, Info, AlertTriangle, BarChart3, Activity, Clock } from 'lucide-react';
 import { ACTIVE_FLOOD_ALERTS } from '../data/assamData';
 import { ThemeToggle } from './ThemeToggle';
 import { Logo } from './Logo';
@@ -177,31 +177,6 @@ export const Navbar: React.FC<NavbarProps> = ({
             <span className="w-2 h-2 rounded-full bg-sky-400 dark:bg-white animate-pulse"></span>
             <span>Check My Risk</span>
           </button>
-        </div>
-      </div>
-
-      {/* Sub-bar: Telemetry Status & 4 Questions Directives */}
-      <div className="bg-[#f0f5fa] dark:bg-slate-950 border-t border-slate-200/90 dark:border-slate-800/90 py-1.5 px-4 sm:px-6 lg:px-8 text-xs font-medium text-slate-700 dark:text-slate-300 transition-colors">
-        <div className="max-w-[1536px] mx-auto flex flex-wrap items-center justify-between gap-2">
-          <div className="flex items-center gap-3">
-            <span className="flex items-center gap-1.5 text-[#006398] dark:text-sky-400 font-bold text-[11px] uppercase tracking-wider">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-sky-600 dark:bg-sky-400"></span>
-              </span>
-              <span>Telemetry Connected</span>
-            </span>
-            <span className="text-slate-300 dark:text-slate-700">|</span>
-            <span className="text-slate-600 dark:text-slate-400 text-[11px] hidden sm:inline-block">
-              Updated 4 min ago • IMD Radar, CWC Gauges & Sentinel-1 SAR
-            </span>
-          </div>
-
-          <div className="flex items-center gap-4 text-[11px] text-slate-600 dark:text-slate-400 font-mono">
-            <span className="hidden md:inline">
-              Brahmaputra Basin (WGS-84) • Inundation Model v3.2
-            </span>
-          </div>
         </div>
       </div>
 
