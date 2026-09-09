@@ -22,18 +22,14 @@ def run_interactive_terminal_inference():
     if len(sys.argv) > 1 and sys.argv[1].strip():
         city_input = sys.argv[1].strip()
         severity_val = float(sys.argv[2]) if len(sys.argv) > 2 else 1.0
-        print(f"\n[CLI Argument Received] Target Location: '{city_input}', Severity: {severity_val}x")
+        print(f"\n[CLI Argument Received] Target Location: '{city_input}'")
     else:
         try:
-            city_input = input("\n[?] Enter City or Revenue Circle Name (e.g. Guwahati, Dhubri, Gossaigaon, Barpeta, or press Enter for ALL): ").strip()
+            city_input = input("\n[?] Enter City or Revenue Circle Name (e.g. Guwahati, Dhubri, Barpeta, or press Enter for ALL): ").strip()
         except (EOFError, KeyboardInterrupt):
             city_input = ""
-        
-        try:
-            severity_str = input("[?] Enter Rainfall Severity Multiplier (1.0 = Normal, 2.0 = Heavy, 3.0 = Extreme) [Default 1.0]: ").strip()
-            severity_val = float(severity_str) if severity_str else 1.0
-        except (ValueError, EOFError, KeyboardInterrupt):
-            severity_val = 1.0
+        severity_val = 1.0
+
 
 
     print("\n[Crunching AI Models... Running Inference...]")
