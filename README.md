@@ -45,6 +45,24 @@ The AI does not just predict "water levels." It predicts the **human impact** (R
 
 ## 🚀 Running the Project Locally
 
+### 1. Start the FastAPI Backend
+Ensure you have Python 3.10+ installed.
+
+```bash
+cd backend
+pip install -r requirements.txt
+uvicorn main:app --reload
+```
+The API will be available at `http://127.0.0.1:8000`.
+
+### 2. Configure Twilio (Security)
+To enable the SMS feature, create a `.env` file inside the `backend/` directory:
+```env
+TWILIO_ACCOUNT_SID=your_account_sid
+TWILIO_AUTH_TOKEN=your_auth_token
+```
+
+
 ### 3. Start the React Frontend
 ```bash
 cd frontend
