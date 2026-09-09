@@ -1,67 +1,72 @@
 import React, { useState, useEffect } from 'react';
 import { MapContainer, TileLayer, CircleMarker, Popup } from 'react-leaflet';
-import { ShieldAlert, Crosshair, Map as MapIcon, Database, AlertOctagon, Terminal, CheckCircle, Search, XCircle } from 'lucide-react';
+import { ShieldAlert, Crosshair, Map as MapIcon, Database, AlertOctagon, Terminal, CheckCircle, Search, MapPin, ArrowRight } from 'lucide-react';
 
 const API_BASE = 'http://localhost:8000';
 
-const TOP_DISTRICTS = ['ALL', 'GUWAHATI', 'DHUBRI', 'KOKRAJHAR', 'BARPETA', 'GOALPARA', 'BAJALI', 'DIBRUGARH', 'SILCHAR', 'JORHAT'];
+const FEATURED_CITIES = [
+  { name: 'Guwahati', district: 'Kamrup Metro' },
+  { name: 'Gossaigaon', district: 'Kokrajhar' },
+  { name: 'Kokrajhar', district: 'Kokrajhar' },
+  { name: 'Dhubri', district: 'Dhubri' },
+  { name: 'Bilasipara', district: 'Dhubri' },
+  { name: 'Barpeta', district: 'Barpeta' },
+  { name: 'Kalgachia', district: 'Barpeta' },
+  { name: 'Sarthebari', district: 'Barpeta' },
+  { name: 'Lakhipur', district: 'Goalpara' },
+  { name: 'Silchar', district: 'Cachar' },
+  { name: 'Jorhat', district: 'Jorhat' },
+  { name: 'Dibrugarh', district: 'Dibrugarh' }
+];
 
 function App() {
   const [cities, setCities] = useState([]);
   const [severity, setSeverity] = useState(1.0);
   const [loading, setLoading] = useState(false);
+  const [selectedCityName, setSelectedCityName] = useState('Guwahati');
   const [activeCity, setActiveCity] = useState(null);
-  const [searchQuery, setSearchQuery] = useState('');
   
   // Navigation State
   const [activeTab, setActiveTab] = useState('Tactical Command');
 
   useEffect(() => {
-    simulateStorm(1.0, searchQuery);
+    fetchCityPrediction('Guwahati', 1.0);
   }, []);
 
-  const simulateStorm = async (simSeverity, query = searchQuery) => {
+  const fetchCityPrediction = async (cityName, simSeverity = severity) => {
     setLoading(true);
     setSeverity(simSeverity);
+    setSelectedCityName(cityName);
     try {
-      const bodyPayload = { 
-        severity_multiplier: simSeverity, 
-        use_live_weather: false
-      };
-      if (query && query.trim() && query !== 'ALL') {
-        bodyPayload.city_or_district = query.trim();
-      }
-
       const response = await fetch(`${API_BASE}/api/simulate`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(bodyPayload)
+        body: JSON.stringify({ 
+          severity_multiplier: simSeverity, 
+          use_live_weather: false,
+          city_or_district: cityName === 'ALL' ? '' : cityName
+        })
       });
       const data = await response.json();
       setCities(data.simulation || []);
       
       if (data.simulation && data.simulation.length > 0) {
-        const sorted = [...data.simulation].sort((a,b) => b.risk_score - a.risk_score);
-        setActiveCity(sorted[0]);
+        // Automatically activate the first matching city
+        setActiveCity(data.simulation[0]);
       } else {
         setActiveCity(null);
       }
     } catch (error) {
-      console.error("Error simulating:", error);
+      console.error("Error fetching city prediction:", error);
     }
     setLoading(false);
   };
 
-  const handleSearchChange = (e) => {
-    const val = e.target.value;
-    setSearchQuery(val);
-    simulateStorm(severity, val);
-  };
-
-  const handleChipClick = (districtName) => {
-    const query = districtName === 'ALL' ? '' : districtName;
-    setSearchQuery(query);
-    simulateStorm(severity, query);
+  const handleCitySubmit = (e) => {
+    e.preventDefault();
+    if (selectedCityName) {
+      fetchCityPrediction(selectedCityName, severity);
+    }
   };
 
   const getRiskColor = (risk) => {
@@ -86,31 +91,61 @@ function App() {
               </div>
             )}
 
-            {/* City / District Search Input Card */}
-            <div className="search-card mono">
-              <h2 style={{ fontSize: '0.85rem', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--accent-cyan)' }}>
-                <Search size={16}/> CITY / DISTRICT PREDICTION FILTER
+            {/* PROMINENT CITY QUERY PROMPT BOX */}
+            <div className="search-card mono" style={{ border: '1.5px solid var(--accent-cyan)', boxShadow: '0 0 15px rgba(0, 180, 216, 0.2)' }}>
+              <h2 style={{ fontSize: '0.9rem', marginBottom: '0.6rem', display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--accent-cyan)', fontWeight: 'bold' }}>
+                <MapPin size={18}/> WHICH CITY DO YOU WANT PREDICTIONS FOR?
               </h2>
-              <div className="search-input-wrapper">
-                <Search size={16} color="var(--text-muted)"/>
-                <input 
-                  type="text" 
-                  placeholder="Enter city or district name (e.g. Guwahati, Dhubri, Barpeta)..."
-                  value={searchQuery}
-                  onChange={handleSearchChange}
-                />
-                {searchQuery && (
-                  <XCircle size={16} color="var(--text-muted)" style={{ cursor: 'pointer' }} onClick={() => handleChipClick('ALL')} />
-                )}
-              </div>
-              <div className="chip-container">
-                {TOP_DISTRICTS.map(dist => (
-                  <button 
-                    key={dist} 
-                    className={`filter-chip ${ (searchQuery.toUpperCase() === dist || (dist === 'ALL' && !searchQuery)) ? 'active' : '' }`}
-                    onClick={() => handleChipClick(dist)}
+              
+              <form onSubmit={handleCitySubmit} style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+                {/* Dropdown Select */}
+                <div style={{ display: 'flex', gap: '0.5rem' }}>
+                  <select 
+                    value={selectedCityName} 
+                    onChange={(e) => fetchCityPrediction(e.target.value, severity)}
+                    style={{ 
+                      flex: 1, 
+                      background: 'rgba(0,0,0,0.5)', 
+                      color: '#fff', 
+                      border: '1px solid var(--border-color)', 
+                      padding: '0.6rem', 
+                      borderRadius: '4px',
+                      fontFamily: 'JetBrains Mono, monospace',
+                      fontSize: '0.85rem',
+                      outline: 'none'
+                    }}
                   >
-                    {dist}
+                    <option value="ALL">-- ALL ASSAM REVENUE CIRCLES (180 TOTAL) --</option>
+                    {FEATURED_CITIES.map(c => (
+                      <option key={c.name} value={c.name}>{c.name} ({c.district})</option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Free Text Prompt */}
+                <div className="search-input-wrapper">
+                  <Search size={16} color="var(--text-muted)"/>
+                  <input 
+                    type="text" 
+                    placeholder="Or type any city/district (e.g. Gossaigaon, Dhubri)..."
+                    value={selectedCityName}
+                    onChange={(e) => setSelectedCityName(e.target.value)}
+                  />
+                  <button type="submit" style={{ background: 'var(--accent-cyan)', color: '#000', border: 'none', padding: '0.35rem 0.75rem', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold', fontSize: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
+                    PREDICT <ArrowRight size={14}/>
+                  </button>
+                </div>
+              </form>
+
+              {/* Quick Select Chips */}
+              <div className="chip-container" style={{ marginTop: '0.5rem' }}>
+                {['Guwahati', 'Gossaigaon', 'Dhubri', 'Barpeta', 'Kokrajhar', 'Silchar', 'Jorhat'].map(city => (
+                  <button 
+                    key={city} 
+                    className={`filter-chip ${selectedCityName.toLowerCase() === city.toLowerCase() ? 'active' : ''}`}
+                    onClick={() => fetchCityPrediction(city, severity)}
+                  >
+                    {city}
                   </button>
                 ))}
               </div>
@@ -118,23 +153,25 @@ function App() {
 
             {/* AI Storm Simulator Controls */}
             <div className="card">
-              <h2 className="mono" style={{ fontSize: '1rem', marginBottom: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <Terminal size={16}/> AI STORM SEVERITY CONTROL
+              <h2 className="mono" style={{ fontSize: '0.9rem', marginBottom: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <Terminal size={16}/> SIMULATE RAINFALL SEVERITY
               </h2>
               <div className="severity-grid mono">
                 {[1.0, 2.0, 3.0, 4.0].map(val => (
-                  <div key={val} className={`severity-box ${severity === val ? (val >= 3 ? 'active' : 'active-nominal') : ''}`} onClick={() => simulateStorm(val, searchQuery)}>
+                  <div key={val} className={`severity-box ${severity === val ? (val >= 3 ? 'active' : 'active-nominal') : ''}`} onClick={() => fetchCityPrediction(selectedCityName, val)}>
                     {val}x {val === 1 ? 'Nominal' : val === 4 ? 'Breach!' : 'Heavy'}
                   </div>
                 ))}
               </div>
 
-              {/* Active City Prediction Highlights */}
-              {activeCity && (
-                <div style={{ marginTop: '1rem', background: 'rgba(0,0,0,0.3)', padding: '0.75rem', borderRadius: '6px', border: '1px solid var(--border-color)' }}>
-                  <div className="mono" style={{ fontSize: '0.8rem', color: 'var(--accent-cyan)', marginBottom: '0.5rem', fontWeight: 'bold' }}>
-                    PREDICTION PARAMETERS: {activeCity.name.toUpperCase()} ({activeCity.district.toUpperCase()})
+              {/* Active Target City Prediction Parameters */}
+              {activeCity ? (
+                <div style={{ marginTop: '1rem', background: 'rgba(0,0,0,0.4)', padding: '0.85rem', borderRadius: '6px', border: '1px solid var(--accent-cyan)' }}>
+                  <div className="mono" style={{ fontSize: '0.85rem', color: 'var(--accent-cyan)', marginBottom: '0.5rem', fontWeight: 'bold', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <span>📍 PREDICTION PARAMETERS FOR {activeCity.name.toUpperCase()}</span>
+                    <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>{activeCity.district}</span>
                   </div>
+                  
                   <div className="stats-grid mono">
                     <div className="stat-box">
                       <div className="val">{Math.round(activeCity.sim_rain_mm || activeCity.sim_rain || 0)}</div>
@@ -152,59 +189,65 @@ function App() {
 
                   <div className="params-grid mono">
                     <div className="param-item">
-                      <div className="key">SOIL SATURATION</div>
+                      <div className="key">SOIL CLAY SATURATION</div>
                       <div className="val">{activeCity.sim_soil_pct || 45}%</div>
                     </div>
                     <div className="param-item">
-                      <div className="key">ELEVATION</div>
+                      <div className="key">TERRAIN ELEVATION</div>
                       <div className="val">{activeCity.elevation_m || 50} M</div>
                     </div>
                     <div className="param-item">
-                      <div className="key">FLOOD STATUS</div>
+                      <div className="key">AI FLOOD PREDICTION</div>
                       <div className="val" style={{ color: activeCity.flood_occurred ? 'var(--danger-red)' : 'var(--safe-green)' }}>
-                        {activeCity.flood_occurred ? 'FLOOD RISK' : 'NO FLOOD'}
+                        {activeCity.flood_occurred ? 'FLOOD OCCURRED' : 'NO FLOOD'}
                       </div>
                     </div>
                     <div className="param-item">
-                      <div className="key">RISK CATEGORY</div>
+                      <div className="key">RISK SEVERITY</div>
                       <div className="val" style={{ color: getRiskColor(activeCity.risk_score) }}>
                         {activeCity.risk_label || 'SAFE'}
                       </div>
                     </div>
                   </div>
+
+                  {activeCity.impact && (
+                    <div style={{ marginTop: '0.5rem', paddingTop: '0.5rem', borderTop: '1px dashed var(--border-color)', fontSize: '0.75rem' }} className="mono">
+                      <div style={{ color: 'white', fontWeight: 'bold', marginBottom: '0.3rem' }}>ESTIMATED LOCAL IMPACT:</div>
+                      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '0.4rem', color: 'var(--text-muted)' }}>
+                        <div>👥 Civilians at Risk: <strong style={{ color: 'var(--danger-red)' }}>{activeCity.impact.population_at_risk?.toLocaleString() || 0}</strong></div>
+                        <div>🏥 Hospitals: <strong style={{ color: 'var(--alert-amber)' }}>{activeCity.impact.hospitals_affected || 0}</strong></div>
+                        <div>🏫 Schools: <strong style={{ color: 'var(--accent-cyan)' }}>{activeCity.impact.schools_affected || 0}</strong></div>
+                        <div>🌾 Crop Damaged: <strong>{activeCity.impact.crop_area_damaged_ha || 0} HA</strong></div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <div className="mono" style={{ padding: '1rem', color: 'var(--text-muted)', fontSize: '0.8rem', textAlign: 'center' }}>
+                  No prediction data found for "{selectedCityName}". Please select or enter a city above.
                 </div>
               )}
 
-              <button className="primary" style={{ marginTop: '0.75rem' }} onClick={() => simulateStorm(severity, searchQuery)} disabled={loading}>
-                {loading ? 'CRUNCHING AI MODELS...' : 'RUN PREDICTIVE INFERENCE'}
+              <button className="primary" style={{ marginTop: '0.75rem' }} onClick={() => fetchCityPrediction(selectedCityName, severity)} disabled={loading}>
+                {loading ? 'RUNNING AI PREDICTION...' : `PREDICT FLOOD FOR ${selectedCityName.toUpperCase()}`}
               </button>
             </div>
 
-            {/* Regional Alerts for filtered circles */}
-            <div style={{ marginTop: '0.5rem' }}>
-              <h3 className="mono" style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: '0.5rem' }}>
-                MATCHED LOCATION ALERTS ({cities.length})
-              </h3>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', maxHeight: '200px', overflowY: 'auto' }}>
-                {cities.length === 0 ? (
-                  <div className="mono" style={{ padding: '1rem', color: 'var(--text-muted)', fontSize: '0.8rem', textAlign: 'center' }}>
-                    No revenue circle matching "{searchQuery}"
-                  </div>
-                ) : (
-                  cities.map((city, idx) => (
-                    <div key={idx} className="mono" 
-                      onClick={() => setActiveCity(city)}
-                      style={{ 
-                        background: city.risk_score === 3 ? 'var(--danger-bg)' : 'rgba(255,255,255,0.05)',
-                        borderLeft: `3px solid ${getRiskColor(city.risk_score)}`,
-                        padding: '0.75rem', fontSize: '0.8rem', cursor: 'pointer'
-                      }}>
-                      <strong style={{ color: getRiskColor(city.risk_score) }}>[{city.name.toUpperCase()} - {city.district}]</strong> {city.alert}
-                    </div>
-                  ))
-                )}
+            {/* Matched City Alert Message */}
+            {activeCity && (
+              <div style={{ marginTop: '0.5rem' }}>
+                <h3 className="mono" style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: '0.5rem' }}>
+                  OFFICIAL EARLY WARNING ADVISORY
+                </h3>
+                <div className="mono" style={{ 
+                  background: activeCity.risk_score === 3 ? 'var(--danger-bg)' : 'rgba(255,255,255,0.05)',
+                  borderLeft: `4px solid ${getRiskColor(activeCity.risk_score)}`,
+                  padding: '0.85rem', fontSize: '0.8rem'
+                }}>
+                  <strong style={{ color: getRiskColor(activeCity.risk_score) }}>[{activeCity.name.toUpperCase()} - {activeCity.district}]</strong> {activeCity.alert}
+                </div>
               </div>
-            </div>
+            )}
           </div>
 
           <div className="map-area">
@@ -214,7 +257,7 @@ function App() {
                 <CircleMarker 
                   key={idx} center={[city.lat, city.lon]} radius={city.risk_score === 3 ? 14 : city.risk_score === 2 ? 10 : 6}
                   pathOptions={{ color: getRiskColor(city.risk_score), fillColor: getRiskColor(city.risk_score), fillOpacity: 0.7 }}
-                  eventHandlers={{ click: () => setActiveCity(city) }}
+                  eventHandlers={{ click: () => { setActiveCity(city); setSelectedCityName(city.name); } }}
                 >
                   <Popup>
                     <div style={{ color: '#000' }}>
@@ -228,7 +271,7 @@ function App() {
               ))}
             </MapContainer>
 
-            {/* Active City Full Prediction Overlay */}
+            {/* Active City Full Overlay */}
             {activeCity && (
               <div className="overlay-card mono">
                 {activeCity.risk_score === 3 && <div className="overlay-tag">CRITICAL RISK ZONE</div>}
@@ -236,7 +279,7 @@ function App() {
                 {activeCity.risk_score < 2 && <div className="overlay-tag" style={{background: 'var(--safe-green)'}}>NOMINAL / LOW RISK</div>}
                 
                 <h2 style={{ fontSize: '1.1rem', marginBottom: '0.75rem', borderBottom: '1px solid var(--border-color)', paddingBottom: '0.5rem' }}>
-                  LOCATION: {activeCity.name.toUpperCase()}
+                  TARGET: {activeCity.name.toUpperCase()}
                 </h2>
                 <div style={{ marginBottom: '1rem', fontSize: '0.8rem', color: 'var(--text-muted)', lineHeight: '1.6' }}>
                   <div><strong>DISTRICT:</strong> {activeCity.district}</div>
