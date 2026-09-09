@@ -21,13 +21,17 @@ export const Navbar: React.FC<NavbarProps> = ({
   const [isAlertDrawerOpen, setIsAlertDrawerOpen] = useState(false);
   const criticalAlertCount = ACTIVE_FLOOD_ALERTS.filter(a => a.riskLevel === 'CRITICAL' || a.riskLevel === 'HIGH').length;
 
-  const navItems = [
+  const primaryNavItems = [
     { id: 'overview', label: 'Overview', icon: Layers },
     { id: 'map', label: 'Risk Map', icon: MapPin },
     { id: 'predictions', label: 'Predictions', icon: Activity },
     { id: 'impact', label: 'Impact', icon: BarChart3 },
     { id: 'alerts', label: 'Alerts', icon: AlertTriangle, badge: criticalAlertCount },
-    { id: 'historical', label: 'Historical', icon: Clock },
+    { id: 'historical', label: 'History', icon: Clock },
+  ];
+
+  const allNavItems = [
+    ...primaryNavItems,
     { id: 'methodology', label: 'How It Works', icon: Info },
   ];
 
@@ -53,9 +57,9 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
         </div>
 
-        {/* Center: Navigation Links */}
+        {/* Center: Simplified Primary Navigation Links */}
         <nav className="hidden lg:flex items-center space-x-1 xl:space-x-1.5">
-          {navItems.map((item) => {
+          {primaryNavItems.map((item) => {
             const isActive = activeTab === item.id;
             return (
               <button
@@ -82,8 +86,23 @@ export const Navbar: React.FC<NavbarProps> = ({
           })}
         </nav>
 
-        {/* Right Side: Theme Toggle, Notification Indicator & Primary Action */}
-        <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+        {/* Right Side: Secondary Utility (How It Works), Theme Toggle, Notification Indicator & Primary Action */}
+        <div className="flex items-center gap-2 sm:gap-2.5 flex-shrink-0">
+          {/* Secondary Utility: How It Works */}
+          <button
+            id="nav-link-methodology"
+            onClick={() => setActiveTab('methodology')}
+            className={`hidden md:inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs font-medium transition-colors border ${
+              activeTab === 'methodology'
+                ? 'text-sky-700 dark:text-sky-300 bg-sky-50 dark:bg-sky-950/70 border-sky-200 dark:border-sky-800 font-semibold'
+                : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 border-slate-200/80 dark:border-slate-800'
+            }`}
+            title="How FloodGuard Hydro-AI Platform Works"
+          >
+            <Info className="w-3.5 h-3.5 opacity-75" />
+            <span>How It Works</span>
+          </button>
+
           {/* Theme Toggle Component */}
           <ThemeToggle />
 
@@ -182,7 +201,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* Mobile Navigation Bar */}
       <div className="lg:hidden flex items-center overflow-x-auto border-t border-slate-200 dark:border-slate-800 px-3 py-1.5 bg-white dark:bg-slate-900 text-xs gap-1.5 scrollbar-none transition-colors">
-        {navItems.map((item) => {
+        {allNavItems.map((item) => {
           const isActive = activeTab === item.id;
           return (
             <button
