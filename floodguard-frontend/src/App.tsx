@@ -114,20 +114,13 @@ export default function App() {
 
             {/* Interactive Map & Active Sector Inspector Grid */}
             <div className="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 mt-4">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
-                <div className="flex items-center gap-2 flex-wrap">
-                  <h2 className="font-heading font-extrabold text-lg sm:text-xl text-[#0b1c30] dark:text-slate-100 tracking-tight">
-                    Brahmaputra Valley Flood Inundation & Risk Matrix
-                  </h2>
-                  <span className="px-2 py-0.5 rounded bg-sky-100/80 dark:bg-sky-950/80 text-sky-800 dark:text-sky-300 border border-transparent dark:border-sky-800/50 font-mono font-bold text-xs">
-                    BASIN: AS-BR-09 • {currentSector.district.toUpperCase()}
-                  </span>
-                </div>
-
-                <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 font-medium">
-                  <span className="w-2 h-2 rounded-full bg-blue-600 dark:bg-sky-400 animate-pulse" />
-                  <span>Dual Telemetry Feed: CWC Hydro-Net & Sentinel-1 SAR</span>
-                </div>
+              <div className="flex items-center gap-2 flex-wrap mb-3">
+                <h2 className="font-heading font-extrabold text-lg sm:text-xl text-[#0b1c30] dark:text-slate-100 tracking-tight">
+                  Brahmaputra Valley Flood Inundation & Risk Matrix
+                </h2>
+                <span className="px-2 py-0.5 rounded bg-sky-100/80 dark:bg-sky-950/80 text-sky-800 dark:text-sky-300 border border-transparent dark:border-sky-800/50 font-mono font-bold text-xs">
+                  BASIN: AS-BR-09 • {currentSector.district.toUpperCase()}
+                </span>
               </div>
 
               {/* Map & Sector Inspector Grid */}
