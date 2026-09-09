@@ -7,6 +7,7 @@ impact assessments, and early warning alert triggers across Assam's 180 Revenue 
 from fastapi import FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+from typing import Optional
 import pickle
 import pandas as pd
 import numpy as np
@@ -161,8 +162,8 @@ def fetch_live_rain(lat: float, lon: float) -> float:
 class SimulationRequest(BaseModel):
     severity_multiplier: float = 1.0  # 1.0 = normal, 2.0 = heavy rain, 3.0 = extreme
     use_live_weather: bool = False
-    custom_rainfall_mm: float = None
-    city_or_district: str = None  # City or district filter
+    custom_rainfall_mm: Optional[float] = None
+    city_or_district: Optional[str] = None  # City or district filter
 
 @app.get("/api/state")
 def get_current_state():
