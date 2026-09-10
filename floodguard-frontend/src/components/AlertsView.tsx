@@ -45,31 +45,31 @@ export const AlertsView: React.FC<AlertsViewProps> = ({
   };
 
   return (
-    <div className="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 py-5 space-y-5 animate-in fade-in duration-200">
+    <div className="w-full max-w-[1536px] mx-auto px-3.5 sm:px-6 lg:px-8 py-5 space-y-5 animate-in fade-in duration-200 min-w-0">
       {/* Top Banner & Header */}
-      <div className="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-300 dark:border-slate-800 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4 transition-colors">
-        <div>
+      <div className="bg-white dark:bg-slate-900 p-4 sm:p-5 rounded-xl border border-slate-300 dark:border-slate-800 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4 transition-colors min-w-0">
+        <div className="min-w-0">
           <div className="flex items-center gap-2 mb-1">
-            <span className="w-2.5 h-2.5 rounded-full bg-red-600 animate-pulse"></span>
-            <span className="text-xs font-mono font-bold tracking-wider text-red-700 dark:text-red-400 uppercase">
+            <span className="w-2.5 h-2.5 rounded-full bg-red-600 animate-pulse flex-shrink-0"></span>
+            <span className="text-xs font-mono font-bold tracking-wider text-red-700 dark:text-red-400 uppercase truncate">
               STATE DISASTER MANAGEMENT ADVISORIES & SIREN DIRECTIVES
             </span>
           </div>
-          <h2 className="font-heading font-extrabold text-2xl text-[#0b1c30] dark:text-slate-100">
+          <h2 className="font-heading font-extrabold text-xl sm:text-2xl text-[#0b1c30] dark:text-slate-100">
             Active Flood Risk & Early Warnings
           </h2>
-          <p className="text-sm text-slate-600 dark:text-slate-400 mt-1 max-w-3xl">
+          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1 max-w-3xl">
             Real-time public warnings issued in synchronization with Assam State Disaster Management Authority (ASDMA) and Central Water Commission.
           </p>
         </div>
 
         {/* Severity Filter Buttons */}
-        <div className="flex items-center gap-1.5 bg-slate-50 dark:bg-slate-800/80 p-1.5 rounded-lg border border-slate-200 dark:border-slate-700 self-start md:self-auto">
+        <div className="flex items-center gap-1.5 bg-slate-50 dark:bg-slate-800/80 p-1.5 rounded-lg border border-slate-200 dark:border-slate-700 overflow-x-auto max-w-full touch-pan-x scrollbar-none self-start md:self-auto">
           {(['ALL', 'CRITICAL', 'HIGH', 'MODERATE'] as const).map((sev) => (
             <button
               key={sev}
               onClick={() => setFilterSeverity(sev)}
-              className={`px-3 py-1.5 text-xs font-semibold rounded-md transition ${
+              className={`px-3 py-1.5 min-h-[36px] text-xs font-semibold rounded-md transition whitespace-nowrap flex-shrink-0 ${
                 filterSeverity === sev
                   ? 'bg-[#0b1c30] dark:bg-sky-600 text-white shadow-xs'
                   : 'text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'
@@ -194,19 +194,19 @@ export const AlertsView: React.FC<AlertsViewProps> = ({
             Get instant early notifications directly on your mobile device when CWC river gauges or IMD heavy rainfall exceed critical thresholds in your circle.
           </p>
 
-          <form onSubmit={handleSubscribe} className="mt-5 flex flex-col sm:flex-row items-center gap-3">
+          <form onSubmit={handleSubscribe} className="mt-5 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full">
             <input
               type="tel"
               value={phoneNumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
               placeholder="Enter 10-digit mobile number (+91)..."
-              className="w-full sm:w-72 px-4 py-2.5 bg-slate-800/90 dark:bg-slate-800 border border-slate-700 rounded-lg text-sm text-white placeholder-slate-400 focus:outline-none focus:border-sky-400"
+              className="w-full sm:w-72 px-4 py-2.5 min-h-[44px] bg-slate-800/90 dark:bg-slate-800 border border-slate-700 rounded-lg text-sm text-white placeholder-slate-400 focus:outline-none focus:border-sky-400"
             />
 
             <select
               value={selectedDistrict}
               onChange={(e) => setSelectedDistrict(e.target.value)}
-              className="w-full sm:w-48 px-3 py-2.5 bg-slate-800/90 dark:bg-slate-800 border border-slate-700 rounded-lg text-sm text-white focus:outline-none focus:border-sky-400"
+              className="w-full sm:w-48 px-3 py-2.5 min-h-[44px] bg-slate-800/90 dark:bg-slate-800 border border-slate-700 rounded-lg text-sm text-white focus:outline-none focus:border-sky-400"
             >
               <option value="Dhemaji">Dhemaji District</option>
               <option value="Majuli">Majuli River Island</option>
@@ -218,7 +218,7 @@ export const AlertsView: React.FC<AlertsViewProps> = ({
 
             <button
               type="submit"
-              className="w-full sm:w-auto px-6 py-2.5 bg-sky-500 hover:bg-sky-400 active:bg-sky-600 text-slate-950 font-bold text-sm rounded-lg transition flex items-center justify-center gap-2 flex-shrink-0"
+              className="w-full sm:w-auto px-6 py-2.5 min-h-[44px] bg-sky-500 hover:bg-sky-400 active:bg-sky-600 text-slate-950 font-bold text-sm rounded-lg transition flex items-center justify-center gap-2 flex-shrink-0"
             >
               <Send className="w-4 h-4" />
               <span>Register Dispatches</span>

@@ -48,27 +48,27 @@ export const SectorInspector: React.FC<SectorInspectorProps> = ({
   const displayFactors = sector.factors || [];
 
   return (
-    <div className="bg-white dark:bg-slate-900 rounded-lg border border-slate-300/80 dark:border-slate-800 p-4 sm:p-5 shadow-sm flex flex-col justify-between h-full transition-colors">
-      <div>
+    <div className="bg-white dark:bg-slate-900 rounded-lg border border-slate-300/80 dark:border-slate-800 p-4 sm:p-5 shadow-sm flex flex-col justify-between h-full transition-colors w-full min-w-0">
+      <div className="min-w-0">
         {/* Header Row */}
-        <div className="flex items-center justify-between gap-2 pb-2.5 border-b border-slate-100 dark:border-slate-800">
+        <div className="flex items-center justify-between gap-2 pb-2.5 border-b border-slate-100 dark:border-slate-800 flex-wrap">
           <span className="text-[11px] font-bold tracking-wider text-slate-500 dark:text-slate-400 uppercase font-mono flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-sky-500"></span>
-            <span>INTELLIGENCE & RISK INSPECTOR</span>
+            <span className="w-2 h-2 rounded-full bg-sky-500 flex-shrink-0"></span>
+            <span className="truncate">INTELLIGENCE &amp; RISK INSPECTOR</span>
           </span>
 
-          <div className="flex items-center gap-1 px-2 py-0.5 rounded bg-red-50 dark:bg-red-950/70 border border-red-200 dark:border-red-900/60 text-red-700 dark:text-red-300 text-[10px] font-extrabold tracking-wide uppercase">
+          <div className="flex items-center gap-1 px-2 py-0.5 rounded bg-red-50 dark:bg-red-950/70 border border-red-200 dark:border-red-900/60 text-red-700 dark:text-red-300 text-[10px] font-extrabold tracking-wide uppercase flex-shrink-0">
             <span>ACTIVE FLOOD WATCH</span>
           </div>
         </div>
 
         {/* Sector Name & Technical Metadata */}
-        <div className="mt-3">
-          <div className="flex items-baseline justify-between">
-            <h2 className="font-heading font-extrabold text-2xl tracking-tight text-[#0b1c30] dark:text-slate-100">
+        <div className="mt-3 min-w-0">
+          <div className="flex items-baseline justify-between gap-2">
+            <h2 className="font-heading font-extrabold text-2xl tracking-tight text-[#0b1c30] dark:text-slate-100 truncate">
               {sector.district}
             </h2>
-            <span className="text-xs font-bold text-slate-500 dark:text-slate-400">{sector.state}</span>
+            <span className="text-xs font-bold text-slate-500 dark:text-slate-400 flex-shrink-0">{sector.state}</span>
           </div>
           <div className="text-xs font-mono text-slate-500 dark:text-slate-400 mt-0.5 flex flex-wrap items-center gap-1.5">
             <span>
@@ -80,24 +80,24 @@ export const SectorInspector: React.FC<SectorInspectorProps> = ({
         </div>
 
         {/* Vulnerability Index Score & Circular Gauge Container */}
-        <div className="mt-3.5 p-3.5 rounded-lg bg-[#f8faff] dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/80 flex items-center justify-between gap-3">
-          <div>
-            <div className="text-[10px] font-bold tracking-wider text-slate-500 dark:text-slate-400 uppercase font-mono">
+        <div className="mt-3.5 p-3 sm:p-3.5 rounded-lg bg-[#f8faff] dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/80 flex items-center justify-between gap-2.5 min-w-0">
+          <div className="min-w-0">
+            <div className="text-[10px] font-bold tracking-wider text-slate-500 dark:text-slate-400 uppercase font-mono truncate">
               COMPOSITE FLOOD RISK SCORE
             </div>
             <div className="flex items-baseline gap-1 mt-0.5">
-              <span className={`font-heading font-extrabold text-4xl tracking-tight ${accentColor}`}>
+              <span className={`font-heading font-extrabold text-3xl sm:text-4xl tracking-tight ${accentColor}`}>
                 {sector.vulnerabilityIndex}
               </span>
-              <span className="text-base font-medium text-slate-400 dark:text-slate-500">/100</span>
+              <span className="text-sm sm:text-base font-medium text-slate-400 dark:text-slate-500">/100</span>
             </div>
-            <div className={`text-xs font-bold tracking-wide uppercase mt-0.5 ${accentColor}`}>
+            <div className={`text-[11px] sm:text-xs font-bold tracking-wide uppercase mt-0.5 ${accentColor} truncate`}>
               {sector.hazardLevel} RISK • {sector.statusSummary}
             </div>
           </div>
 
           {/* Circular Gauge */}
-          <div className="relative w-18 h-18 flex-shrink-0 flex items-center justify-center">
+          <div className="relative w-16 h-16 sm:w-18 sm:h-18 flex-shrink-0 flex items-center justify-center">
             <svg className="w-full h-full -rotate-90" viewBox="0 0 84 84">
               <circle
                 cx="42"
@@ -131,52 +131,52 @@ export const SectorInspector: React.FC<SectorInspectorProps> = ({
         </div>
 
         {/* 4 Core Quick Metrics Row */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-3 p-2.5 bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 rounded-md text-center">
-          <div>
-            <div className="text-[10px] font-semibold text-slate-500 dark:text-slate-400 uppercase">1. Will it Flood?</div>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-3 p-2 sm:p-2.5 bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 rounded-md text-center min-w-0">
+          <div className="min-w-0">
+            <div className="text-[10px] font-semibold text-slate-500 dark:text-slate-400 uppercase truncate">1. Flood?</div>
             <div className="font-heading font-bold text-sm text-slate-900 dark:text-slate-100 mt-0.5 font-mono">
               {sector.floodProb}%
             </div>
-            <div className="text-[9px] text-slate-500 dark:text-slate-400">{sector.confidence}% conf</div>
+            <div className="text-[9px] text-slate-500 dark:text-slate-400 truncate">{sector.confidence}% conf</div>
           </div>
 
-          <div className="border-l border-slate-200 dark:border-slate-800 pl-1">
-            <div className="text-[10px] font-semibold text-slate-500 dark:text-slate-400 uppercase">2. Where?</div>
+          <div className="border-l border-slate-200 dark:border-slate-800 pl-1 min-w-0">
+            <div className="text-[10px] font-semibold text-slate-500 dark:text-slate-400 uppercase truncate">2. Where?</div>
             <div className="font-heading font-bold text-sm text-slate-900 dark:text-slate-100 mt-0.5 font-mono">
               {sector.inundationAreaKm2} km²
             </div>
-            <div className="text-[9px] text-slate-500 dark:text-slate-400">Inundation</div>
+            <div className="text-[9px] text-slate-500 dark:text-slate-400 truncate">Inundation</div>
           </div>
 
-          <div className="border-l border-slate-200 dark:border-slate-800 pl-1">
-            <div className="text-[10px] font-semibold text-slate-500 dark:text-slate-400 uppercase">3. Severity</div>
-            <div className={`font-heading font-bold text-sm mt-0.5 font-mono ${accentColor}`}>
+          <div className="border-l border-slate-200 dark:border-slate-800 pl-1 min-w-0">
+            <div className="text-[10px] font-semibold text-slate-500 dark:text-slate-400 uppercase truncate">3. Severity</div>
+            <div className={`font-heading font-bold text-sm mt-0.5 font-mono ${accentColor} truncate`}>
               {sector.riverStageDelta}
             </div>
-            <div className="text-[9px] text-slate-500 dark:text-slate-400">Peak: {sector.waterDepthPeakM}m</div>
+            <div className="text-[9px] text-slate-500 dark:text-slate-400 truncate">Peak: {sector.waterDepthPeakM}m</div>
           </div>
 
-          <div className="border-l border-slate-200 dark:border-slate-800 pl-1">
-            <div className="text-[10px] font-semibold text-slate-500 dark:text-slate-400 uppercase">4. Affected</div>
+          <div className="border-l border-slate-200 dark:border-slate-800 pl-1 min-w-0">
+            <div className="text-[10px] font-semibold text-slate-500 dark:text-slate-400 uppercase truncate">4. Affected</div>
             <div className="font-heading font-bold text-sm text-slate-900 dark:text-slate-100 mt-0.5 font-mono">
               {((sector.populationAtRisk ?? 0) / 1000).toFixed(0)}K
             </div>
-            <div className="text-[9px] text-slate-500 dark:text-slate-400">{sector.infrastructureCounts.hospitals} Hospitals</div>
+            <div className="text-[9px] text-slate-500 dark:text-slate-400 truncate">{sector.infrastructureCounts.hospitals} Hospitals</div>
           </div>
         </div>
 
         {/* Explainability Section: "Why is this area at risk?" */}
-        <div className="mt-4">
-          <div className="flex items-center justify-between pb-1">
+        <div className="mt-4 min-w-0">
+          <div className="flex items-center justify-between pb-1 flex-wrap gap-1">
             <div className="flex items-center gap-1.5">
-              <HelpCircle className="w-3.5 h-3.5 text-sky-600 dark:text-sky-400" />
+              <HelpCircle className="w-3.5 h-3.5 text-sky-600 dark:text-sky-400 flex-shrink-0" />
               <span className="text-[11px] font-bold tracking-wider text-slate-700 dark:text-slate-300 uppercase font-mono">
                 WHY IS THIS AREA AT RISK?
               </span>
             </div>
             <button
               onClick={onViewWeights}
-              className="text-[11px] text-[#006398] dark:text-sky-400 hover:text-[#00476e] dark:hover:text-sky-300 font-semibold hover:underline"
+              className="text-[11px] text-[#006398] dark:text-sky-400 hover:text-[#00476e] dark:hover:text-sky-300 font-semibold hover:underline touch-manipulation min-h-[28px] flex items-center"
             >
               Model Weights
             </button>
@@ -194,12 +194,12 @@ export const SectorInspector: React.FC<SectorInspectorProps> = ({
               else barColor = 'bg-emerald-600';
 
               return (
-                <div key={factor.id} className="p-2 rounded bg-slate-50/90 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-800">
-                  <div className="flex items-center justify-between text-xs">
-                    <span className="font-semibold text-slate-800 dark:text-slate-200">{factor.name}</span>
-                    <span className="font-mono font-bold text-slate-900 dark:text-slate-100">{factor.contributionPercent}%</span>
+                <div key={factor.id} className="p-2 rounded bg-slate-50/90 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-800 min-w-0">
+                  <div className="flex items-center justify-between text-xs gap-2">
+                    <span className="font-semibold text-slate-800 dark:text-slate-200 truncate">{factor.name}</span>
+                    <span className="font-mono font-bold text-slate-900 dark:text-slate-100 flex-shrink-0">{factor.contributionPercent}%</span>
                   </div>
-                  <div className="text-[10px] text-slate-500 dark:text-slate-400 font-mono mt-0.5">{factor.observedValue}</div>
+                  <div className="text-[10px] text-slate-500 dark:text-slate-400 font-mono mt-0.5 truncate">{factor.observedValue}</div>
                   <div className="w-full bg-slate-200 dark:bg-slate-700 h-1.5 rounded-full overflow-hidden mt-1.5">
                     <div
                       className={`h-full ${barColor} rounded-full transition-all duration-700 ease-out`}
@@ -214,16 +214,16 @@ export const SectorInspector: React.FC<SectorInspectorProps> = ({
       </div>
 
       {/* Bottom Footer Actions */}
-      <div className="pt-3.5 mt-3 border-t border-slate-200 dark:border-slate-800 space-y-2.5">
-        <div className="flex items-center justify-between text-xs">
+      <div className="pt-3.5 mt-3 border-t border-slate-200 dark:border-slate-800 space-y-2.5 min-w-0">
+        <div className="flex flex-wrap items-center justify-between gap-2 text-xs">
           <div className="flex items-center gap-1 text-[10px] text-slate-500 dark:text-slate-400 font-mono">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 flex-shrink-0" />
             <span>IMD Doppler • CWC Telemetry</span>
           </div>
 
           <button
             onClick={onOpenDiagnostic}
-            className="flex items-center gap-1 font-bold text-[#006398] dark:text-sky-400 hover:text-[#00476e] dark:hover:text-sky-300 transition-colors group text-xs"
+            className="flex items-center gap-1 font-bold text-[#006398] dark:text-sky-400 hover:text-[#00476e] dark:hover:text-sky-300 transition-colors group text-xs touch-manipulation min-h-[32px]"
           >
             <span>Full Diagnostic Sheet</span>
             <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
@@ -231,7 +231,7 @@ export const SectorInspector: React.FC<SectorInspectorProps> = ({
         </div>
 
         {/* Subtle Human-in-the-loop Validation Action */}
-        <div className="flex items-center justify-between pt-2 border-t border-dashed border-slate-200 dark:border-slate-800/80 text-[11px]">
+        <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-dashed border-slate-200 dark:border-slate-800/80 text-[11px]">
           <span className="text-[10px] font-mono text-slate-400 dark:text-slate-500 flex items-center gap-1">
             <span>Model feedback:</span>
           </span>

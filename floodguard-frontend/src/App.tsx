@@ -62,7 +62,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f8faff] dark:bg-slate-950 text-[#0b1c30] dark:text-slate-100 flex flex-col font-sans selection:bg-sky-200 selection:dark:bg-sky-900 transition-colors duration-200">
+    <div className="min-h-screen bg-[#f8faff] dark:bg-slate-950 text-[#0b1c30] dark:text-slate-100 flex flex-col font-sans selection:bg-sky-200 selection:dark:bg-sky-900 transition-colors duration-200 w-full max-w-full overflow-x-hidden min-w-0">
       {/* Top Authoritative Navigation Bar */}
       <Navbar
         activeTab={activeTab}
@@ -72,16 +72,16 @@ export default function App() {
       />
 
       {/* Main Content Areas based on Tab */}
-      <main className="flex-1">
+      <main className="flex-1 w-full min-w-0">
         {/* Tab 1: Overview Command Center */}
         {activeTab === 'overview' && (
-          <div className="pb-12 animate-in fade-in duration-200">
+          <div className="pb-12 animate-in fade-in duration-200 w-full min-w-0">
             {/* Location Toast — transient feedback for "Use My Location" */}
             {locationToast && (
               <div
                 role="status"
                 aria-live="polite"
-                className={`fixed top-4 left-1/2 -translate-x-1/2 z-[9999] flex items-center gap-2.5 px-4 py-2.5 rounded-lg shadow-lg border text-sm font-semibold max-w-sm w-full transition-all animate-in fade-in slide-in-from-top-2 duration-200 ${
+                className={`fixed top-4 left-1/2 -translate-x-1/2 z-[9999] flex items-center gap-2.5 px-4 py-2.5 rounded-lg shadow-lg border text-sm font-semibold max-w-[calc(100vw-24px)] w-full sm:max-w-sm transition-all animate-in fade-in slide-in-from-top-2 duration-200 ${
                   locationToast.variant === 'error'
                     ? 'bg-red-50 dark:bg-red-950/90 border-red-200 dark:border-red-800 text-red-800 dark:text-red-200'
                     : locationToast.variant === 'success'
@@ -113,10 +113,10 @@ export default function App() {
             />
 
             {/* Interactive Map & Active Sector Inspector Grid */}
-            <div className="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 mt-4">
+            <div className="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 mt-4 w-full min-w-0">
               <div className="flex items-center gap-2 flex-wrap mb-3">
                 <h2 className="font-heading font-extrabold text-lg sm:text-xl text-[#0b1c30] dark:text-slate-100 tracking-tight">
-                  Brahmaputra Valley Flood Inundation & Risk Matrix
+                  Brahmaputra Valley Flood Inundation &amp; Risk Matrix
                 </h2>
                 <span className="px-2 py-0.5 rounded bg-sky-100/80 dark:bg-sky-950/80 text-sky-800 dark:text-sky-300 border border-transparent dark:border-sky-800/50 font-mono font-bold text-xs">
                   BASIN: AS-BR-09 • {currentSector.district.toUpperCase()}
@@ -124,9 +124,9 @@ export default function App() {
               </div>
 
               {/* Map & Sector Inspector Grid */}
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch w-full min-w-0">
                 {/* Left: Map Viewport (takes 8 cols on desktop) */}
-                <div className="lg:col-span-8 flex flex-col">
+                <div className="lg:col-span-8 flex flex-col w-full min-w-0">
                   <InteractiveMap
                     currentSector={currentSector}
                     onSelectSector={handleSelectSector}
@@ -137,7 +137,7 @@ export default function App() {
                 </div>
 
                 {/* Right: Active Sector Inspector (takes 4 cols) */}
-                <div className="lg:col-span-4 flex flex-col">
+                <div className="lg:col-span-4 flex flex-col w-full min-w-0">
                   <SectorInspector
                     sector={currentSector}
                     onOpenDiagnostic={() => setIsDiagnosticOpen(true)}

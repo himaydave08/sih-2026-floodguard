@@ -32,15 +32,15 @@ export const MethodologyView: React.FC = () => {
   ];
 
   return (
-    <div className="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6 animate-in fade-in duration-200">
+    <div className="w-full max-w-[1536px] mx-auto px-3.5 sm:px-6 lg:px-8 py-5 space-y-6 animate-in fade-in duration-200 min-w-0">
       {/* Title */}
-      <div className="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-300 dark:border-slate-800 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4 transition-colors">
-        <div>
+      <div className="bg-white dark:bg-slate-900 p-4 sm:p-5 rounded-xl border border-slate-300 dark:border-slate-800 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4 transition-colors min-w-0">
+        <div className="min-w-0">
           <div className="flex items-center gap-2 text-xs font-mono font-bold tracking-wider text-sky-700 dark:text-sky-400 uppercase mb-1">
-            <Cpu className="w-4 h-4 text-sky-600 dark:text-sky-400" />
-            <span>AI/ML HYDROLOGICAL PLATFORM ARCHITECTURE</span>
+            <Cpu className="w-4 h-4 text-sky-600 dark:text-sky-400 flex-shrink-0" />
+            <span className="truncate">AI/ML HYDROLOGICAL PLATFORM ARCHITECTURE</span>
           </div>
-          <h1 className="font-heading font-extrabold text-2xl sm:text-3xl text-[#0b1c30] dark:text-slate-100 tracking-tight">
+          <h1 className="font-heading font-extrabold text-xl sm:text-2xl sm:text-3xl text-[#0b1c30] dark:text-slate-100 tracking-tight">
             How FloodGuard Works: Architecture & Scientific Methodology
           </h1>
           <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1 max-w-3xl leading-relaxed">
@@ -107,7 +107,7 @@ export const MethodologyView: React.FC = () => {
           <span className="text-xs font-mono text-slate-400">6 Integrated Sources</span>
         </div>
 
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto max-w-full touch-pan-x scrollbar-none">
           <table className="w-full text-left text-xs border-collapse">
             <thead>
               <tr className="border-b border-slate-200 dark:border-slate-800 bg-slate-100/60 dark:bg-slate-800/80 font-bold text-slate-700 dark:text-slate-300 font-mono uppercase text-[11px]">

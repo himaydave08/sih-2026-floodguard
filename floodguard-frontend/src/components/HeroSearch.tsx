@@ -99,9 +99,9 @@ export const HeroSearch: React.FC<HeroSearchProps> = ({
   const zoneSummary = getZoneSummary();
 
   return (
-    <section className="pt-6 pb-4 px-4 sm:px-6 lg:px-8 max-w-[1536px] mx-auto transition-colors">
+    <section className="pt-6 pb-4 px-4 sm:px-6 lg:px-8 max-w-[1536px] mx-auto transition-colors w-full min-w-0">
       {/* Title, Platform Purpose & Subdued Reference */}
-      <div>
+      <div className="min-w-0">
         <div className="flex items-center gap-2 mb-2 flex-wrap">
           <span className="px-2.5 py-0.5 rounded-full bg-sky-100 dark:bg-sky-950/80 text-sky-800 dark:text-sky-300 border border-transparent dark:border-sky-800/60 font-bold text-[11px] tracking-wider uppercase">
             AI &amp; Satellite Disaster Intelligence
@@ -110,15 +110,15 @@ export const HeroSearch: React.FC<HeroSearchProps> = ({
             Multi-Source Inundation Early Warning
           </span>
         </div>
-        <h1 className="font-heading font-extrabold text-2xl sm:text-3xl lg:text-[36px] tracking-tight text-[#0b1c30] dark:text-slate-100 leading-tight">
-          Heavy Rainfall & Flood Inundation Prediction Platform
+        <h1 className="font-heading font-extrabold text-2xl sm:text-3xl lg:text-[36px] tracking-tight text-[#0b1c30] dark:text-slate-100 leading-tight break-words">
+          Heavy Rainfall &amp; Flood Inundation Prediction Platform
         </h1>
-        <p className="mt-1.5 text-sm sm:text-base text-slate-600 dark:text-slate-300 font-normal leading-relaxed max-w-4xl">
+        <p className="mt-1.5 text-xs sm:text-sm lg:text-base text-slate-600 dark:text-slate-300 font-normal leading-relaxed max-w-4xl break-words">
           Combining satellite synthetic aperture radar (SAR), CWC river tele-gauges, IMD Doppler rainfall, and SRTM 30m terrain physics to forecast inundation extent and human exposure.
         </p>
 
         {/* Compact Bordered Secondary Reference: Gov Sites */}
-        <div className="mt-3 inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white dark:bg-slate-900 border border-[#D7E2EF] dark:border-slate-800 shadow-xs hover:border-slate-300 dark:hover:border-slate-700 text-xs transition-colors">
+        <div className="mt-3 inline-flex flex-wrap items-center gap-2 px-3 py-1.5 rounded-lg bg-white dark:bg-slate-900 border border-[#D7E2EF] dark:border-slate-800 shadow-xs hover:border-slate-300 dark:hover:border-slate-700 text-xs transition-colors max-w-full">
           <span className="font-bold text-[#0b1c30] dark:text-slate-200 text-[11px] tracking-wider uppercase">
             GOV SITES
           </span>
@@ -148,13 +148,13 @@ export const HeroSearch: React.FC<HeroSearchProps> = ({
       </div>
 
       {/* Primary Hero Interaction: High-Precision Search Experience */}
-      <div className="mt-5 max-w-5xl relative">
+      <div className="mt-5 max-w-5xl relative w-full min-w-0">
         <form
           onSubmit={handleSearchSubmit}
-          className="relative flex flex-col sm:flex-row items-stretch gap-2 sm:gap-0 bg-white dark:bg-slate-900 border border-slate-300/90 dark:border-slate-700 rounded-xl p-1.5 sm:p-2 shadow-sm hover:shadow focus-within:border-sky-600 dark:focus-within:border-sky-500 focus-within:ring-2 focus-within:ring-sky-500/20 transition-all"
+          className="relative flex flex-col sm:flex-row items-stretch gap-2 sm:gap-0 bg-white dark:bg-slate-900 border border-slate-300/90 dark:border-slate-700 rounded-xl p-1.5 sm:p-2 shadow-sm hover:shadow focus-within:border-sky-600 dark:focus-within:border-sky-500 focus-within:ring-2 focus-within:ring-sky-500/20 transition-all w-full"
         >
-          <div className="flex items-center flex-1 px-3 py-1">
-            <Search className="w-5 h-5 text-slate-400 dark:text-slate-500 mr-2.5 flex-shrink-0" />
+          <div className="flex items-center flex-1 px-2.5 sm:px-3 py-1 min-w-0">
+            <Search className="w-5 h-5 text-slate-400 dark:text-slate-500 mr-2 flex-shrink-0" />
             <input
               ref={inputRef}
               id="flood-risk-search-input"
@@ -166,14 +166,14 @@ export const HeroSearch: React.FC<HeroSearchProps> = ({
               }}
               onFocus={() => setShowDropdown(true)}
               placeholder="Search a district, village, city or PIN code…"
-              className="w-full text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 text-sm sm:text-base font-medium focus:outline-none bg-transparent py-1.5"
+              className="w-full min-w-0 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 text-sm sm:text-base font-medium focus:outline-none bg-transparent py-1.5"
             />
           </div>
 
           <button
             type="submit"
             id="hero-check-flood-risk-btn"
-            className="flex items-center justify-center gap-2 px-6 py-2.5 sm:py-3 bg-[#0b1c30] hover:bg-[#14263d] dark:bg-sky-600 dark:hover:bg-sky-500 active:bg-[#020617] text-white font-semibold text-xs sm:text-sm rounded-lg transition-colors shadow-sm whitespace-nowrap"
+            className="flex items-center justify-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 min-h-[44px] bg-[#0b1c30] hover:bg-[#14263d] dark:bg-sky-600 dark:hover:bg-sky-500 active:bg-[#020617] text-white font-semibold text-xs sm:text-sm rounded-lg transition-colors shadow-sm whitespace-nowrap touch-manipulation"
           >
             <span>Analyze Risk</span>
             <ArrowRight className="w-4 h-4" />
@@ -184,7 +184,7 @@ export const HeroSearch: React.FC<HeroSearchProps> = ({
         {showDropdown && (
           <div
             ref={dropdownRef}
-            className="absolute left-0 right-0 top-full mt-1.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl shadow-xl z-50 overflow-hidden max-h-80 overflow-y-auto"
+            className="absolute left-0 right-0 top-full mt-1.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl shadow-xl z-50 overflow-hidden max-h-80 overflow-y-auto w-full max-w-full"
           >
             <div className="p-2.5 bg-slate-50 dark:bg-slate-800/80 border-b border-slate-100 dark:border-slate-800 text-[11px] font-bold tracking-wider text-slate-500 dark:text-slate-400 uppercase flex items-center justify-between">
               <span>Assam Districts &amp; River Basins</span>
@@ -201,16 +201,16 @@ export const HeroSearch: React.FC<HeroSearchProps> = ({
                     setQuery(sector.district);
                     setShowDropdown(false);
                   }}
-                  className={`w-full text-left px-4 py-3 flex items-center justify-between hover:bg-sky-50 dark:hover:bg-slate-800/70 transition-colors border-b border-slate-50 dark:border-slate-800 last:border-0 ${
+                  className={`w-full text-left px-3 sm:px-4 py-2.5 sm:py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2 hover:bg-sky-50 dark:hover:bg-slate-800/70 transition-colors border-b border-slate-50 dark:border-slate-800 last:border-0 min-w-0 ${
                     isSelected ? 'bg-sky-50/80 dark:bg-slate-800 font-semibold' : ''
                   }`}
                 >
-                  <div>
-                    <div className="text-sm font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
+                  <div className="min-w-0">
+                    <div className="text-sm font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2 flex-wrap">
                       <span>{sector.district}</span>
                       <span className="text-xs font-normal text-slate-500 dark:text-slate-400">• {sector.riverName}</span>
                     </div>
-                    <div className="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-2 mt-0.5 font-mono">
+                    <div className="text-xs text-slate-500 dark:text-slate-400 flex flex-wrap items-center gap-1.5 sm:gap-2 mt-0.5 font-mono">
                       <span>{sector.stationCode}</span>
                       <span>|</span>
                       <span>Rain: {sector.rainfall.currentRainfall24hMm}mm</span>
@@ -219,9 +219,9 @@ export const HeroSearch: React.FC<HeroSearchProps> = ({
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 flex-shrink-0 self-start sm:self-center">
                     <span
-                      className={`text-xs px-2.5 py-0.5 rounded-full font-bold uppercase ${
+                      className={`text-[11px] sm:text-xs px-2 sm:px-2.5 py-0.5 rounded-full font-bold uppercase whitespace-nowrap ${
                         sector.hazardLevel === 'CRITICAL' || sector.hazardLevel === 'HIGH'
                           ? 'bg-red-100 dark:bg-red-950/80 text-red-700 dark:text-red-300 border border-red-200 dark:border-red-900'
                           : sector.hazardLevel === 'MODERATE'
@@ -240,15 +240,15 @@ export const HeroSearch: React.FC<HeroSearchProps> = ({
       </div>
 
       {/* GPS Location & Refined Hotspot Filters */}
-      <div className="mt-3.5 flex flex-col lg:flex-row lg:items-center justify-between gap-3 text-xs max-w-5xl">
+      <div className="mt-3.5 flex flex-col lg:flex-row lg:items-center justify-between gap-3 text-xs max-w-5xl w-full min-w-0">
         {/* Left: GPS In-Browser Action */}
-        <div className="flex items-center gap-2 text-slate-600 dark:text-slate-300">
+        <div className="flex items-center gap-2 text-slate-600 dark:text-slate-300 flex-wrap">
           <button
             type="button"
             onClick={onUseLocation}
             id="use-current-location-btn"
             disabled={locationLoading}
-            className="inline-flex items-center gap-1.5 font-semibold text-[#006398] dark:text-sky-300 hover:text-[#00476e] dark:hover:text-sky-200 bg-sky-50 dark:bg-sky-950/60 hover:bg-sky-100/80 dark:hover:bg-sky-900/60 px-3 py-1.5 rounded-md border border-sky-200 dark:border-sky-800 transition-colors flex-shrink-0"
+            className="inline-flex items-center gap-1.5 font-semibold text-[#006398] dark:text-sky-300 hover:text-[#00476e] dark:hover:text-sky-200 bg-sky-50 dark:bg-sky-950/60 hover:bg-sky-100/80 dark:hover:bg-sky-900/60 px-3 py-2 min-h-[40px] sm:min-h-0 rounded-md border border-sky-200 dark:border-sky-800 transition-colors flex-shrink-0 touch-manipulation"
           >
             <Navigation className={`w-3.5 h-3.5 ${locationLoading ? 'animate-spin text-sky-600 dark:text-sky-400' : ''}`} />
             <span>{locationLoading ? 'Detecting coordinates...' : 'Use My Location'}</span>
@@ -259,7 +259,7 @@ export const HeroSearch: React.FC<HeroSearchProps> = ({
         </div>
 
         {/* Right: Quick Hotspot Filters (Format: ● Location · Score Level) */}
-        <div className="flex items-center flex-wrap gap-1.5">
+        <div className="flex items-center flex-wrap gap-1.5 w-full lg:w-auto">
           <span className="font-bold text-[10px] tracking-wider text-slate-400 dark:text-slate-500 uppercase mr-1">
             HOTSPOTS:
           </span>
@@ -273,7 +273,7 @@ export const HeroSearch: React.FC<HeroSearchProps> = ({
                   setQuery(spot.label);
                 }}
                 id={`hotspot-${spot.id}`}
-                className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs font-medium border transition-all ${
+                className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 min-h-[36px] sm:min-h-0 rounded-md text-xs font-medium border transition-all touch-manipulation ${
                   isSelected
                     ? 'bg-[#0b1c30] text-white border-[#0b1c30] dark:bg-slate-100 dark:text-slate-950 dark:border-white shadow-sm ring-2 ring-sky-500/30 font-semibold'
                     : 'bg-white dark:bg-slate-900/90 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800'
@@ -313,17 +313,17 @@ export const HeroSearch: React.FC<HeroSearchProps> = ({
       )}
 
       {/* THE 4 CRITICAL QUESTIONS EXECUTIVE BANNER CARDS */}
-      <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+      <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 w-full min-w-0">
         {/* Q1: WILL IT FLOOD? (Visually Dominant Primary Metric Card) */}
-        <div className="relative bg-gradient-to-b from-white to-slate-50/60 dark:from-slate-900 dark:to-slate-900/95 rounded-xl border border-slate-300/90 dark:border-slate-700 p-4 shadow-sm hover:border-slate-400 dark:hover:border-slate-600 transition border-l-4 border-l-red-500 dark:border-l-red-400 flex flex-col justify-between">
-          <div>
+        <div className="relative bg-gradient-to-b from-white to-slate-50/60 dark:from-slate-900 dark:to-slate-900/95 rounded-xl border border-slate-300/90 dark:border-slate-700 p-4 shadow-sm hover:border-slate-400 dark:hover:border-slate-600 transition border-l-4 border-l-red-500 dark:border-l-red-400 flex flex-col justify-between min-w-0">
+          <div className="min-w-0">
             <div className="flex items-center justify-between gap-1 text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
-              <span className="flex items-center gap-1.5 text-slate-800 dark:text-slate-200">
-                <span className="w-5 h-5 rounded-full bg-[#0b1c30] text-white dark:bg-sky-600 flex items-center justify-center font-bold text-xs">1</span>
-                <span>WILL IT FLOOD?</span>
+              <span className="flex items-center gap-1.5 text-slate-800 dark:text-slate-200 truncate">
+                <span className="w-5 h-5 rounded-full bg-[#0b1c30] text-white dark:bg-sky-600 flex items-center justify-center font-bold text-xs flex-shrink-0">1</span>
+                <span className="truncate">WILL IT FLOOD?</span>
               </span>
               <span
-                className={`px-2 py-0.5 rounded text-[10px] font-extrabold tracking-wide uppercase ${
+                className={`px-2 py-0.5 rounded text-[10px] font-extrabold tracking-wide uppercase flex-shrink-0 ${
                   currentSector.hazardLevel === 'CRITICAL' || currentSector.hazardLevel === 'HIGH'
                     ? 'bg-red-600 text-white'
                     : currentSector.hazardLevel === 'MODERATE'
@@ -335,7 +335,7 @@ export const HeroSearch: React.FC<HeroSearchProps> = ({
               </span>
             </div>
 
-            <div className="mt-3 flex items-baseline gap-2">
+            <div className="mt-3 flex items-baseline gap-2 flex-wrap">
               <span className="font-heading font-extrabold text-3xl sm:text-[34px] text-[#0b1c30] dark:text-white leading-none tracking-tight">
                 {currentSector.floodProb}%
               </span>
@@ -343,29 +343,29 @@ export const HeroSearch: React.FC<HeroSearchProps> = ({
             </div>
           </div>
 
-          <div className="mt-3 pt-2.5 border-t border-slate-100 dark:border-slate-800/80 space-y-1 text-xs">
-            <div className="font-semibold text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-red-500"></span>
-              <span>Expected within {currentSector.peakWindow || '18–36 hrs'}</span>
+          <div className="mt-3 pt-2.5 border-t border-slate-100 dark:border-slate-800/80 space-y-1 text-xs min-w-0">
+            <div className="font-semibold text-slate-800 dark:text-slate-200 flex items-center gap-1.5 truncate">
+              <span className="w-1.5 h-1.5 rounded-full bg-red-500 flex-shrink-0"></span>
+              <span className="truncate">Expected within {currentSector.peakWindow || '18–36 hrs'}</span>
             </div>
-            <div className="text-[11px] text-slate-500 dark:text-slate-400 font-mono">
+            <div className="text-[11px] text-slate-500 dark:text-slate-400 font-mono truncate">
               Surge: {currentSector.riverStageDelta} above danger mark
             </div>
           </div>
         </div>
 
         {/* Q2: WHERE WILL IT HAPPEN? */}
-        <div className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-4 shadow-sm hover:border-slate-300 dark:hover:border-slate-700 transition flex flex-col justify-between">
-          <div>
+        <div className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-4 shadow-sm hover:border-slate-300 dark:hover:border-slate-700 transition flex flex-col justify-between min-w-0">
+          <div className="min-w-0">
             <div className="flex items-center justify-between gap-1 text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
-              <span className="flex items-center gap-1.5 text-slate-800 dark:text-slate-200">
-                <span className="w-5 h-5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 flex items-center justify-center font-bold text-xs">2</span>
-                <span>WHERE WILL IT HAPPEN?</span>
+              <span className="flex items-center gap-1.5 text-slate-800 dark:text-slate-200 truncate">
+                <span className="w-5 h-5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 flex items-center justify-center font-bold text-xs flex-shrink-0">2</span>
+                <span className="truncate">WHERE WILL IT HAPPEN?</span>
               </span>
-              <MapPin className="w-4 h-4 text-sky-600 dark:text-sky-400" />
+              <MapPin className="w-4 h-4 text-sky-600 dark:text-sky-400 flex-shrink-0" />
             </div>
 
-            <div className="mt-3 flex items-baseline gap-2">
+            <div className="mt-3 flex items-baseline gap-2 flex-wrap">
               <span className="font-heading font-extrabold text-2xl sm:text-[26px] text-[#0b1c30] dark:text-slate-100 leading-none">
                 {currentSector.inundationAreaKm2} km²
               </span>
@@ -373,7 +373,7 @@ export const HeroSearch: React.FC<HeroSearchProps> = ({
             </div>
           </div>
 
-          <div className="mt-3 pt-2.5 border-t border-slate-100 dark:border-slate-800/80 space-y-1 text-xs">
+          <div className="mt-3 pt-2.5 border-t border-slate-100 dark:border-slate-800/80 space-y-1 text-xs min-w-0">
             <div className="font-semibold text-slate-800 dark:text-slate-200 truncate" title={zoneSummary.primaryName}>
               {zoneSummary.primaryName}
             </div>
@@ -384,17 +384,17 @@ export const HeroSearch: React.FC<HeroSearchProps> = ({
         </div>
 
         {/* Q3: HOW SEVERE WILL IT BE? */}
-        <div className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-4 shadow-sm hover:border-slate-300 dark:hover:border-slate-700 transition flex flex-col justify-between">
-          <div>
+        <div className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-4 shadow-sm hover:border-slate-300 dark:hover:border-slate-700 transition flex flex-col justify-between min-w-0">
+          <div className="min-w-0">
             <div className="flex items-center justify-between gap-1 text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
-              <span className="flex items-center gap-1.5 text-slate-800 dark:text-slate-200">
-                <span className="w-5 h-5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 flex items-center justify-center font-bold text-xs">3</span>
-                <span>HOW SEVERE WILL IT BE?</span>
+              <span className="flex items-center gap-1.5 text-slate-800 dark:text-slate-200 truncate">
+                <span className="w-5 h-5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 flex items-center justify-center font-bold text-xs flex-shrink-0">3</span>
+                <span className="truncate">HOW SEVERE WILL IT BE?</span>
               </span>
-              <Droplets className="w-4 h-4 text-blue-600 dark:text-sky-400" />
+              <Droplets className="w-4 h-4 text-blue-600 dark:text-sky-400 flex-shrink-0" />
             </div>
 
-            <div className="mt-3 flex items-baseline gap-2">
+            <div className="mt-3 flex items-baseline gap-2 flex-wrap">
               <span className="font-heading font-extrabold text-2xl sm:text-[26px] text-[#0b1c30] dark:text-slate-100 leading-none">
                 {currentSector.vulnerabilityIndex}
                 <span className="text-sm font-normal text-slate-400 dark:text-slate-500">/100</span>
@@ -403,7 +403,7 @@ export const HeroSearch: React.FC<HeroSearchProps> = ({
             </div>
           </div>
 
-          <div className="mt-3 pt-2.5 border-t border-slate-100 dark:border-slate-800/80 space-y-1 text-xs">
+          <div className="mt-3 pt-2.5 border-t border-slate-100 dark:border-slate-800/80 space-y-1 text-xs min-w-0">
             <div className="text-slate-800 dark:text-slate-200 font-medium truncate">
               Depth: {currentSector.waterDepthAvgM}m avg • {currentSector.waterDepthPeakM}m peak
             </div>
@@ -414,17 +414,17 @@ export const HeroSearch: React.FC<HeroSearchProps> = ({
         </div>
 
         {/* Q4: WHO AND WHAT WILL BE AFFECTED? */}
-        <div className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-4 shadow-sm hover:border-slate-300 dark:hover:border-slate-700 transition flex flex-col justify-between">
-          <div>
+        <div className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-4 shadow-sm hover:border-slate-300 dark:hover:border-slate-700 transition flex flex-col justify-between min-w-0">
+          <div className="min-w-0">
             <div className="flex items-center justify-between gap-1 text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
-              <span className="flex items-center gap-1.5 text-slate-800 dark:text-slate-200">
-                <span className="w-5 h-5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 flex items-center justify-center font-bold text-xs">4</span>
-                <span>WHO &amp; WHAT AFFECTED?</span>
+              <span className="flex items-center gap-1.5 text-slate-800 dark:text-slate-200 truncate">
+                <span className="w-5 h-5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 flex items-center justify-center font-bold text-xs flex-shrink-0">4</span>
+                <span className="truncate">WHO &amp; WHAT AFFECTED?</span>
               </span>
-              <Users className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
+              <Users className="w-4 h-4 text-indigo-600 dark:text-indigo-400 flex-shrink-0" />
             </div>
 
-            <div className="mt-3 flex items-baseline gap-2">
+            <div className="mt-3 flex items-baseline gap-2 flex-wrap">
               <span className="font-heading font-extrabold text-2xl sm:text-[26px] text-[#0b1c30] dark:text-slate-100 leading-none">
                 {((currentSector.populationAtRisk ?? 0) / 1000).toFixed(0)}K
               </span>
@@ -432,7 +432,7 @@ export const HeroSearch: React.FC<HeroSearchProps> = ({
             </div>
           </div>
 
-          <div className="mt-3 pt-2.5 border-t border-slate-100 dark:border-slate-800/80 space-y-1 text-xs">
+          <div className="mt-3 pt-2.5 border-t border-slate-100 dark:border-slate-800/80 space-y-1 text-xs min-w-0">
             <div className="text-slate-800 dark:text-slate-200 font-medium truncate">
               {currentSector.infrastructureCounts.hospitals} Hospitals • {currentSector.infrastructureCounts.schools} Schools
             </div>

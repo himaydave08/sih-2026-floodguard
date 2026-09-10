@@ -26,11 +26,11 @@ export const ActionCards: React.FC<ActionCardsProps> = ({
   onCallNumber,
 }) => {
   return (
-    <section className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 mt-6">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <section className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 mt-6 w-full min-w-0">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full min-w-0">
         {/* Card 01: Before Inundation Hits */}
-        <div className="bg-white dark:bg-slate-900 rounded-lg border border-slate-300/80 dark:border-slate-800 p-5 sm:p-6 shadow-sm flex flex-col justify-between transition-colors">
-          <div>
+        <div className="bg-white dark:bg-slate-900 rounded-lg border border-slate-300/80 dark:border-slate-800 p-5 sm:p-6 shadow-sm flex flex-col justify-between transition-colors min-w-0">
+          <div className="min-w-0">
             {/* Header badges */}
             <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
               <span className="w-7 h-7 rounded bg-sky-100 dark:bg-sky-950/80 text-sky-800 dark:text-sky-300 font-extrabold text-xs flex items-center justify-center font-mono">
@@ -85,8 +85,8 @@ export const ActionCards: React.FC<ActionCardsProps> = ({
         </div>
 
         {/* Card 02: During Active Spate */}
-        <div className="bg-white dark:bg-slate-900 rounded-lg border border-slate-300/80 dark:border-slate-800 p-5 sm:p-6 shadow-sm flex flex-col justify-between transition-colors">
-          <div>
+        <div className="bg-white dark:bg-slate-900 rounded-lg border border-slate-300/80 dark:border-slate-800 p-5 sm:p-6 shadow-sm flex flex-col justify-between transition-colors min-w-0">
+          <div className="min-w-0">
             {/* Header badges */}
             <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
               <span className="w-7 h-7 rounded bg-red-100 dark:bg-red-950/80 text-red-800 dark:text-red-300 font-extrabold text-xs flex items-center justify-center font-mono">
@@ -136,13 +136,13 @@ export const ActionCards: React.FC<ActionCardsProps> = ({
           {/* Bottom callout warning */}
           <div className="mt-5 p-3 rounded bg-red-50 dark:bg-red-950/60 border border-red-100 dark:border-red-900 text-red-900 dark:text-red-200 flex items-center gap-2.5 text-xs font-medium">
             <AlertOctagon className="w-4 h-4 text-red-600 dark:text-red-400 flex-shrink-0" />
-            <span>Turn Around, Don't Drown. Vehicles easily float in 30cm flow.</span>
+            <span>Turn Around, Don&apos;t Drown. Vehicles easily float in 30cm flow.</span>
           </div>
         </div>
 
         {/* Card 03: Emergency Hotlines & Dispatch */}
-        <div className="bg-white dark:bg-slate-900 rounded-lg border border-slate-300/80 dark:border-slate-800 p-5 sm:p-6 shadow-sm flex flex-col justify-between md:col-span-2 lg:col-span-1 transition-colors">
-          <div>
+        <div className="bg-white dark:bg-slate-900 rounded-lg border border-slate-300/80 dark:border-slate-800 p-5 sm:p-6 shadow-sm flex flex-col justify-between md:col-span-2 lg:col-span-1 transition-colors min-w-0">
+          <div className="min-w-0">
             {/* Header badges */}
             <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
               <span className="w-7 h-7 rounded bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-extrabold text-xs flex items-center justify-center font-mono">
@@ -158,23 +158,23 @@ export const ActionCards: React.FC<ActionCardsProps> = ({
             </h3>
 
             {/* Contacts list */}
-            <div className="space-y-2.5">
+            <div className="space-y-2.5 min-w-0">
               {EMERGENCY_CONTACTS.map((item, idx) => (
                 <div
                   key={idx}
                   onClick={() => onCallNumber(item.numbers[0])}
-                  className="p-2.5 rounded hover:bg-slate-50 dark:hover:bg-slate-800/70 border border-slate-100 dark:border-slate-800 transition-colors cursor-pointer flex items-center justify-between group"
+                  className="p-2.5 rounded hover:bg-slate-50 dark:hover:bg-slate-800/70 border border-slate-100 dark:border-slate-800 transition-colors cursor-pointer flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 group min-w-0 touch-manipulation"
                 >
-                  <div className="text-xs">
-                    <div className="font-semibold text-slate-800 dark:text-slate-200 group-hover:text-blue-700 dark:group-hover:text-sky-400 transition-colors">
+                  <div className="text-xs min-w-0">
+                    <div className="font-semibold text-slate-800 dark:text-slate-200 group-hover:text-blue-700 dark:group-hover:text-sky-400 transition-colors truncate">
                       {item.name}
                     </div>
                     <div className="text-[11px] text-slate-400 dark:text-slate-500">{item.available}</div>
                   </div>
 
-                  <div className="flex items-center gap-1.5 font-mono text-xs font-bold text-slate-900 dark:text-slate-100 group-hover:text-blue-700 dark:group-hover:text-sky-400 transition-colors">
+                  <div className="flex items-center gap-1.5 font-mono text-xs font-bold text-slate-900 dark:text-slate-100 group-hover:text-blue-700 dark:group-hover:text-sky-400 transition-colors flex-wrap">
                     <span>{item.numbers.join(' / ')}</span>
-                    <Phone className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500 group-hover:text-blue-700 dark:group-hover:text-sky-400" />
+                    <Phone className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500 group-hover:text-blue-700 dark:group-hover:text-sky-400 flex-shrink-0" />
                   </div>
                 </div>
               ))}
@@ -186,10 +186,10 @@ export const ActionCards: React.FC<ActionCardsProps> = ({
             <button
               onClick={onOpenGuideModal}
               id="download-offline-guide-btn"
-              className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded bg-[#eff4ff] dark:bg-sky-950/60 hover:bg-sky-100/80 dark:hover:bg-sky-900/60 active:bg-sky-200 text-[#006398] dark:text-sky-300 border border-sky-200 dark:border-sky-800 text-xs sm:text-sm font-semibold tracking-wide transition-colors"
+              className="w-full flex items-center justify-center gap-2 py-2.5 px-4 min-h-[44px] rounded bg-[#eff4ff] dark:bg-sky-950/60 hover:bg-sky-100/80 dark:hover:bg-sky-900/60 active:bg-sky-200 text-[#006398] dark:text-sky-300 border border-sky-200 dark:border-sky-800 text-xs sm:text-sm font-semibold tracking-wide transition-colors touch-manipulation"
             >
-              <Download className="w-4 h-4" />
-              <span>Download Offline Bodo & Assamese Guides</span>
+              <Download className="w-4 h-4 flex-shrink-0" />
+              <span>Download Offline Bodo &amp; Assamese Guides</span>
             </button>
           </div>
         </div>

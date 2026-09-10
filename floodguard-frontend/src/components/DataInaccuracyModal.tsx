@@ -216,29 +216,29 @@ export const DataInaccuracyModal: React.FC<DataInaccuracyModalProps> = ({
 
   return (
     <div 
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-900/60 dark:bg-black/75 backdrop-blur-xs animate-in fade-in duration-150"
+      className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-slate-900/60 dark:bg-black/75 backdrop-blur-xs animate-in fade-in duration-150"
       role="dialog"
       aria-modal="true"
       aria-labelledby="hitl-modal-title"
     >
       <div 
-        className="relative w-full max-w-2xl bg-white dark:bg-slate-900 rounded-xl border border-slate-300 dark:border-slate-800 shadow-2xl overflow-hidden max-h-[92vh] flex flex-col transition-colors"
+        className="relative w-full max-w-[calc(100vw-16px)] sm:max-w-2xl bg-white dark:bg-slate-900 rounded-xl border border-slate-300 dark:border-slate-800 shadow-2xl overflow-hidden max-h-[92vh] flex flex-col transition-colors"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Header */}
-        <div className="flex items-center justify-between px-5 sm:px-6 py-3.5 border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/90 flex-shrink-0">
-          <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-amber-500/10 dark:bg-amber-400/20 text-amber-600 dark:text-amber-400 flex items-center justify-center border border-amber-500/20">
+        <div className="flex items-center justify-between px-4 sm:px-6 py-3 sm:py-3.5 border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/90 flex-shrink-0 gap-2">
+          <div className="flex items-center gap-2 sm:gap-2.5 min-w-0">
+            <div className="w-8 h-8 rounded-lg bg-amber-500/10 dark:bg-amber-400/20 text-amber-600 dark:text-amber-400 flex items-center justify-center border border-amber-500/20 flex-shrink-0">
               <Flag className="w-4 h-4" />
             </div>
-            <div>
-              <h3 id="hitl-modal-title" className="font-heading font-extrabold text-base sm:text-lg text-slate-900 dark:text-slate-100 leading-tight flex items-center gap-2">
+            <div className="min-w-0">
+              <h3 id="hitl-modal-title" className="font-heading font-extrabold text-sm sm:text-lg text-slate-900 dark:text-slate-100 leading-tight flex flex-wrap items-center gap-1.5 sm:gap-2">
                 <span>Report Data Inaccuracy</span>
                 <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 dark:bg-amber-950/80 text-amber-800 dark:text-amber-300 border border-amber-200 dark:border-amber-800 font-mono">
                   HITL VALIDATION
                 </span>
               </h3>
-              <div className="text-xs font-mono text-slate-500 dark:text-slate-400 mt-0.5">
+              <div className="text-xs font-mono text-slate-500 dark:text-slate-400 mt-0.5 truncate">
                 Target Sector: {sector.district}, {sector.state} • {sector.stationCode}
               </div>
             </div>
@@ -246,7 +246,7 @@ export const DataInaccuracyModal: React.FC<DataInaccuracyModalProps> = ({
 
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors"
+            className="w-9 h-9 sm:w-8 sm:h-8 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors flex items-center justify-center flex-shrink-0"
             title="Close modal (Esc)"
             aria-label="Close modal"
           >
@@ -255,7 +255,7 @@ export const DataInaccuracyModal: React.FC<DataInaccuracyModalProps> = ({
         </div>
 
         {/* Modal Body */}
-        <div className="flex-1 overflow-y-auto p-5 sm:p-6 space-y-5">
+        <div className="flex-1 overflow-y-auto p-3.5 sm:p-6 space-y-4 sm:space-y-5 min-w-0">
           {isSubmitted ? (
             /* Success State */
             <div className="py-6 px-4 text-center space-y-4 animate-in fade-in zoom-in-95 duration-200">
@@ -568,19 +568,19 @@ export const DataInaccuracyModal: React.FC<DataInaccuracyModalProps> = ({
               )}
 
               {/* Action Buttons */}
-              <div className="pt-2 flex items-center justify-end gap-2.5 border-t border-slate-200 dark:border-slate-800">
+              <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center justify-end gap-2 sm:gap-2.5 border-t border-slate-200 dark:border-slate-800">
                 <button
                   type="button"
                   onClick={onClose}
                   disabled={isSubmitting}
-                  className="px-3.5 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors"
+                  className="px-4 py-2.5 sm:py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors min-h-[44px] sm:min-h-0 flex items-center justify-center"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="px-4 py-2 rounded-lg bg-[#0b1c30] dark:bg-sky-600 text-xs font-bold text-white hover:bg-[#081524] dark:hover:bg-sky-500 transition-colors shadow-xs flex items-center gap-1.5 disabled:opacity-50"
+                  className="px-4 py-2.5 sm:py-2 rounded-lg bg-[#0b1c30] dark:bg-sky-600 text-xs font-bold text-white hover:bg-[#081524] dark:hover:bg-sky-500 transition-colors shadow-xs flex items-center justify-center gap-1.5 disabled:opacity-50 min-h-[44px] sm:min-h-0"
                 >
                   <Flag className="w-3.5 h-3.5" />
                   <span>Submit Ground Validation</span>

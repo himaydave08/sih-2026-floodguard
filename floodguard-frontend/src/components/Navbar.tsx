@@ -42,16 +42,16 @@ export const Navbar: React.FC<NavbarProps> = ({
         {/* Left: Brand Identity */}
         <div 
           onClick={() => setActiveTab('overview')}
-          className="flex items-center gap-2.5 cursor-pointer group select-none flex-shrink-0"
+          className="flex items-center gap-2 sm:gap-2.5 cursor-pointer group select-none flex-shrink-0 min-w-0"
           id="brand-logo-floodguard"
         >
-          <Logo size={36} className="flex-shrink-0" />
-          <div className="flex flex-col">
-            <div className="flex items-center gap-2">
+          <Logo size={34} className="flex-shrink-0 sm:w-9 sm:h-9" />
+          <div className="flex flex-col min-w-0">
+            <div className="flex items-center gap-1.5 sm:gap-2">
               <FloodGuardBrandText />
               <span className="w-1.5 h-1.5 rounded-full bg-sky-600 dark:bg-sky-400 hidden sm:inline-block"></span>
             </div>
-            <span className="text-[10px] tracking-[0.14em] font-bold text-slate-500 dark:text-slate-400 uppercase -mt-0.5 font-mono">
+            <span className="text-[9px] sm:text-[10px] tracking-[0.1em] sm:tracking-[0.14em] font-bold text-slate-500 dark:text-slate-400 uppercase -mt-0.5 font-mono truncate">
               INUNDATION INTELLIGENCE
             </span>
           </div>
@@ -87,7 +87,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         </nav>
 
         {/* Right Side: Secondary Utility (How It Works), Theme Toggle, Notification Indicator & Primary Action */}
-        <div className="flex items-center gap-2 sm:gap-2.5 flex-shrink-0">
+        <div className="flex items-center gap-1.5 sm:gap-2.5 flex-shrink-0">
           {/* Secondary Utility: How It Works */}
           <button
             id="nav-link-methodology"
@@ -111,13 +111,13 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               onClick={() => setIsAlertDrawerOpen(!isAlertDrawerOpen)}
               id="nav-notification-indicator"
-              className="relative p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors border border-transparent hover:border-slate-200 dark:hover:border-slate-700"
+              className="relative min-w-[40px] min-h-[40px] sm:min-w-[44px] sm:min-h-[44px] flex items-center justify-center p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors border border-transparent hover:border-slate-200 dark:hover:border-slate-700 touch-manipulation"
               title="Active Flood Risk Alerts"
               aria-label="Active Flood Risk Alerts"
             >
               <Bell className="w-5 h-5" />
               {criticalAlertCount > 0 && (
-                <span className="absolute top-1 right-1 flex h-2.5 w-2.5">
+                <span className="absolute top-1.5 right-1.5 flex h-2.5 w-2.5">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-600"></span>
                 </span>
@@ -127,7 +127,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             {/* Notification Flyout */}
             {isAlertDrawerOpen && (
               <div 
-                className="absolute right-0 mt-2 w-80 sm:w-96 bg-white dark:bg-slate-900 rounded-xl shadow-xl border border-slate-200 dark:border-slate-800 p-4 z-50 animate-in fade-in slide-in-from-top-2 duration-150"
+                className="absolute right-0 mt-2 w-[min(24rem,calc(100vw-24px))] bg-white dark:bg-slate-900 rounded-xl shadow-xl border border-slate-200 dark:border-slate-800 p-4 z-50 animate-in fade-in slide-in-from-top-2 duration-150"
                 id="notification-flyout"
               >
                 <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
@@ -191,23 +191,23 @@ export const Navbar: React.FC<NavbarProps> = ({
           <button
             onClick={onCheckMyRisk}
             id="nav-check-risk-btn"
-            className="flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-lg bg-[#0b1c30] dark:bg-sky-600 hover:bg-[#1a2b42] dark:hover:bg-sky-500 active:bg-[#020617] text-white text-xs sm:text-sm font-semibold tracking-wide transition-all shadow-sm hover:shadow"
+            className="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-4 py-2 min-h-[40px] sm:min-h-[44px] rounded-lg bg-[#0b1c30] dark:bg-sky-600 hover:bg-[#1a2b42] dark:hover:bg-sky-500 active:bg-[#020617] text-white text-[11px] sm:text-sm font-semibold tracking-wide transition-all shadow-sm hover:shadow whitespace-nowrap touch-manipulation"
           >
-            <span className="w-2 h-2 rounded-full bg-sky-400 dark:bg-white animate-pulse"></span>
+            <span className="w-2 h-2 rounded-full bg-sky-400 dark:bg-white animate-pulse flex-shrink-0"></span>
             <span>Check My Risk</span>
           </button>
         </div>
       </div>
 
       {/* Mobile Navigation Bar */}
-      <div className="lg:hidden flex items-center overflow-x-auto border-t border-slate-200 dark:border-slate-800 px-3 py-1.5 bg-white dark:bg-slate-900 text-xs gap-1.5 scrollbar-none transition-colors">
+      <div className="lg:hidden flex items-center overflow-x-auto border-t border-slate-200 dark:border-slate-800 px-3 py-1.5 bg-white dark:bg-slate-900 text-xs gap-1.5 scrollbar-none touch-pan-x transition-colors">
         {allNavItems.map((item) => {
           const isActive = activeTab === item.id;
           return (
             <button
               key={item.id}
               onClick={() => setActiveTab(item.id)}
-              className={`px-3 py-1.5 whitespace-nowrap rounded-md font-medium text-xs flex items-center gap-1 ${
+              className={`px-3 py-2 min-h-[40px] whitespace-nowrap rounded-md font-medium text-xs flex items-center gap-1.5 touch-manipulation ${
                 isActive
                   ? 'bg-slate-900 dark:bg-slate-800 text-white font-bold'
                   : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800/60'

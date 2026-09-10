@@ -21,13 +21,13 @@ export const FullMapView: React.FC<FullMapViewProps> = ({
   const [forecastHour, setForecastHour] = useState<number>(0);
 
   return (
-    <div className="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 py-5 space-y-4 animate-in fade-in duration-200">
+    <div className="w-full max-w-[1536px] mx-auto px-3.5 sm:px-6 lg:px-8 py-5 space-y-4 animate-in fade-in duration-200 min-w-0">
       {/* Top Banner */}
-      <div className="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-300 dark:border-slate-800 flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-sm transition-colors">
-        <div>
+      <div className="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-300 dark:border-slate-800 flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-sm transition-colors min-w-0">
+        <div className="min-w-0">
           <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="text-xs font-mono font-bold tracking-wider text-slate-500 dark:text-slate-400 uppercase">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse flex-shrink-0" />
+            <span className="text-xs font-mono font-bold tracking-wider text-slate-500 dark:text-slate-400 uppercase truncate">
               GEOSPATIAL INUNDATION MAPPING SUITE • WGS-84
             </span>
           </div>
@@ -40,13 +40,13 @@ export const FullMapView: React.FC<FullMapViewProps> = ({
         </div>
 
         {/* Catchment quick switcher */}
-        <div className="flex items-center gap-2 bg-slate-50 dark:bg-slate-800/80 p-2 rounded-lg border border-slate-200 dark:border-slate-700 overflow-x-auto">
-          <span className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase font-mono mr-1">Sector:</span>
+        <div className="flex items-center gap-2 bg-slate-50 dark:bg-slate-800/80 p-2 rounded-lg border border-slate-200 dark:border-slate-700 overflow-x-auto max-w-full touch-pan-x scrollbar-none self-start md:self-auto">
+          <span className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase font-mono mr-1 flex-shrink-0">Sector:</span>
           {Object.values(ASSAM_SECTORS).map((s) => (
             <button
               key={s.id}
               onClick={() => onSelectSector(s.id)}
-              className={`px-2.5 py-1 text-xs rounded-md font-semibold transition whitespace-nowrap ${
+              className={`px-2.5 py-1 min-h-[36px] text-xs rounded-md font-semibold transition whitespace-nowrap flex-shrink-0 ${
                 s.id === currentSector.id
                   ? 'bg-[#0b1c30] dark:bg-sky-600 text-white'
                   : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700'
@@ -59,8 +59,8 @@ export const FullMapView: React.FC<FullMapViewProps> = ({
       </div>
 
       {/* Grid: 8 cols Map + 4 cols Sector Inspector */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
-        <div className="lg:col-span-8">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start min-w-0">
+        <div className="lg:col-span-8 min-w-0 w-full">
           <InteractiveMap
             currentSector={currentSector}
             onSelectSector={onSelectSector}
@@ -70,7 +70,7 @@ export const FullMapView: React.FC<FullMapViewProps> = ({
           />
         </div>
 
-        <div className="lg:col-span-4">
+        <div className="lg:col-span-4 min-w-0 w-full">
           <SectorInspector
             sector={currentSector}
             onOpenDiagnostic={onOpenDiagnostic}

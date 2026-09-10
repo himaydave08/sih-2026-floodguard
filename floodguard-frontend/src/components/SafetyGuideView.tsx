@@ -32,15 +32,15 @@ export const SafetyGuideView: React.FC<SafetyGuideViewProps> = ({
   ];
 
   return (
-    <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 animate-in fade-in duration-200">
+    <div className="w-full max-w-[1440px] mx-auto px-3.5 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-6 sm:space-y-8 animate-in fade-in duration-200 min-w-0">
       {/* Title */}
-      <div className="pb-6 border-b border-slate-200 dark:border-slate-800 flex flex-col md:flex-row md:items-end justify-between gap-4 transition-colors">
-        <div>
-          <div className="flex items-center gap-2 text-xs font-mono font-bold tracking-wider text-[#006398] dark:text-sky-400 uppercase">
-            <ShieldCheck className="w-4 h-4 text-sky-600 dark:text-sky-400" />
-            <span>ASDMA ASSAM COMMUNITY RESILIENCE PROTOCOL</span>
+      <div className="pb-6 border-b border-slate-200 dark:border-slate-800 flex flex-col md:flex-row md:items-end justify-between gap-4 transition-colors min-w-0">
+        <div className="min-w-0">
+          <div className="flex items-center gap-2 text-xs font-mono font-bold tracking-wider text-[#006398] dark:text-sky-400 uppercase truncate">
+            <ShieldCheck className="w-4 h-4 text-sky-600 dark:text-sky-400 flex-shrink-0" />
+            <span className="truncate">ASDMA ASSAM COMMUNITY RESILIENCE PROTOCOL</span>
           </div>
-          <h1 className="font-heading font-extrabold text-2xl sm:text-3xl text-[#0b1c30] dark:text-slate-100 tracking-tight mt-1">
+          <h1 className="font-heading font-extrabold text-xl sm:text-2xl sm:text-3xl text-[#0b1c30] dark:text-slate-100 tracking-tight mt-1">
             Flood Preparedness & Survival Manual
           </h1>
           <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-normal mt-1 max-w-3xl">
@@ -48,10 +48,10 @@ export const SafetyGuideView: React.FC<SafetyGuideViewProps> = ({
           </p>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 self-start md:self-end">
           <button
             onClick={onOpenGuideModal}
-            className="flex items-center gap-2 px-4 py-2 rounded bg-[#0b1c30] dark:bg-sky-600 hover:bg-[#1a2b42] dark:hover:bg-sky-500 text-white text-xs font-semibold transition"
+            className="flex items-center gap-2 px-4 py-2 min-h-[40px] sm:min-h-0 rounded bg-[#0b1c30] dark:bg-sky-600 hover:bg-[#1a2b42] dark:hover:bg-sky-500 text-white text-xs font-semibold transition"
           >
             <Download className="w-3.5 h-3.5" />
             <span>Download Offline Card</span>
