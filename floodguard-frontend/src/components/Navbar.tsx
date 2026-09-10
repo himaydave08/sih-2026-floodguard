@@ -51,7 +51,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               <FloodGuardBrandText />
               <span className="w-1.5 h-1.5 rounded-full bg-sky-600 dark:bg-sky-400 hidden sm:inline-block"></span>
             </div>
-            <span className="text-[9px] sm:text-[10px] tracking-[0.1em] sm:tracking-[0.14em] font-bold text-slate-500 dark:text-slate-400 uppercase -mt-0.5 font-mono truncate">
+            <span className="hidden sm:block text-[9px] sm:text-[10px] tracking-[0.1em] sm:tracking-[0.14em] font-bold text-slate-500 dark:text-slate-400 uppercase -mt-0.5 font-mono truncate">
               INUNDATION INTELLIGENCE
             </span>
           </div>
@@ -87,7 +87,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         </nav>
 
         {/* Right Side: Secondary Utility (How It Works), Theme Toggle, Notification Indicator & Primary Action */}
-        <div className="flex items-center gap-1.5 sm:gap-2.5 flex-shrink-0">
+        <div className="flex items-center gap-1.5 sm:gap-2.5 min-w-0">
           {/* Secondary Utility: How It Works */}
           <button
             id="nav-link-methodology"
