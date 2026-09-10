@@ -94,21 +94,21 @@ export const MethodologyView: React.FC = () => {
       </div>
 
       {/* Multi-Source Data Catalog */}
-      <div className="bg-white dark:bg-slate-900 rounded-xl border border-slate-300 dark:border-slate-800 shadow-sm overflow-hidden transition-colors">
-        <div className="p-4 bg-slate-50 dark:bg-slate-850 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
-          <div>
-            <h3 className="font-heading font-bold text-base text-slate-900 dark:text-slate-100">
+      <div className="bg-white dark:bg-slate-900 rounded-xl border border-slate-300 dark:border-slate-800 shadow-sm overflow-hidden transition-colors w-full max-w-[100vw]">
+        <div className="p-4 bg-slate-50 dark:bg-slate-850 border-b border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <div className="min-w-0">
+            <h3 className="font-heading font-bold text-base text-slate-900 dark:text-slate-100 truncate">
               Multi-Source Telemetry & Geospatial Data Catalog
             </h3>
-            <p className="text-xs text-slate-500 dark:text-slate-400 font-mono mt-0.5">
+            <p className="text-xs text-slate-500 dark:text-slate-400 font-mono mt-0.5 truncate">
               Live ingest pipelines backing the FloodGuard prediction engine
             </p>
           </div>
-          <span className="text-xs font-mono text-slate-400">6 Integrated Sources</span>
+          <span className="text-xs font-mono text-slate-400 whitespace-nowrap">6 Integrated Sources</span>
         </div>
 
-        <div className="overflow-x-auto max-w-full touch-pan-x scrollbar-none">
-          <table className="w-full text-left text-xs border-collapse">
+        <div className="overflow-x-auto w-full touch-pan-x scrollbar-none">
+          <table className="w-full text-left text-xs border-collapse min-w-[650px]">
             <thead>
               <tr className="border-b border-slate-200 dark:border-slate-800 bg-slate-100/60 dark:bg-slate-800/80 font-bold text-slate-700 dark:text-slate-300 font-mono uppercase text-[11px]">
                 <th className="p-3">Data Source Agency</th>
