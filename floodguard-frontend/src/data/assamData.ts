@@ -984,7 +984,2617 @@ export const ASSAM_SECTORS: Record<string, SectorData> = {
     ],
     recommendedActions: ['Conditions safe. Standard monsoon surveillance.']
   }
-};
+,
+
+  "baksa": {
+    id: 'baksa',
+    district: 'Baksa',
+    subdivision: 'Assam District',
+    state: 'Assam',
+    coordinates: { lat: 26.2, lng: 92.9 },
+    stationCode: 'CWC Station',
+    stationName: 'Baksa River Reach',
+    vulnerabilityIndex: 35,
+    hazardLevel: 'LOW',
+    levelBadge: 'Level 1',
+    statusSummary: 'BASELINE SEASONAL RUNOFF',
+    floodProb: 25.0,
+    confidence: 88.0,
+    peakWindow: 'Normal',
+    peakWindowDesc: 'Equilibrium',
+    riverStageDelta: '-0.80m',
+    riverStageDesc: 'Below Danger',
+    stageAbsolute: 55.20,
+    dangerLevel: 56.00,
+    riverName: 'Local Tributary',
+    warningMessage: 'Normal river stages for this season. Embankments hold firm.',
+    asdmaDirective: 'ASDMA BASELINE: Normal hydrologic monitoring.',
+
+    inundationAreaKm2: 12.5,
+    waterDepthAvgM: 0.20,
+    waterDepthPeakM: 0.50,
+    affectedNeighborhoods: ['Low-lying areas near riverbanks'],
+    inundationPathSummary: 'Seasonal river swell confined to natural channels.',
+    populationAtRisk: 25000,
+    vulnerableDemographics: {
+      childrenUnder5: 2500,
+      elderlyOver65: 1800,
+      livestockCount: 5000
+    },
+    infrastructureCounts: {
+      hospitals: 1,
+      schools: 5,
+      roads: 4,
+      bridges: 1
+    },
+    infrastructureList: [],
+    rainfall: {
+      currentRainfall24hMm: 25,
+      expectedRainfall48hMm: 45,
+      expectedRainfall72hMm: 65,
+      intensity: 'LIGHT',
+      trend: 'steady',
+      hourlyTimeline: [
+        { hour: '-18h', mm: 2, cumulative: 5 },
+        { hour: '-12h', mm: 5, cumulative: 10 },
+        { hour: '-6h', mm: 8, cumulative: 18 },
+        { hour: 'Now', mm: 7, cumulative: 25 },
+        { hour: '+6h', mm: 6, cumulative: 31 },
+        { hour: '+12h', mm: 5, cumulative: 36 },
+        { hour: '+24h', mm: 9, cumulative: 45 },
+        { hour: '+48h', mm: 12, cumulative: 57 },
+        { hour: '+72h', mm: 8, cumulative: 65 }
+      ],
+      stationSource: 'IMD Station'
+    },
+    factors: [
+      {
+        id: 'f-base-1',
+        name: 'Normal Monsoon Rain',
+        category: 'Rainfall',
+        status: 'LOW',
+        contributionPercent: 40,
+        direction: 'neutral',
+        observedValue: '25 mm / 24h',
+        scientificExplanation: 'Regular seasonal precipitation patterns.'
+      }
+    ],
+    timeline: [
+      { hour: 0, label: 'Now (+0h)', riskScore: 35, riskLevel: 'LOW', floodProbability: 25.0, rainfallAccumulatedMm: 25, inundationAreaKm2: 12.5, populationAtRisk: 25000, riverStageM: 55.20, inundationOpacity: 0.2 },
+      { hour: 6, label: '+6h', riskScore: 36, riskLevel: 'LOW', floodProbability: 26.0, rainfallAccumulatedMm: 31, inundationAreaKm2: 13.0, populationAtRisk: 26000, riverStageM: 55.25, inundationOpacity: 0.2 },
+      { hour: 12, label: '+12h', riskScore: 37, riskLevel: 'LOW', floodProbability: 27.0, rainfallAccumulatedMm: 36, inundationAreaKm2: 13.5, populationAtRisk: 27000, riverStageM: 55.30, inundationOpacity: 0.25 },
+      { hour: 24, label: '+24h', riskScore: 38, riskLevel: 'LOW', floodProbability: 28.0, rainfallAccumulatedMm: 45, inundationAreaKm2: 14.0, populationAtRisk: 28000, riverStageM: 55.35, inundationOpacity: 0.25 },
+      { hour: 48, label: '+48h', riskScore: 35, riskLevel: 'LOW', floodProbability: 25.0, rainfallAccumulatedMm: 57, inundationAreaKm2: 12.5, populationAtRisk: 25000, riverStageM: 55.20, inundationOpacity: 0.2 },
+      { hour: 72, label: '+72h', riskScore: 30, riskLevel: 'LOW', floodProbability: 20.0, rainfallAccumulatedMm: 65, inundationAreaKm2: 10.0, populationAtRisk: 20000, riverStageM: 54.80, inundationOpacity: 0.15 }
+    ],
+    recommendedActions: [
+      'Maintain standard situational awareness.',
+      'Check local weather updates daily.'
+    ]
+  },
+
+  "bajali": {
+    id: 'bajali',
+    district: 'Bajali',
+    subdivision: 'Assam District',
+    state: 'Assam',
+    coordinates: { lat: 26.2, lng: 92.9 },
+    stationCode: 'CWC Station',
+    stationName: 'Bajali River Reach',
+    vulnerabilityIndex: 35,
+    hazardLevel: 'LOW',
+    levelBadge: 'Level 1',
+    statusSummary: 'BASELINE SEASONAL RUNOFF',
+    floodProb: 25.0,
+    confidence: 88.0,
+    peakWindow: 'Normal',
+    peakWindowDesc: 'Equilibrium',
+    riverStageDelta: '-0.80m',
+    riverStageDesc: 'Below Danger',
+    stageAbsolute: 55.20,
+    dangerLevel: 56.00,
+    riverName: 'Local Tributary',
+    warningMessage: 'Normal river stages for this season. Embankments hold firm.',
+    asdmaDirective: 'ASDMA BASELINE: Normal hydrologic monitoring.',
+
+    inundationAreaKm2: 12.5,
+    waterDepthAvgM: 0.20,
+    waterDepthPeakM: 0.50,
+    affectedNeighborhoods: ['Low-lying areas near riverbanks'],
+    inundationPathSummary: 'Seasonal river swell confined to natural channels.',
+    populationAtRisk: 25000,
+    vulnerableDemographics: {
+      childrenUnder5: 2500,
+      elderlyOver65: 1800,
+      livestockCount: 5000
+    },
+    infrastructureCounts: {
+      hospitals: 1,
+      schools: 5,
+      roads: 4,
+      bridges: 1
+    },
+    infrastructureList: [],
+    rainfall: {
+      currentRainfall24hMm: 25,
+      expectedRainfall48hMm: 45,
+      expectedRainfall72hMm: 65,
+      intensity: 'LIGHT',
+      trend: 'steady',
+      hourlyTimeline: [
+        { hour: '-18h', mm: 2, cumulative: 5 },
+        { hour: '-12h', mm: 5, cumulative: 10 },
+        { hour: '-6h', mm: 8, cumulative: 18 },
+        { hour: 'Now', mm: 7, cumulative: 25 },
+        { hour: '+6h', mm: 6, cumulative: 31 },
+        { hour: '+12h', mm: 5, cumulative: 36 },
+        { hour: '+24h', mm: 9, cumulative: 45 },
+        { hour: '+48h', mm: 12, cumulative: 57 },
+        { hour: '+72h', mm: 8, cumulative: 65 }
+      ],
+      stationSource: 'IMD Station'
+    },
+    factors: [
+      {
+        id: 'f-base-1',
+        name: 'Normal Monsoon Rain',
+        category: 'Rainfall',
+        status: 'LOW',
+        contributionPercent: 40,
+        direction: 'neutral',
+        observedValue: '25 mm / 24h',
+        scientificExplanation: 'Regular seasonal precipitation patterns.'
+      }
+    ],
+    timeline: [
+      { hour: 0, label: 'Now (+0h)', riskScore: 35, riskLevel: 'LOW', floodProbability: 25.0, rainfallAccumulatedMm: 25, inundationAreaKm2: 12.5, populationAtRisk: 25000, riverStageM: 55.20, inundationOpacity: 0.2 },
+      { hour: 6, label: '+6h', riskScore: 36, riskLevel: 'LOW', floodProbability: 26.0, rainfallAccumulatedMm: 31, inundationAreaKm2: 13.0, populationAtRisk: 26000, riverStageM: 55.25, inundationOpacity: 0.2 },
+      { hour: 12, label: '+12h', riskScore: 37, riskLevel: 'LOW', floodProbability: 27.0, rainfallAccumulatedMm: 36, inundationAreaKm2: 13.5, populationAtRisk: 27000, riverStageM: 55.30, inundationOpacity: 0.25 },
+      { hour: 24, label: '+24h', riskScore: 38, riskLevel: 'LOW', floodProbability: 28.0, rainfallAccumulatedMm: 45, inundationAreaKm2: 14.0, populationAtRisk: 28000, riverStageM: 55.35, inundationOpacity: 0.25 },
+      { hour: 48, label: '+48h', riskScore: 35, riskLevel: 'LOW', floodProbability: 25.0, rainfallAccumulatedMm: 57, inundationAreaKm2: 12.5, populationAtRisk: 25000, riverStageM: 55.20, inundationOpacity: 0.2 },
+      { hour: 72, label: '+72h', riskScore: 30, riskLevel: 'LOW', floodProbability: 20.0, rainfallAccumulatedMm: 65, inundationAreaKm2: 10.0, populationAtRisk: 20000, riverStageM: 54.80, inundationOpacity: 0.15 }
+    ],
+    recommendedActions: [
+      'Maintain standard situational awareness.',
+      'Check local weather updates daily.'
+    ]
+  },
+
+  "barpeta": {
+    id: 'barpeta',
+    district: 'Barpeta',
+    subdivision: 'Assam District',
+    state: 'Assam',
+    coordinates: { lat: 26.2, lng: 92.9 },
+    stationCode: 'CWC Station',
+    stationName: 'Barpeta River Reach',
+    vulnerabilityIndex: 35,
+    hazardLevel: 'LOW',
+    levelBadge: 'Level 1',
+    statusSummary: 'BASELINE SEASONAL RUNOFF',
+    floodProb: 25.0,
+    confidence: 88.0,
+    peakWindow: 'Normal',
+    peakWindowDesc: 'Equilibrium',
+    riverStageDelta: '-0.80m',
+    riverStageDesc: 'Below Danger',
+    stageAbsolute: 55.20,
+    dangerLevel: 56.00,
+    riverName: 'Local Tributary',
+    warningMessage: 'Normal river stages for this season. Embankments hold firm.',
+    asdmaDirective: 'ASDMA BASELINE: Normal hydrologic monitoring.',
+
+    inundationAreaKm2: 12.5,
+    waterDepthAvgM: 0.20,
+    waterDepthPeakM: 0.50,
+    affectedNeighborhoods: ['Low-lying areas near riverbanks'],
+    inundationPathSummary: 'Seasonal river swell confined to natural channels.',
+    populationAtRisk: 25000,
+    vulnerableDemographics: {
+      childrenUnder5: 2500,
+      elderlyOver65: 1800,
+      livestockCount: 5000
+    },
+    infrastructureCounts: {
+      hospitals: 1,
+      schools: 5,
+      roads: 4,
+      bridges: 1
+    },
+    infrastructureList: [],
+    rainfall: {
+      currentRainfall24hMm: 25,
+      expectedRainfall48hMm: 45,
+      expectedRainfall72hMm: 65,
+      intensity: 'LIGHT',
+      trend: 'steady',
+      hourlyTimeline: [
+        { hour: '-18h', mm: 2, cumulative: 5 },
+        { hour: '-12h', mm: 5, cumulative: 10 },
+        { hour: '-6h', mm: 8, cumulative: 18 },
+        { hour: 'Now', mm: 7, cumulative: 25 },
+        { hour: '+6h', mm: 6, cumulative: 31 },
+        { hour: '+12h', mm: 5, cumulative: 36 },
+        { hour: '+24h', mm: 9, cumulative: 45 },
+        { hour: '+48h', mm: 12, cumulative: 57 },
+        { hour: '+72h', mm: 8, cumulative: 65 }
+      ],
+      stationSource: 'IMD Station'
+    },
+    factors: [
+      {
+        id: 'f-base-1',
+        name: 'Normal Monsoon Rain',
+        category: 'Rainfall',
+        status: 'LOW',
+        contributionPercent: 40,
+        direction: 'neutral',
+        observedValue: '25 mm / 24h',
+        scientificExplanation: 'Regular seasonal precipitation patterns.'
+      }
+    ],
+    timeline: [
+      { hour: 0, label: 'Now (+0h)', riskScore: 35, riskLevel: 'LOW', floodProbability: 25.0, rainfallAccumulatedMm: 25, inundationAreaKm2: 12.5, populationAtRisk: 25000, riverStageM: 55.20, inundationOpacity: 0.2 },
+      { hour: 6, label: '+6h', riskScore: 36, riskLevel: 'LOW', floodProbability: 26.0, rainfallAccumulatedMm: 31, inundationAreaKm2: 13.0, populationAtRisk: 26000, riverStageM: 55.25, inundationOpacity: 0.2 },
+      { hour: 12, label: '+12h', riskScore: 37, riskLevel: 'LOW', floodProbability: 27.0, rainfallAccumulatedMm: 36, inundationAreaKm2: 13.5, populationAtRisk: 27000, riverStageM: 55.30, inundationOpacity: 0.25 },
+      { hour: 24, label: '+24h', riskScore: 38, riskLevel: 'LOW', floodProbability: 28.0, rainfallAccumulatedMm: 45, inundationAreaKm2: 14.0, populationAtRisk: 28000, riverStageM: 55.35, inundationOpacity: 0.25 },
+      { hour: 48, label: '+48h', riskScore: 35, riskLevel: 'LOW', floodProbability: 25.0, rainfallAccumulatedMm: 57, inundationAreaKm2: 12.5, populationAtRisk: 25000, riverStageM: 55.20, inundationOpacity: 0.2 },
+      { hour: 72, label: '+72h', riskScore: 30, riskLevel: 'LOW', floodProbability: 20.0, rainfallAccumulatedMm: 65, inundationAreaKm2: 10.0, populationAtRisk: 20000, riverStageM: 54.80, inundationOpacity: 0.15 }
+    ],
+    recommendedActions: [
+      'Maintain standard situational awareness.',
+      'Check local weather updates daily.'
+    ]
+  },
+
+  "biswanath": {
+    id: 'biswanath',
+    district: 'Biswanath',
+    subdivision: 'Assam District',
+    state: 'Assam',
+    coordinates: { lat: 26.2, lng: 92.9 },
+    stationCode: 'CWC Station',
+    stationName: 'Biswanath River Reach',
+    vulnerabilityIndex: 35,
+    hazardLevel: 'LOW',
+    levelBadge: 'Level 1',
+    statusSummary: 'BASELINE SEASONAL RUNOFF',
+    floodProb: 25.0,
+    confidence: 88.0,
+    peakWindow: 'Normal',
+    peakWindowDesc: 'Equilibrium',
+    riverStageDelta: '-0.80m',
+    riverStageDesc: 'Below Danger',
+    stageAbsolute: 55.20,
+    dangerLevel: 56.00,
+    riverName: 'Local Tributary',
+    warningMessage: 'Normal river stages for this season. Embankments hold firm.',
+    asdmaDirective: 'ASDMA BASELINE: Normal hydrologic monitoring.',
+
+    inundationAreaKm2: 12.5,
+    waterDepthAvgM: 0.20,
+    waterDepthPeakM: 0.50,
+    affectedNeighborhoods: ['Low-lying areas near riverbanks'],
+    inundationPathSummary: 'Seasonal river swell confined to natural channels.',
+    populationAtRisk: 25000,
+    vulnerableDemographics: {
+      childrenUnder5: 2500,
+      elderlyOver65: 1800,
+      livestockCount: 5000
+    },
+    infrastructureCounts: {
+      hospitals: 1,
+      schools: 5,
+      roads: 4,
+      bridges: 1
+    },
+    infrastructureList: [],
+    rainfall: {
+      currentRainfall24hMm: 25,
+      expectedRainfall48hMm: 45,
+      expectedRainfall72hMm: 65,
+      intensity: 'LIGHT',
+      trend: 'steady',
+      hourlyTimeline: [
+        { hour: '-18h', mm: 2, cumulative: 5 },
+        { hour: '-12h', mm: 5, cumulative: 10 },
+        { hour: '-6h', mm: 8, cumulative: 18 },
+        { hour: 'Now', mm: 7, cumulative: 25 },
+        { hour: '+6h', mm: 6, cumulative: 31 },
+        { hour: '+12h', mm: 5, cumulative: 36 },
+        { hour: '+24h', mm: 9, cumulative: 45 },
+        { hour: '+48h', mm: 12, cumulative: 57 },
+        { hour: '+72h', mm: 8, cumulative: 65 }
+      ],
+      stationSource: 'IMD Station'
+    },
+    factors: [
+      {
+        id: 'f-base-1',
+        name: 'Normal Monsoon Rain',
+        category: 'Rainfall',
+        status: 'LOW',
+        contributionPercent: 40,
+        direction: 'neutral',
+        observedValue: '25 mm / 24h',
+        scientificExplanation: 'Regular seasonal precipitation patterns.'
+      }
+    ],
+    timeline: [
+      { hour: 0, label: 'Now (+0h)', riskScore: 35, riskLevel: 'LOW', floodProbability: 25.0, rainfallAccumulatedMm: 25, inundationAreaKm2: 12.5, populationAtRisk: 25000, riverStageM: 55.20, inundationOpacity: 0.2 },
+      { hour: 6, label: '+6h', riskScore: 36, riskLevel: 'LOW', floodProbability: 26.0, rainfallAccumulatedMm: 31, inundationAreaKm2: 13.0, populationAtRisk: 26000, riverStageM: 55.25, inundationOpacity: 0.2 },
+      { hour: 12, label: '+12h', riskScore: 37, riskLevel: 'LOW', floodProbability: 27.0, rainfallAccumulatedMm: 36, inundationAreaKm2: 13.5, populationAtRisk: 27000, riverStageM: 55.30, inundationOpacity: 0.25 },
+      { hour: 24, label: '+24h', riskScore: 38, riskLevel: 'LOW', floodProbability: 28.0, rainfallAccumulatedMm: 45, inundationAreaKm2: 14.0, populationAtRisk: 28000, riverStageM: 55.35, inundationOpacity: 0.25 },
+      { hour: 48, label: '+48h', riskScore: 35, riskLevel: 'LOW', floodProbability: 25.0, rainfallAccumulatedMm: 57, inundationAreaKm2: 12.5, populationAtRisk: 25000, riverStageM: 55.20, inundationOpacity: 0.2 },
+      { hour: 72, label: '+72h', riskScore: 30, riskLevel: 'LOW', floodProbability: 20.0, rainfallAccumulatedMm: 65, inundationAreaKm2: 10.0, populationAtRisk: 20000, riverStageM: 54.80, inundationOpacity: 0.15 }
+    ],
+    recommendedActions: [
+      'Maintain standard situational awareness.',
+      'Check local weather updates daily.'
+    ]
+  },
+
+  "bongaigaon": {
+    id: 'bongaigaon',
+    district: 'Bongaigaon',
+    subdivision: 'Assam District',
+    state: 'Assam',
+    coordinates: { lat: 26.2, lng: 92.9 },
+    stationCode: 'CWC Station',
+    stationName: 'Bongaigaon River Reach',
+    vulnerabilityIndex: 35,
+    hazardLevel: 'LOW',
+    levelBadge: 'Level 1',
+    statusSummary: 'BASELINE SEASONAL RUNOFF',
+    floodProb: 25.0,
+    confidence: 88.0,
+    peakWindow: 'Normal',
+    peakWindowDesc: 'Equilibrium',
+    riverStageDelta: '-0.80m',
+    riverStageDesc: 'Below Danger',
+    stageAbsolute: 55.20,
+    dangerLevel: 56.00,
+    riverName: 'Local Tributary',
+    warningMessage: 'Normal river stages for this season. Embankments hold firm.',
+    asdmaDirective: 'ASDMA BASELINE: Normal hydrologic monitoring.',
+
+    inundationAreaKm2: 12.5,
+    waterDepthAvgM: 0.20,
+    waterDepthPeakM: 0.50,
+    affectedNeighborhoods: ['Low-lying areas near riverbanks'],
+    inundationPathSummary: 'Seasonal river swell confined to natural channels.',
+    populationAtRisk: 25000,
+    vulnerableDemographics: {
+      childrenUnder5: 2500,
+      elderlyOver65: 1800,
+      livestockCount: 5000
+    },
+    infrastructureCounts: {
+      hospitals: 1,
+      schools: 5,
+      roads: 4,
+      bridges: 1
+    },
+    infrastructureList: [],
+    rainfall: {
+      currentRainfall24hMm: 25,
+      expectedRainfall48hMm: 45,
+      expectedRainfall72hMm: 65,
+      intensity: 'LIGHT',
+      trend: 'steady',
+      hourlyTimeline: [
+        { hour: '-18h', mm: 2, cumulative: 5 },
+        { hour: '-12h', mm: 5, cumulative: 10 },
+        { hour: '-6h', mm: 8, cumulative: 18 },
+        { hour: 'Now', mm: 7, cumulative: 25 },
+        { hour: '+6h', mm: 6, cumulative: 31 },
+        { hour: '+12h', mm: 5, cumulative: 36 },
+        { hour: '+24h', mm: 9, cumulative: 45 },
+        { hour: '+48h', mm: 12, cumulative: 57 },
+        { hour: '+72h', mm: 8, cumulative: 65 }
+      ],
+      stationSource: 'IMD Station'
+    },
+    factors: [
+      {
+        id: 'f-base-1',
+        name: 'Normal Monsoon Rain',
+        category: 'Rainfall',
+        status: 'LOW',
+        contributionPercent: 40,
+        direction: 'neutral',
+        observedValue: '25 mm / 24h',
+        scientificExplanation: 'Regular seasonal precipitation patterns.'
+      }
+    ],
+    timeline: [
+      { hour: 0, label: 'Now (+0h)', riskScore: 35, riskLevel: 'LOW', floodProbability: 25.0, rainfallAccumulatedMm: 25, inundationAreaKm2: 12.5, populationAtRisk: 25000, riverStageM: 55.20, inundationOpacity: 0.2 },
+      { hour: 6, label: '+6h', riskScore: 36, riskLevel: 'LOW', floodProbability: 26.0, rainfallAccumulatedMm: 31, inundationAreaKm2: 13.0, populationAtRisk: 26000, riverStageM: 55.25, inundationOpacity: 0.2 },
+      { hour: 12, label: '+12h', riskScore: 37, riskLevel: 'LOW', floodProbability: 27.0, rainfallAccumulatedMm: 36, inundationAreaKm2: 13.5, populationAtRisk: 27000, riverStageM: 55.30, inundationOpacity: 0.25 },
+      { hour: 24, label: '+24h', riskScore: 38, riskLevel: 'LOW', floodProbability: 28.0, rainfallAccumulatedMm: 45, inundationAreaKm2: 14.0, populationAtRisk: 28000, riverStageM: 55.35, inundationOpacity: 0.25 },
+      { hour: 48, label: '+48h', riskScore: 35, riskLevel: 'LOW', floodProbability: 25.0, rainfallAccumulatedMm: 57, inundationAreaKm2: 12.5, populationAtRisk: 25000, riverStageM: 55.20, inundationOpacity: 0.2 },
+      { hour: 72, label: '+72h', riskScore: 30, riskLevel: 'LOW', floodProbability: 20.0, rainfallAccumulatedMm: 65, inundationAreaKm2: 10.0, populationAtRisk: 20000, riverStageM: 54.80, inundationOpacity: 0.15 }
+    ],
+    recommendedActions: [
+      'Maintain standard situational awareness.',
+      'Check local weather updates daily.'
+    ]
+  },
+
+  "cachar": {
+    id: 'cachar',
+    district: 'Cachar',
+    subdivision: 'Assam District',
+    state: 'Assam',
+    coordinates: { lat: 26.2, lng: 92.9 },
+    stationCode: 'CWC Station',
+    stationName: 'Cachar River Reach',
+    vulnerabilityIndex: 35,
+    hazardLevel: 'LOW',
+    levelBadge: 'Level 1',
+    statusSummary: 'BASELINE SEASONAL RUNOFF',
+    floodProb: 25.0,
+    confidence: 88.0,
+    peakWindow: 'Normal',
+    peakWindowDesc: 'Equilibrium',
+    riverStageDelta: '-0.80m',
+    riverStageDesc: 'Below Danger',
+    stageAbsolute: 55.20,
+    dangerLevel: 56.00,
+    riverName: 'Local Tributary',
+    warningMessage: 'Normal river stages for this season. Embankments hold firm.',
+    asdmaDirective: 'ASDMA BASELINE: Normal hydrologic monitoring.',
+
+    inundationAreaKm2: 12.5,
+    waterDepthAvgM: 0.20,
+    waterDepthPeakM: 0.50,
+    affectedNeighborhoods: ['Low-lying areas near riverbanks'],
+    inundationPathSummary: 'Seasonal river swell confined to natural channels.',
+    populationAtRisk: 25000,
+    vulnerableDemographics: {
+      childrenUnder5: 2500,
+      elderlyOver65: 1800,
+      livestockCount: 5000
+    },
+    infrastructureCounts: {
+      hospitals: 1,
+      schools: 5,
+      roads: 4,
+      bridges: 1
+    },
+    infrastructureList: [],
+    rainfall: {
+      currentRainfall24hMm: 25,
+      expectedRainfall48hMm: 45,
+      expectedRainfall72hMm: 65,
+      intensity: 'LIGHT',
+      trend: 'steady',
+      hourlyTimeline: [
+        { hour: '-18h', mm: 2, cumulative: 5 },
+        { hour: '-12h', mm: 5, cumulative: 10 },
+        { hour: '-6h', mm: 8, cumulative: 18 },
+        { hour: 'Now', mm: 7, cumulative: 25 },
+        { hour: '+6h', mm: 6, cumulative: 31 },
+        { hour: '+12h', mm: 5, cumulative: 36 },
+        { hour: '+24h', mm: 9, cumulative: 45 },
+        { hour: '+48h', mm: 12, cumulative: 57 },
+        { hour: '+72h', mm: 8, cumulative: 65 }
+      ],
+      stationSource: 'IMD Station'
+    },
+    factors: [
+      {
+        id: 'f-base-1',
+        name: 'Normal Monsoon Rain',
+        category: 'Rainfall',
+        status: 'LOW',
+        contributionPercent: 40,
+        direction: 'neutral',
+        observedValue: '25 mm / 24h',
+        scientificExplanation: 'Regular seasonal precipitation patterns.'
+      }
+    ],
+    timeline: [
+      { hour: 0, label: 'Now (+0h)', riskScore: 35, riskLevel: 'LOW', floodProbability: 25.0, rainfallAccumulatedMm: 25, inundationAreaKm2: 12.5, populationAtRisk: 25000, riverStageM: 55.20, inundationOpacity: 0.2 },
+      { hour: 6, label: '+6h', riskScore: 36, riskLevel: 'LOW', floodProbability: 26.0, rainfallAccumulatedMm: 31, inundationAreaKm2: 13.0, populationAtRisk: 26000, riverStageM: 55.25, inundationOpacity: 0.2 },
+      { hour: 12, label: '+12h', riskScore: 37, riskLevel: 'LOW', floodProbability: 27.0, rainfallAccumulatedMm: 36, inundationAreaKm2: 13.5, populationAtRisk: 27000, riverStageM: 55.30, inundationOpacity: 0.25 },
+      { hour: 24, label: '+24h', riskScore: 38, riskLevel: 'LOW', floodProbability: 28.0, rainfallAccumulatedMm: 45, inundationAreaKm2: 14.0, populationAtRisk: 28000, riverStageM: 55.35, inundationOpacity: 0.25 },
+      { hour: 48, label: '+48h', riskScore: 35, riskLevel: 'LOW', floodProbability: 25.0, rainfallAccumulatedMm: 57, inundationAreaKm2: 12.5, populationAtRisk: 25000, riverStageM: 55.20, inundationOpacity: 0.2 },
+      { hour: 72, label: '+72h', riskScore: 30, riskLevel: 'LOW', floodProbability: 20.0, rainfallAccumulatedMm: 65, inundationAreaKm2: 10.0, populationAtRisk: 20000, riverStageM: 54.80, inundationOpacity: 0.15 }
+    ],
+    recommendedActions: [
+      'Maintain standard situational awareness.',
+      'Check local weather updates daily.'
+    ]
+  },
+
+  "charaideo": {
+    id: 'charaideo',
+    district: 'Charaideo',
+    subdivision: 'Assam District',
+    state: 'Assam',
+    coordinates: { lat: 26.2, lng: 92.9 },
+    stationCode: 'CWC Station',
+    stationName: 'Charaideo River Reach',
+    vulnerabilityIndex: 35,
+    hazardLevel: 'LOW',
+    levelBadge: 'Level 1',
+    statusSummary: 'BASELINE SEASONAL RUNOFF',
+    floodProb: 25.0,
+    confidence: 88.0,
+    peakWindow: 'Normal',
+    peakWindowDesc: 'Equilibrium',
+    riverStageDelta: '-0.80m',
+    riverStageDesc: 'Below Danger',
+    stageAbsolute: 55.20,
+    dangerLevel: 56.00,
+    riverName: 'Local Tributary',
+    warningMessage: 'Normal river stages for this season. Embankments hold firm.',
+    asdmaDirective: 'ASDMA BASELINE: Normal hydrologic monitoring.',
+
+    inundationAreaKm2: 12.5,
+    waterDepthAvgM: 0.20,
+    waterDepthPeakM: 0.50,
+    affectedNeighborhoods: ['Low-lying areas near riverbanks'],
+    inundationPathSummary: 'Seasonal river swell confined to natural channels.',
+    populationAtRisk: 25000,
+    vulnerableDemographics: {
+      childrenUnder5: 2500,
+      elderlyOver65: 1800,
+      livestockCount: 5000
+    },
+    infrastructureCounts: {
+      hospitals: 1,
+      schools: 5,
+      roads: 4,
+      bridges: 1
+    },
+    infrastructureList: [],
+    rainfall: {
+      currentRainfall24hMm: 25,
+      expectedRainfall48hMm: 45,
+      expectedRainfall72hMm: 65,
+      intensity: 'LIGHT',
+      trend: 'steady',
+      hourlyTimeline: [
+        { hour: '-18h', mm: 2, cumulative: 5 },
+        { hour: '-12h', mm: 5, cumulative: 10 },
+        { hour: '-6h', mm: 8, cumulative: 18 },
+        { hour: 'Now', mm: 7, cumulative: 25 },
+        { hour: '+6h', mm: 6, cumulative: 31 },
+        { hour: '+12h', mm: 5, cumulative: 36 },
+        { hour: '+24h', mm: 9, cumulative: 45 },
+        { hour: '+48h', mm: 12, cumulative: 57 },
+        { hour: '+72h', mm: 8, cumulative: 65 }
+      ],
+      stationSource: 'IMD Station'
+    },
+    factors: [
+      {
+        id: 'f-base-1',
+        name: 'Normal Monsoon Rain',
+        category: 'Rainfall',
+        status: 'LOW',
+        contributionPercent: 40,
+        direction: 'neutral',
+        observedValue: '25 mm / 24h',
+        scientificExplanation: 'Regular seasonal precipitation patterns.'
+      }
+    ],
+    timeline: [
+      { hour: 0, label: 'Now (+0h)', riskScore: 35, riskLevel: 'LOW', floodProbability: 25.0, rainfallAccumulatedMm: 25, inundationAreaKm2: 12.5, populationAtRisk: 25000, riverStageM: 55.20, inundationOpacity: 0.2 },
+      { hour: 6, label: '+6h', riskScore: 36, riskLevel: 'LOW', floodProbability: 26.0, rainfallAccumulatedMm: 31, inundationAreaKm2: 13.0, populationAtRisk: 26000, riverStageM: 55.25, inundationOpacity: 0.2 },
+      { hour: 12, label: '+12h', riskScore: 37, riskLevel: 'LOW', floodProbability: 27.0, rainfallAccumulatedMm: 36, inundationAreaKm2: 13.5, populationAtRisk: 27000, riverStageM: 55.30, inundationOpacity: 0.25 },
+      { hour: 24, label: '+24h', riskScore: 38, riskLevel: 'LOW', floodProbability: 28.0, rainfallAccumulatedMm: 45, inundationAreaKm2: 14.0, populationAtRisk: 28000, riverStageM: 55.35, inundationOpacity: 0.25 },
+      { hour: 48, label: '+48h', riskScore: 35, riskLevel: 'LOW', floodProbability: 25.0, rainfallAccumulatedMm: 57, inundationAreaKm2: 12.5, populationAtRisk: 25000, riverStageM: 55.20, inundationOpacity: 0.2 },
+      { hour: 72, label: '+72h', riskScore: 30, riskLevel: 'LOW', floodProbability: 20.0, rainfallAccumulatedMm: 65, inundationAreaKm2: 10.0, populationAtRisk: 20000, riverStageM: 54.80, inundationOpacity: 0.15 }
+    ],
+    recommendedActions: [
+      'Maintain standard situational awareness.',
+      'Check local weather updates daily.'
+    ]
+  },
+
+  "chirang": {
+    id: 'chirang',
+    district: 'Chirang',
+    subdivision: 'Assam District',
+    state: 'Assam',
+    coordinates: { lat: 26.2, lng: 92.9 },
+    stationCode: 'CWC Station',
+    stationName: 'Chirang River Reach',
+    vulnerabilityIndex: 35,
+    hazardLevel: 'LOW',
+    levelBadge: 'Level 1',
+    statusSummary: 'BASELINE SEASONAL RUNOFF',
+    floodProb: 25.0,
+    confidence: 88.0,
+    peakWindow: 'Normal',
+    peakWindowDesc: 'Equilibrium',
+    riverStageDelta: '-0.80m',
+    riverStageDesc: 'Below Danger',
+    stageAbsolute: 55.20,
+    dangerLevel: 56.00,
+    riverName: 'Local Tributary',
+    warningMessage: 'Normal river stages for this season. Embankments hold firm.',
+    asdmaDirective: 'ASDMA BASELINE: Normal hydrologic monitoring.',
+
+    inundationAreaKm2: 12.5,
+    waterDepthAvgM: 0.20,
+    waterDepthPeakM: 0.50,
+    affectedNeighborhoods: ['Low-lying areas near riverbanks'],
+    inundationPathSummary: 'Seasonal river swell confined to natural channels.',
+    populationAtRisk: 25000,
+    vulnerableDemographics: {
+      childrenUnder5: 2500,
+      elderlyOver65: 1800,
+      livestockCount: 5000
+    },
+    infrastructureCounts: {
+      hospitals: 1,
+      schools: 5,
+      roads: 4,
+      bridges: 1
+    },
+    infrastructureList: [],
+    rainfall: {
+      currentRainfall24hMm: 25,
+      expectedRainfall48hMm: 45,
+      expectedRainfall72hMm: 65,
+      intensity: 'LIGHT',
+      trend: 'steady',
+      hourlyTimeline: [
+        { hour: '-18h', mm: 2, cumulative: 5 },
+        { hour: '-12h', mm: 5, cumulative: 10 },
+        { hour: '-6h', mm: 8, cumulative: 18 },
+        { hour: 'Now', mm: 7, cumulative: 25 },
+        { hour: '+6h', mm: 6, cumulative: 31 },
+        { hour: '+12h', mm: 5, cumulative: 36 },
+        { hour: '+24h', mm: 9, cumulative: 45 },
+        { hour: '+48h', mm: 12, cumulative: 57 },
+        { hour: '+72h', mm: 8, cumulative: 65 }
+      ],
+      stationSource: 'IMD Station'
+    },
+    factors: [
+      {
+        id: 'f-base-1',
+        name: 'Normal Monsoon Rain',
+        category: 'Rainfall',
+        status: 'LOW',
+        contributionPercent: 40,
+        direction: 'neutral',
+        observedValue: '25 mm / 24h',
+        scientificExplanation: 'Regular seasonal precipitation patterns.'
+      }
+    ],
+    timeline: [
+      { hour: 0, label: 'Now (+0h)', riskScore: 35, riskLevel: 'LOW', floodProbability: 25.0, rainfallAccumulatedMm: 25, inundationAreaKm2: 12.5, populationAtRisk: 25000, riverStageM: 55.20, inundationOpacity: 0.2 },
+      { hour: 6, label: '+6h', riskScore: 36, riskLevel: 'LOW', floodProbability: 26.0, rainfallAccumulatedMm: 31, inundationAreaKm2: 13.0, populationAtRisk: 26000, riverStageM: 55.25, inundationOpacity: 0.2 },
+      { hour: 12, label: '+12h', riskScore: 37, riskLevel: 'LOW', floodProbability: 27.0, rainfallAccumulatedMm: 36, inundationAreaKm2: 13.5, populationAtRisk: 27000, riverStageM: 55.30, inundationOpacity: 0.25 },
+      { hour: 24, label: '+24h', riskScore: 38, riskLevel: 'LOW', floodProbability: 28.0, rainfallAccumulatedMm: 45, inundationAreaKm2: 14.0, populationAtRisk: 28000, riverStageM: 55.35, inundationOpacity: 0.25 },
+      { hour: 48, label: '+48h', riskScore: 35, riskLevel: 'LOW', floodProbability: 25.0, rainfallAccumulatedMm: 57, inundationAreaKm2: 12.5, populationAtRisk: 25000, riverStageM: 55.20, inundationOpacity: 0.2 },
+      { hour: 72, label: '+72h', riskScore: 30, riskLevel: 'LOW', floodProbability: 20.0, rainfallAccumulatedMm: 65, inundationAreaKm2: 10.0, populationAtRisk: 20000, riverStageM: 54.80, inundationOpacity: 0.15 }
+    ],
+    recommendedActions: [
+      'Maintain standard situational awareness.',
+      'Check local weather updates daily.'
+    ]
+  },
+
+  "darrang": {
+    id: 'darrang',
+    district: 'Darrang',
+    subdivision: 'Assam District',
+    state: 'Assam',
+    coordinates: { lat: 26.2, lng: 92.9 },
+    stationCode: 'CWC Station',
+    stationName: 'Darrang River Reach',
+    vulnerabilityIndex: 35,
+    hazardLevel: 'LOW',
+    levelBadge: 'Level 1',
+    statusSummary: 'BASELINE SEASONAL RUNOFF',
+    floodProb: 25.0,
+    confidence: 88.0,
+    peakWindow: 'Normal',
+    peakWindowDesc: 'Equilibrium',
+    riverStageDelta: '-0.80m',
+    riverStageDesc: 'Below Danger',
+    stageAbsolute: 55.20,
+    dangerLevel: 56.00,
+    riverName: 'Local Tributary',
+    warningMessage: 'Normal river stages for this season. Embankments hold firm.',
+    asdmaDirective: 'ASDMA BASELINE: Normal hydrologic monitoring.',
+
+    inundationAreaKm2: 12.5,
+    waterDepthAvgM: 0.20,
+    waterDepthPeakM: 0.50,
+    affectedNeighborhoods: ['Low-lying areas near riverbanks'],
+    inundationPathSummary: 'Seasonal river swell confined to natural channels.',
+    populationAtRisk: 25000,
+    vulnerableDemographics: {
+      childrenUnder5: 2500,
+      elderlyOver65: 1800,
+      livestockCount: 5000
+    },
+    infrastructureCounts: {
+      hospitals: 1,
+      schools: 5,
+      roads: 4,
+      bridges: 1
+    },
+    infrastructureList: [],
+    rainfall: {
+      currentRainfall24hMm: 25,
+      expectedRainfall48hMm: 45,
+      expectedRainfall72hMm: 65,
+      intensity: 'LIGHT',
+      trend: 'steady',
+      hourlyTimeline: [
+        { hour: '-18h', mm: 2, cumulative: 5 },
+        { hour: '-12h', mm: 5, cumulative: 10 },
+        { hour: '-6h', mm: 8, cumulative: 18 },
+        { hour: 'Now', mm: 7, cumulative: 25 },
+        { hour: '+6h', mm: 6, cumulative: 31 },
+        { hour: '+12h', mm: 5, cumulative: 36 },
+        { hour: '+24h', mm: 9, cumulative: 45 },
+        { hour: '+48h', mm: 12, cumulative: 57 },
+        { hour: '+72h', mm: 8, cumulative: 65 }
+      ],
+      stationSource: 'IMD Station'
+    },
+    factors: [
+      {
+        id: 'f-base-1',
+        name: 'Normal Monsoon Rain',
+        category: 'Rainfall',
+        status: 'LOW',
+        contributionPercent: 40,
+        direction: 'neutral',
+        observedValue: '25 mm / 24h',
+        scientificExplanation: 'Regular seasonal precipitation patterns.'
+      }
+    ],
+    timeline: [
+      { hour: 0, label: 'Now (+0h)', riskScore: 35, riskLevel: 'LOW', floodProbability: 25.0, rainfallAccumulatedMm: 25, inundationAreaKm2: 12.5, populationAtRisk: 25000, riverStageM: 55.20, inundationOpacity: 0.2 },
+      { hour: 6, label: '+6h', riskScore: 36, riskLevel: 'LOW', floodProbability: 26.0, rainfallAccumulatedMm: 31, inundationAreaKm2: 13.0, populationAtRisk: 26000, riverStageM: 55.25, inundationOpacity: 0.2 },
+      { hour: 12, label: '+12h', riskScore: 37, riskLevel: 'LOW', floodProbability: 27.0, rainfallAccumulatedMm: 36, inundationAreaKm2: 13.5, populationAtRisk: 27000, riverStageM: 55.30, inundationOpacity: 0.25 },
+      { hour: 24, label: '+24h', riskScore: 38, riskLevel: 'LOW', floodProbability: 28.0, rainfallAccumulatedMm: 45, inundationAreaKm2: 14.0, populationAtRisk: 28000, riverStageM: 55.35, inundationOpacity: 0.25 },
+      { hour: 48, label: '+48h', riskScore: 35, riskLevel: 'LOW', floodProbability: 25.0, rainfallAccumulatedMm: 57, inundationAreaKm2: 12.5, populationAtRisk: 25000, riverStageM: 55.20, inundationOpacity: 0.2 },
+      { hour: 72, label: '+72h', riskScore: 30, riskLevel: 'LOW', floodProbability: 20.0, rainfallAccumulatedMm: 65, inundationAreaKm2: 10.0, populationAtRisk: 20000, riverStageM: 54.80, inundationOpacity: 0.15 }
+    ],
+    recommendedActions: [
+      'Maintain standard situational awareness.',
+      'Check local weather updates daily.'
+    ]
+  },
+
+  "dhubri": {
+    id: 'dhubri',
+    district: 'Dhubri',
+    subdivision: 'Assam District',
+    state: 'Assam',
+    coordinates: { lat: 26.2, lng: 92.9 },
+    stationCode: 'CWC Station',
+    stationName: 'Dhubri River Reach',
+    vulnerabilityIndex: 35,
+    hazardLevel: 'LOW',
+    levelBadge: 'Level 1',
+    statusSummary: 'BASELINE SEASONAL RUNOFF',
+    floodProb: 25.0,
+    confidence: 88.0,
+    peakWindow: 'Normal',
+    peakWindowDesc: 'Equilibrium',
+    riverStageDelta: '-0.80m',
+    riverStageDesc: 'Below Danger',
+    stageAbsolute: 55.20,
+    dangerLevel: 56.00,
+    riverName: 'Local Tributary',
+    warningMessage: 'Normal river stages for this season. Embankments hold firm.',
+    asdmaDirective: 'ASDMA BASELINE: Normal hydrologic monitoring.',
+
+    inundationAreaKm2: 12.5,
+    waterDepthAvgM: 0.20,
+    waterDepthPeakM: 0.50,
+    affectedNeighborhoods: ['Low-lying areas near riverbanks'],
+    inundationPathSummary: 'Seasonal river swell confined to natural channels.',
+    populationAtRisk: 25000,
+    vulnerableDemographics: {
+      childrenUnder5: 2500,
+      elderlyOver65: 1800,
+      livestockCount: 5000
+    },
+    infrastructureCounts: {
+      hospitals: 1,
+      schools: 5,
+      roads: 4,
+      bridges: 1
+    },
+    infrastructureList: [],
+    rainfall: {
+      currentRainfall24hMm: 25,
+      expectedRainfall48hMm: 45,
+      expectedRainfall72hMm: 65,
+      intensity: 'LIGHT',
+      trend: 'steady',
+      hourlyTimeline: [
+        { hour: '-18h', mm: 2, cumulative: 5 },
+        { hour: '-12h', mm: 5, cumulative: 10 },
+        { hour: '-6h', mm: 8, cumulative: 18 },
+        { hour: 'Now', mm: 7, cumulative: 25 },
+        { hour: '+6h', mm: 6, cumulative: 31 },
+        { hour: '+12h', mm: 5, cumulative: 36 },
+        { hour: '+24h', mm: 9, cumulative: 45 },
+        { hour: '+48h', mm: 12, cumulative: 57 },
+        { hour: '+72h', mm: 8, cumulative: 65 }
+      ],
+      stationSource: 'IMD Station'
+    },
+    factors: [
+      {
+        id: 'f-base-1',
+        name: 'Normal Monsoon Rain',
+        category: 'Rainfall',
+        status: 'LOW',
+        contributionPercent: 40,
+        direction: 'neutral',
+        observedValue: '25 mm / 24h',
+        scientificExplanation: 'Regular seasonal precipitation patterns.'
+      }
+    ],
+    timeline: [
+      { hour: 0, label: 'Now (+0h)', riskScore: 35, riskLevel: 'LOW', floodProbability: 25.0, rainfallAccumulatedMm: 25, inundationAreaKm2: 12.5, populationAtRisk: 25000, riverStageM: 55.20, inundationOpacity: 0.2 },
+      { hour: 6, label: '+6h', riskScore: 36, riskLevel: 'LOW', floodProbability: 26.0, rainfallAccumulatedMm: 31, inundationAreaKm2: 13.0, populationAtRisk: 26000, riverStageM: 55.25, inundationOpacity: 0.2 },
+      { hour: 12, label: '+12h', riskScore: 37, riskLevel: 'LOW', floodProbability: 27.0, rainfallAccumulatedMm: 36, inundationAreaKm2: 13.5, populationAtRisk: 27000, riverStageM: 55.30, inundationOpacity: 0.25 },
+      { hour: 24, label: '+24h', riskScore: 38, riskLevel: 'LOW', floodProbability: 28.0, rainfallAccumulatedMm: 45, inundationAreaKm2: 14.0, populationAtRisk: 28000, riverStageM: 55.35, inundationOpacity: 0.25 },
+      { hour: 48, label: '+48h', riskScore: 35, riskLevel: 'LOW', floodProbability: 25.0, rainfallAccumulatedMm: 57, inundationAreaKm2: 12.5, populationAtRisk: 25000, riverStageM: 55.20, inundationOpacity: 0.2 },
+      { hour: 72, label: '+72h', riskScore: 30, riskLevel: 'LOW', floodProbability: 20.0, rainfallAccumulatedMm: 65, inundationAreaKm2: 10.0, populationAtRisk: 20000, riverStageM: 54.80, inundationOpacity: 0.15 }
+    ],
+    recommendedActions: [
+      'Maintain standard situational awareness.',
+      'Check local weather updates daily.'
+    ]
+  },
+
+  "dimahasao": {
+    id: 'dimahasao',
+    district: 'Dima Hasao',
+    subdivision: 'Assam District',
+    state: 'Assam',
+    coordinates: { lat: 26.2, lng: 92.9 },
+    stationCode: 'CWC Station',
+    stationName: 'Dima Hasao River Reach',
+    vulnerabilityIndex: 35,
+    hazardLevel: 'LOW',
+    levelBadge: 'Level 1',
+    statusSummary: 'BASELINE SEASONAL RUNOFF',
+    floodProb: 25.0,
+    confidence: 88.0,
+    peakWindow: 'Normal',
+    peakWindowDesc: 'Equilibrium',
+    riverStageDelta: '-0.80m',
+    riverStageDesc: 'Below Danger',
+    stageAbsolute: 55.20,
+    dangerLevel: 56.00,
+    riverName: 'Local Tributary',
+    warningMessage: 'Normal river stages for this season. Embankments hold firm.',
+    asdmaDirective: 'ASDMA BASELINE: Normal hydrologic monitoring.',
+
+    inundationAreaKm2: 12.5,
+    waterDepthAvgM: 0.20,
+    waterDepthPeakM: 0.50,
+    affectedNeighborhoods: ['Low-lying areas near riverbanks'],
+    inundationPathSummary: 'Seasonal river swell confined to natural channels.',
+    populationAtRisk: 25000,
+    vulnerableDemographics: {
+      childrenUnder5: 2500,
+      elderlyOver65: 1800,
+      livestockCount: 5000
+    },
+    infrastructureCounts: {
+      hospitals: 1,
+      schools: 5,
+      roads: 4,
+      bridges: 1
+    },
+    infrastructureList: [],
+    rainfall: {
+      currentRainfall24hMm: 25,
+      expectedRainfall48hMm: 45,
+      expectedRainfall72hMm: 65,
+      intensity: 'LIGHT',
+      trend: 'steady',
+      hourlyTimeline: [
+        { hour: '-18h', mm: 2, cumulative: 5 },
+        { hour: '-12h', mm: 5, cumulative: 10 },
+        { hour: '-6h', mm: 8, cumulative: 18 },
+        { hour: 'Now', mm: 7, cumulative: 25 },
+        { hour: '+6h', mm: 6, cumulative: 31 },
+        { hour: '+12h', mm: 5, cumulative: 36 },
+        { hour: '+24h', mm: 9, cumulative: 45 },
+        { hour: '+48h', mm: 12, cumulative: 57 },
+        { hour: '+72h', mm: 8, cumulative: 65 }
+      ],
+      stationSource: 'IMD Station'
+    },
+    factors: [
+      {
+        id: 'f-base-1',
+        name: 'Normal Monsoon Rain',
+        category: 'Rainfall',
+        status: 'LOW',
+        contributionPercent: 40,
+        direction: 'neutral',
+        observedValue: '25 mm / 24h',
+        scientificExplanation: 'Regular seasonal precipitation patterns.'
+      }
+    ],
+    timeline: [
+      { hour: 0, label: 'Now (+0h)', riskScore: 35, riskLevel: 'LOW', floodProbability: 25.0, rainfallAccumulatedMm: 25, inundationAreaKm2: 12.5, populationAtRisk: 25000, riverStageM: 55.20, inundationOpacity: 0.2 },
+      { hour: 6, label: '+6h', riskScore: 36, riskLevel: 'LOW', floodProbability: 26.0, rainfallAccumulatedMm: 31, inundationAreaKm2: 13.0, populationAtRisk: 26000, riverStageM: 55.25, inundationOpacity: 0.2 },
+      { hour: 12, label: '+12h', riskScore: 37, riskLevel: 'LOW', floodProbability: 27.0, rainfallAccumulatedMm: 36, inundationAreaKm2: 13.5, populationAtRisk: 27000, riverStageM: 55.30, inundationOpacity: 0.25 },
+      { hour: 24, label: '+24h', riskScore: 38, riskLevel: 'LOW', floodProbability: 28.0, rainfallAccumulatedMm: 45, inundationAreaKm2: 14.0, populationAtRisk: 28000, riverStageM: 55.35, inundationOpacity: 0.25 },
+      { hour: 48, label: '+48h', riskScore: 35, riskLevel: 'LOW', floodProbability: 25.0, rainfallAccumulatedMm: 57, inundationAreaKm2: 12.5, populationAtRisk: 25000, riverStageM: 55.20, inundationOpacity: 0.2 },
+      { hour: 72, label: '+72h', riskScore: 30, riskLevel: 'LOW', floodProbability: 20.0, rainfallAccumulatedMm: 65, inundationAreaKm2: 10.0, populationAtRisk: 20000, riverStageM: 54.80, inundationOpacity: 0.15 }
+    ],
+    recommendedActions: [
+      'Maintain standard situational awareness.',
+      'Check local weather updates daily.'
+    ]
+  },
+
+  "goalpara": {
+    id: 'goalpara',
+    district: 'Goalpara',
+    subdivision: 'Assam District',
+    state: 'Assam',
+    coordinates: { lat: 26.2, lng: 92.9 },
+    stationCode: 'CWC Station',
+    stationName: 'Goalpara River Reach',
+    vulnerabilityIndex: 35,
+    hazardLevel: 'LOW',
+    levelBadge: 'Level 1',
+    statusSummary: 'BASELINE SEASONAL RUNOFF',
+    floodProb: 25.0,
+    confidence: 88.0,
+    peakWindow: 'Normal',
+    peakWindowDesc: 'Equilibrium',
+    riverStageDelta: '-0.80m',
+    riverStageDesc: 'Below Danger',
+    stageAbsolute: 55.20,
+    dangerLevel: 56.00,
+    riverName: 'Local Tributary',
+    warningMessage: 'Normal river stages for this season. Embankments hold firm.',
+    asdmaDirective: 'ASDMA BASELINE: Normal hydrologic monitoring.',
+
+    inundationAreaKm2: 12.5,
+    waterDepthAvgM: 0.20,
+    waterDepthPeakM: 0.50,
+    affectedNeighborhoods: ['Low-lying areas near riverbanks'],
+    inundationPathSummary: 'Seasonal river swell confined to natural channels.',
+    populationAtRisk: 25000,
+    vulnerableDemographics: {
+      childrenUnder5: 2500,
+      elderlyOver65: 1800,
+      livestockCount: 5000
+    },
+    infrastructureCounts: {
+      hospitals: 1,
+      schools: 5,
+      roads: 4,
+      bridges: 1
+    },
+    infrastructureList: [],
+    rainfall: {
+      currentRainfall24hMm: 25,
+      expectedRainfall48hMm: 45,
+      expectedRainfall72hMm: 65,
+      intensity: 'LIGHT',
+      trend: 'steady',
+      hourlyTimeline: [
+        { hour: '-18h', mm: 2, cumulative: 5 },
+        { hour: '-12h', mm: 5, cumulative: 10 },
+        { hour: '-6h', mm: 8, cumulative: 18 },
+        { hour: 'Now', mm: 7, cumulative: 25 },
+        { hour: '+6h', mm: 6, cumulative: 31 },
+        { hour: '+12h', mm: 5, cumulative: 36 },
+        { hour: '+24h', mm: 9, cumulative: 45 },
+        { hour: '+48h', mm: 12, cumulative: 57 },
+        { hour: '+72h', mm: 8, cumulative: 65 }
+      ],
+      stationSource: 'IMD Station'
+    },
+    factors: [
+      {
+        id: 'f-base-1',
+        name: 'Normal Monsoon Rain',
+        category: 'Rainfall',
+        status: 'LOW',
+        contributionPercent: 40,
+        direction: 'neutral',
+        observedValue: '25 mm / 24h',
+        scientificExplanation: 'Regular seasonal precipitation patterns.'
+      }
+    ],
+    timeline: [
+      { hour: 0, label: 'Now (+0h)', riskScore: 35, riskLevel: 'LOW', floodProbability: 25.0, rainfallAccumulatedMm: 25, inundationAreaKm2: 12.5, populationAtRisk: 25000, riverStageM: 55.20, inundationOpacity: 0.2 },
+      { hour: 6, label: '+6h', riskScore: 36, riskLevel: 'LOW', floodProbability: 26.0, rainfallAccumulatedMm: 31, inundationAreaKm2: 13.0, populationAtRisk: 26000, riverStageM: 55.25, inundationOpacity: 0.2 },
+      { hour: 12, label: '+12h', riskScore: 37, riskLevel: 'LOW', floodProbability: 27.0, rainfallAccumulatedMm: 36, inundationAreaKm2: 13.5, populationAtRisk: 27000, riverStageM: 55.30, inundationOpacity: 0.25 },
+      { hour: 24, label: '+24h', riskScore: 38, riskLevel: 'LOW', floodProbability: 28.0, rainfallAccumulatedMm: 45, inundationAreaKm2: 14.0, populationAtRisk: 28000, riverStageM: 55.35, inundationOpacity: 0.25 },
+      { hour: 48, label: '+48h', riskScore: 35, riskLevel: 'LOW', floodProbability: 25.0, rainfallAccumulatedMm: 57, inundationAreaKm2: 12.5, populationAtRisk: 25000, riverStageM: 55.20, inundationOpacity: 0.2 },
+      { hour: 72, label: '+72h', riskScore: 30, riskLevel: 'LOW', floodProbability: 20.0, rainfallAccumulatedMm: 65, inundationAreaKm2: 10.0, populationAtRisk: 20000, riverStageM: 54.80, inundationOpacity: 0.15 }
+    ],
+    recommendedActions: [
+      'Maintain standard situational awareness.',
+      'Check local weather updates daily.'
+    ]
+  },
+
+  "golaghat": {
+    id: 'golaghat',
+    district: 'Golaghat',
+    subdivision: 'Assam District',
+    state: 'Assam',
+    coordinates: { lat: 26.2, lng: 92.9 },
+    stationCode: 'CWC Station',
+    stationName: 'Golaghat River Reach',
+    vulnerabilityIndex: 35,
+    hazardLevel: 'LOW',
+    levelBadge: 'Level 1',
+    statusSummary: 'BASELINE SEASONAL RUNOFF',
+    floodProb: 25.0,
+    confidence: 88.0,
+    peakWindow: 'Normal',
+    peakWindowDesc: 'Equilibrium',
+    riverStageDelta: '-0.80m',
+    riverStageDesc: 'Below Danger',
+    stageAbsolute: 55.20,
+    dangerLevel: 56.00,
+    riverName: 'Local Tributary',
+    warningMessage: 'Normal river stages for this season. Embankments hold firm.',
+    asdmaDirective: 'ASDMA BASELINE: Normal hydrologic monitoring.',
+
+    inundationAreaKm2: 12.5,
+    waterDepthAvgM: 0.20,
+    waterDepthPeakM: 0.50,
+    affectedNeighborhoods: ['Low-lying areas near riverbanks'],
+    inundationPathSummary: 'Seasonal river swell confined to natural channels.',
+    populationAtRisk: 25000,
+    vulnerableDemographics: {
+      childrenUnder5: 2500,
+      elderlyOver65: 1800,
+      livestockCount: 5000
+    },
+    infrastructureCounts: {
+      hospitals: 1,
+      schools: 5,
+      roads: 4,
+      bridges: 1
+    },
+    infrastructureList: [],
+    rainfall: {
+      currentRainfall24hMm: 25,
+      expectedRainfall48hMm: 45,
+      expectedRainfall72hMm: 65,
+      intensity: 'LIGHT',
+      trend: 'steady',
+      hourlyTimeline: [
+        { hour: '-18h', mm: 2, cumulative: 5 },
+        { hour: '-12h', mm: 5, cumulative: 10 },
+        { hour: '-6h', mm: 8, cumulative: 18 },
+        { hour: 'Now', mm: 7, cumulative: 25 },
+        { hour: '+6h', mm: 6, cumulative: 31 },
+        { hour: '+12h', mm: 5, cumulative: 36 },
+        { hour: '+24h', mm: 9, cumulative: 45 },
+        { hour: '+48h', mm: 12, cumulative: 57 },
+        { hour: '+72h', mm: 8, cumulative: 65 }
+      ],
+      stationSource: 'IMD Station'
+    },
+    factors: [
+      {
+        id: 'f-base-1',
+        name: 'Normal Monsoon Rain',
+        category: 'Rainfall',
+        status: 'LOW',
+        contributionPercent: 40,
+        direction: 'neutral',
+        observedValue: '25 mm / 24h',
+        scientificExplanation: 'Regular seasonal precipitation patterns.'
+      }
+    ],
+    timeline: [
+      { hour: 0, label: 'Now (+0h)', riskScore: 35, riskLevel: 'LOW', floodProbability: 25.0, rainfallAccumulatedMm: 25, inundationAreaKm2: 12.5, populationAtRisk: 25000, riverStageM: 55.20, inundationOpacity: 0.2 },
+      { hour: 6, label: '+6h', riskScore: 36, riskLevel: 'LOW', floodProbability: 26.0, rainfallAccumulatedMm: 31, inundationAreaKm2: 13.0, populationAtRisk: 26000, riverStageM: 55.25, inundationOpacity: 0.2 },
+      { hour: 12, label: '+12h', riskScore: 37, riskLevel: 'LOW', floodProbability: 27.0, rainfallAccumulatedMm: 36, inundationAreaKm2: 13.5, populationAtRisk: 27000, riverStageM: 55.30, inundationOpacity: 0.25 },
+      { hour: 24, label: '+24h', riskScore: 38, riskLevel: 'LOW', floodProbability: 28.0, rainfallAccumulatedMm: 45, inundationAreaKm2: 14.0, populationAtRisk: 28000, riverStageM: 55.35, inundationOpacity: 0.25 },
+      { hour: 48, label: '+48h', riskScore: 35, riskLevel: 'LOW', floodProbability: 25.0, rainfallAccumulatedMm: 57, inundationAreaKm2: 12.5, populationAtRisk: 25000, riverStageM: 55.20, inundationOpacity: 0.2 },
+      { hour: 72, label: '+72h', riskScore: 30, riskLevel: 'LOW', floodProbability: 20.0, rainfallAccumulatedMm: 65, inundationAreaKm2: 10.0, populationAtRisk: 20000, riverStageM: 54.80, inundationOpacity: 0.15 }
+    ],
+    recommendedActions: [
+      'Maintain standard situational awareness.',
+      'Check local weather updates daily.'
+    ]
+  },
+
+  "hailakandi": {
+    id: 'hailakandi',
+    district: 'Hailakandi',
+    subdivision: 'Assam District',
+    state: 'Assam',
+    coordinates: { lat: 26.2, lng: 92.9 },
+    stationCode: 'CWC Station',
+    stationName: 'Hailakandi River Reach',
+    vulnerabilityIndex: 35,
+    hazardLevel: 'LOW',
+    levelBadge: 'Level 1',
+    statusSummary: 'BASELINE SEASONAL RUNOFF',
+    floodProb: 25.0,
+    confidence: 88.0,
+    peakWindow: 'Normal',
+    peakWindowDesc: 'Equilibrium',
+    riverStageDelta: '-0.80m',
+    riverStageDesc: 'Below Danger',
+    stageAbsolute: 55.20,
+    dangerLevel: 56.00,
+    riverName: 'Local Tributary',
+    warningMessage: 'Normal river stages for this season. Embankments hold firm.',
+    asdmaDirective: 'ASDMA BASELINE: Normal hydrologic monitoring.',
+
+    inundationAreaKm2: 12.5,
+    waterDepthAvgM: 0.20,
+    waterDepthPeakM: 0.50,
+    affectedNeighborhoods: ['Low-lying areas near riverbanks'],
+    inundationPathSummary: 'Seasonal river swell confined to natural channels.',
+    populationAtRisk: 25000,
+    vulnerableDemographics: {
+      childrenUnder5: 2500,
+      elderlyOver65: 1800,
+      livestockCount: 5000
+    },
+    infrastructureCounts: {
+      hospitals: 1,
+      schools: 5,
+      roads: 4,
+      bridges: 1
+    },
+    infrastructureList: [],
+    rainfall: {
+      currentRainfall24hMm: 25,
+      expectedRainfall48hMm: 45,
+      expectedRainfall72hMm: 65,
+      intensity: 'LIGHT',
+      trend: 'steady',
+      hourlyTimeline: [
+        { hour: '-18h', mm: 2, cumulative: 5 },
+        { hour: '-12h', mm: 5, cumulative: 10 },
+        { hour: '-6h', mm: 8, cumulative: 18 },
+        { hour: 'Now', mm: 7, cumulative: 25 },
+        { hour: '+6h', mm: 6, cumulative: 31 },
+        { hour: '+12h', mm: 5, cumulative: 36 },
+        { hour: '+24h', mm: 9, cumulative: 45 },
+        { hour: '+48h', mm: 12, cumulative: 57 },
+        { hour: '+72h', mm: 8, cumulative: 65 }
+      ],
+      stationSource: 'IMD Station'
+    },
+    factors: [
+      {
+        id: 'f-base-1',
+        name: 'Normal Monsoon Rain',
+        category: 'Rainfall',
+        status: 'LOW',
+        contributionPercent: 40,
+        direction: 'neutral',
+        observedValue: '25 mm / 24h',
+        scientificExplanation: 'Regular seasonal precipitation patterns.'
+      }
+    ],
+    timeline: [
+      { hour: 0, label: 'Now (+0h)', riskScore: 35, riskLevel: 'LOW', floodProbability: 25.0, rainfallAccumulatedMm: 25, inundationAreaKm2: 12.5, populationAtRisk: 25000, riverStageM: 55.20, inundationOpacity: 0.2 },
+      { hour: 6, label: '+6h', riskScore: 36, riskLevel: 'LOW', floodProbability: 26.0, rainfallAccumulatedMm: 31, inundationAreaKm2: 13.0, populationAtRisk: 26000, riverStageM: 55.25, inundationOpacity: 0.2 },
+      { hour: 12, label: '+12h', riskScore: 37, riskLevel: 'LOW', floodProbability: 27.0, rainfallAccumulatedMm: 36, inundationAreaKm2: 13.5, populationAtRisk: 27000, riverStageM: 55.30, inundationOpacity: 0.25 },
+      { hour: 24, label: '+24h', riskScore: 38, riskLevel: 'LOW', floodProbability: 28.0, rainfallAccumulatedMm: 45, inundationAreaKm2: 14.0, populationAtRisk: 28000, riverStageM: 55.35, inundationOpacity: 0.25 },
+      { hour: 48, label: '+48h', riskScore: 35, riskLevel: 'LOW', floodProbability: 25.0, rainfallAccumulatedMm: 57, inundationAreaKm2: 12.5, populationAtRisk: 25000, riverStageM: 55.20, inundationOpacity: 0.2 },
+      { hour: 72, label: '+72h', riskScore: 30, riskLevel: 'LOW', floodProbability: 20.0, rainfallAccumulatedMm: 65, inundationAreaKm2: 10.0, populationAtRisk: 20000, riverStageM: 54.80, inundationOpacity: 0.15 }
+    ],
+    recommendedActions: [
+      'Maintain standard situational awareness.',
+      'Check local weather updates daily.'
+    ]
+  },
+
+  "hojai": {
+    id: 'hojai',
+    district: 'Hojai',
+    subdivision: 'Assam District',
+    state: 'Assam',
+    coordinates: { lat: 26.2, lng: 92.9 },
+    stationCode: 'CWC Station',
+    stationName: 'Hojai River Reach',
+    vulnerabilityIndex: 35,
+    hazardLevel: 'LOW',
+    levelBadge: 'Level 1',
+    statusSummary: 'BASELINE SEASONAL RUNOFF',
+    floodProb: 25.0,
+    confidence: 88.0,
+    peakWindow: 'Normal',
+    peakWindowDesc: 'Equilibrium',
+    riverStageDelta: '-0.80m',
+    riverStageDesc: 'Below Danger',
+    stageAbsolute: 55.20,
+    dangerLevel: 56.00,
+    riverName: 'Local Tributary',
+    warningMessage: 'Normal river stages for this season. Embankments hold firm.',
+    asdmaDirective: 'ASDMA BASELINE: Normal hydrologic monitoring.',
+
+    inundationAreaKm2: 12.5,
+    waterDepthAvgM: 0.20,
+    waterDepthPeakM: 0.50,
+    affectedNeighborhoods: ['Low-lying areas near riverbanks'],
+    inundationPathSummary: 'Seasonal river swell confined to natural channels.',
+    populationAtRisk: 25000,
+    vulnerableDemographics: {
+      childrenUnder5: 2500,
+      elderlyOver65: 1800,
+      livestockCount: 5000
+    },
+    infrastructureCounts: {
+      hospitals: 1,
+      schools: 5,
+      roads: 4,
+      bridges: 1
+    },
+    infrastructureList: [],
+    rainfall: {
+      currentRainfall24hMm: 25,
+      expectedRainfall48hMm: 45,
+      expectedRainfall72hMm: 65,
+      intensity: 'LIGHT',
+      trend: 'steady',
+      hourlyTimeline: [
+        { hour: '-18h', mm: 2, cumulative: 5 },
+        { hour: '-12h', mm: 5, cumulative: 10 },
+        { hour: '-6h', mm: 8, cumulative: 18 },
+        { hour: 'Now', mm: 7, cumulative: 25 },
+        { hour: '+6h', mm: 6, cumulative: 31 },
+        { hour: '+12h', mm: 5, cumulative: 36 },
+        { hour: '+24h', mm: 9, cumulative: 45 },
+        { hour: '+48h', mm: 12, cumulative: 57 },
+        { hour: '+72h', mm: 8, cumulative: 65 }
+      ],
+      stationSource: 'IMD Station'
+    },
+    factors: [
+      {
+        id: 'f-base-1',
+        name: 'Normal Monsoon Rain',
+        category: 'Rainfall',
+        status: 'LOW',
+        contributionPercent: 40,
+        direction: 'neutral',
+        observedValue: '25 mm / 24h',
+        scientificExplanation: 'Regular seasonal precipitation patterns.'
+      }
+    ],
+    timeline: [
+      { hour: 0, label: 'Now (+0h)', riskScore: 35, riskLevel: 'LOW', floodProbability: 25.0, rainfallAccumulatedMm: 25, inundationAreaKm2: 12.5, populationAtRisk: 25000, riverStageM: 55.20, inundationOpacity: 0.2 },
+      { hour: 6, label: '+6h', riskScore: 36, riskLevel: 'LOW', floodProbability: 26.0, rainfallAccumulatedMm: 31, inundationAreaKm2: 13.0, populationAtRisk: 26000, riverStageM: 55.25, inundationOpacity: 0.2 },
+      { hour: 12, label: '+12h', riskScore: 37, riskLevel: 'LOW', floodProbability: 27.0, rainfallAccumulatedMm: 36, inundationAreaKm2: 13.5, populationAtRisk: 27000, riverStageM: 55.30, inundationOpacity: 0.25 },
+      { hour: 24, label: '+24h', riskScore: 38, riskLevel: 'LOW', floodProbability: 28.0, rainfallAccumulatedMm: 45, inundationAreaKm2: 14.0, populationAtRisk: 28000, riverStageM: 55.35, inundationOpacity: 0.25 },
+      { hour: 48, label: '+48h', riskScore: 35, riskLevel: 'LOW', floodProbability: 25.0, rainfallAccumulatedMm: 57, inundationAreaKm2: 12.5, populationAtRisk: 25000, riverStageM: 55.20, inundationOpacity: 0.2 },
+      { hour: 72, label: '+72h', riskScore: 30, riskLevel: 'LOW', floodProbability: 20.0, rainfallAccumulatedMm: 65, inundationAreaKm2: 10.0, populationAtRisk: 20000, riverStageM: 54.80, inundationOpacity: 0.15 }
+    ],
+    recommendedActions: [
+      'Maintain standard situational awareness.',
+      'Check local weather updates daily.'
+    ]
+  },
+
+  "jorhat": {
+    id: 'jorhat',
+    district: 'Jorhat',
+    subdivision: 'Assam District',
+    state: 'Assam',
+    coordinates: { lat: 26.2, lng: 92.9 },
+    stationCode: 'CWC Station',
+    stationName: 'Jorhat River Reach',
+    vulnerabilityIndex: 35,
+    hazardLevel: 'LOW',
+    levelBadge: 'Level 1',
+    statusSummary: 'BASELINE SEASONAL RUNOFF',
+    floodProb: 25.0,
+    confidence: 88.0,
+    peakWindow: 'Normal',
+    peakWindowDesc: 'Equilibrium',
+    riverStageDelta: '-0.80m',
+    riverStageDesc: 'Below Danger',
+    stageAbsolute: 55.20,
+    dangerLevel: 56.00,
+    riverName: 'Local Tributary',
+    warningMessage: 'Normal river stages for this season. Embankments hold firm.',
+    asdmaDirective: 'ASDMA BASELINE: Normal hydrologic monitoring.',
+
+    inundationAreaKm2: 12.5,
+    waterDepthAvgM: 0.20,
+    waterDepthPeakM: 0.50,
+    affectedNeighborhoods: ['Low-lying areas near riverbanks'],
+    inundationPathSummary: 'Seasonal river swell confined to natural channels.',
+    populationAtRisk: 25000,
+    vulnerableDemographics: {
+      childrenUnder5: 2500,
+      elderlyOver65: 1800,
+      livestockCount: 5000
+    },
+    infrastructureCounts: {
+      hospitals: 1,
+      schools: 5,
+      roads: 4,
+      bridges: 1
+    },
+    infrastructureList: [],
+    rainfall: {
+      currentRainfall24hMm: 25,
+      expectedRainfall48hMm: 45,
+      expectedRainfall72hMm: 65,
+      intensity: 'LIGHT',
+      trend: 'steady',
+      hourlyTimeline: [
+        { hour: '-18h', mm: 2, cumulative: 5 },
+        { hour: '-12h', mm: 5, cumulative: 10 },
+        { hour: '-6h', mm: 8, cumulative: 18 },
+        { hour: 'Now', mm: 7, cumulative: 25 },
+        { hour: '+6h', mm: 6, cumulative: 31 },
+        { hour: '+12h', mm: 5, cumulative: 36 },
+        { hour: '+24h', mm: 9, cumulative: 45 },
+        { hour: '+48h', mm: 12, cumulative: 57 },
+        { hour: '+72h', mm: 8, cumulative: 65 }
+      ],
+      stationSource: 'IMD Station'
+    },
+    factors: [
+      {
+        id: 'f-base-1',
+        name: 'Normal Monsoon Rain',
+        category: 'Rainfall',
+        status: 'LOW',
+        contributionPercent: 40,
+        direction: 'neutral',
+        observedValue: '25 mm / 24h',
+        scientificExplanation: 'Regular seasonal precipitation patterns.'
+      }
+    ],
+    timeline: [
+      { hour: 0, label: 'Now (+0h)', riskScore: 35, riskLevel: 'LOW', floodProbability: 25.0, rainfallAccumulatedMm: 25, inundationAreaKm2: 12.5, populationAtRisk: 25000, riverStageM: 55.20, inundationOpacity: 0.2 },
+      { hour: 6, label: '+6h', riskScore: 36, riskLevel: 'LOW', floodProbability: 26.0, rainfallAccumulatedMm: 31, inundationAreaKm2: 13.0, populationAtRisk: 26000, riverStageM: 55.25, inundationOpacity: 0.2 },
+      { hour: 12, label: '+12h', riskScore: 37, riskLevel: 'LOW', floodProbability: 27.0, rainfallAccumulatedMm: 36, inundationAreaKm2: 13.5, populationAtRisk: 27000, riverStageM: 55.30, inundationOpacity: 0.25 },
+      { hour: 24, label: '+24h', riskScore: 38, riskLevel: 'LOW', floodProbability: 28.0, rainfallAccumulatedMm: 45, inundationAreaKm2: 14.0, populationAtRisk: 28000, riverStageM: 55.35, inundationOpacity: 0.25 },
+      { hour: 48, label: '+48h', riskScore: 35, riskLevel: 'LOW', floodProbability: 25.0, rainfallAccumulatedMm: 57, inundationAreaKm2: 12.5, populationAtRisk: 25000, riverStageM: 55.20, inundationOpacity: 0.2 },
+      { hour: 72, label: '+72h', riskScore: 30, riskLevel: 'LOW', floodProbability: 20.0, rainfallAccumulatedMm: 65, inundationAreaKm2: 10.0, populationAtRisk: 20000, riverStageM: 54.80, inundationOpacity: 0.15 }
+    ],
+    recommendedActions: [
+      'Maintain standard situational awareness.',
+      'Check local weather updates daily.'
+    ]
+  },
+
+  "kamrup": {
+    id: 'kamrup',
+    district: 'Kamrup',
+    subdivision: 'Assam District',
+    state: 'Assam',
+    coordinates: { lat: 26.2, lng: 92.9 },
+    stationCode: 'CWC Station',
+    stationName: 'Kamrup River Reach',
+    vulnerabilityIndex: 35,
+    hazardLevel: 'LOW',
+    levelBadge: 'Level 1',
+    statusSummary: 'BASELINE SEASONAL RUNOFF',
+    floodProb: 25.0,
+    confidence: 88.0,
+    peakWindow: 'Normal',
+    peakWindowDesc: 'Equilibrium',
+    riverStageDelta: '-0.80m',
+    riverStageDesc: 'Below Danger',
+    stageAbsolute: 55.20,
+    dangerLevel: 56.00,
+    riverName: 'Local Tributary',
+    warningMessage: 'Normal river stages for this season. Embankments hold firm.',
+    asdmaDirective: 'ASDMA BASELINE: Normal hydrologic monitoring.',
+
+    inundationAreaKm2: 12.5,
+    waterDepthAvgM: 0.20,
+    waterDepthPeakM: 0.50,
+    affectedNeighborhoods: ['Low-lying areas near riverbanks'],
+    inundationPathSummary: 'Seasonal river swell confined to natural channels.',
+    populationAtRisk: 25000,
+    vulnerableDemographics: {
+      childrenUnder5: 2500,
+      elderlyOver65: 1800,
+      livestockCount: 5000
+    },
+    infrastructureCounts: {
+      hospitals: 1,
+      schools: 5,
+      roads: 4,
+      bridges: 1
+    },
+    infrastructureList: [],
+    rainfall: {
+      currentRainfall24hMm: 25,
+      expectedRainfall48hMm: 45,
+      expectedRainfall72hMm: 65,
+      intensity: 'LIGHT',
+      trend: 'steady',
+      hourlyTimeline: [
+        { hour: '-18h', mm: 2, cumulative: 5 },
+        { hour: '-12h', mm: 5, cumulative: 10 },
+        { hour: '-6h', mm: 8, cumulative: 18 },
+        { hour: 'Now', mm: 7, cumulative: 25 },
+        { hour: '+6h', mm: 6, cumulative: 31 },
+        { hour: '+12h', mm: 5, cumulative: 36 },
+        { hour: '+24h', mm: 9, cumulative: 45 },
+        { hour: '+48h', mm: 12, cumulative: 57 },
+        { hour: '+72h', mm: 8, cumulative: 65 }
+      ],
+      stationSource: 'IMD Station'
+    },
+    factors: [
+      {
+        id: 'f-base-1',
+        name: 'Normal Monsoon Rain',
+        category: 'Rainfall',
+        status: 'LOW',
+        contributionPercent: 40,
+        direction: 'neutral',
+        observedValue: '25 mm / 24h',
+        scientificExplanation: 'Regular seasonal precipitation patterns.'
+      }
+    ],
+    timeline: [
+      { hour: 0, label: 'Now (+0h)', riskScore: 35, riskLevel: 'LOW', floodProbability: 25.0, rainfallAccumulatedMm: 25, inundationAreaKm2: 12.5, populationAtRisk: 25000, riverStageM: 55.20, inundationOpacity: 0.2 },
+      { hour: 6, label: '+6h', riskScore: 36, riskLevel: 'LOW', floodProbability: 26.0, rainfallAccumulatedMm: 31, inundationAreaKm2: 13.0, populationAtRisk: 26000, riverStageM: 55.25, inundationOpacity: 0.2 },
+      { hour: 12, label: '+12h', riskScore: 37, riskLevel: 'LOW', floodProbability: 27.0, rainfallAccumulatedMm: 36, inundationAreaKm2: 13.5, populationAtRisk: 27000, riverStageM: 55.30, inundationOpacity: 0.25 },
+      { hour: 24, label: '+24h', riskScore: 38, riskLevel: 'LOW', floodProbability: 28.0, rainfallAccumulatedMm: 45, inundationAreaKm2: 14.0, populationAtRisk: 28000, riverStageM: 55.35, inundationOpacity: 0.25 },
+      { hour: 48, label: '+48h', riskScore: 35, riskLevel: 'LOW', floodProbability: 25.0, rainfallAccumulatedMm: 57, inundationAreaKm2: 12.5, populationAtRisk: 25000, riverStageM: 55.20, inundationOpacity: 0.2 },
+      { hour: 72, label: '+72h', riskScore: 30, riskLevel: 'LOW', floodProbability: 20.0, rainfallAccumulatedMm: 65, inundationAreaKm2: 10.0, populationAtRisk: 20000, riverStageM: 54.80, inundationOpacity: 0.15 }
+    ],
+    recommendedActions: [
+      'Maintain standard situational awareness.',
+      'Check local weather updates daily.'
+    ]
+  },
+
+  "kamrupmetropolitan": {
+    id: 'kamrupmetropolitan',
+    district: 'Kamrup Metropolitan',
+    subdivision: 'Assam District',
+    state: 'Assam',
+    coordinates: { lat: 26.2, lng: 92.9 },
+    stationCode: 'CWC Station',
+    stationName: 'Kamrup Metropolitan River Reach',
+    vulnerabilityIndex: 35,
+    hazardLevel: 'LOW',
+    levelBadge: 'Level 1',
+    statusSummary: 'BASELINE SEASONAL RUNOFF',
+    floodProb: 25.0,
+    confidence: 88.0,
+    peakWindow: 'Normal',
+    peakWindowDesc: 'Equilibrium',
+    riverStageDelta: '-0.80m',
+    riverStageDesc: 'Below Danger',
+    stageAbsolute: 55.20,
+    dangerLevel: 56.00,
+    riverName: 'Local Tributary',
+    warningMessage: 'Normal river stages for this season. Embankments hold firm.',
+    asdmaDirective: 'ASDMA BASELINE: Normal hydrologic monitoring.',
+
+    inundationAreaKm2: 12.5,
+    waterDepthAvgM: 0.20,
+    waterDepthPeakM: 0.50,
+    affectedNeighborhoods: ['Low-lying areas near riverbanks'],
+    inundationPathSummary: 'Seasonal river swell confined to natural channels.',
+    populationAtRisk: 25000,
+    vulnerableDemographics: {
+      childrenUnder5: 2500,
+      elderlyOver65: 1800,
+      livestockCount: 5000
+    },
+    infrastructureCounts: {
+      hospitals: 1,
+      schools: 5,
+      roads: 4,
+      bridges: 1
+    },
+    infrastructureList: [],
+    rainfall: {
+      currentRainfall24hMm: 25,
+      expectedRainfall48hMm: 45,
+      expectedRainfall72hMm: 65,
+      intensity: 'LIGHT',
+      trend: 'steady',
+      hourlyTimeline: [
+        { hour: '-18h', mm: 2, cumulative: 5 },
+        { hour: '-12h', mm: 5, cumulative: 10 },
+        { hour: '-6h', mm: 8, cumulative: 18 },
+        { hour: 'Now', mm: 7, cumulative: 25 },
+        { hour: '+6h', mm: 6, cumulative: 31 },
+        { hour: '+12h', mm: 5, cumulative: 36 },
+        { hour: '+24h', mm: 9, cumulative: 45 },
+        { hour: '+48h', mm: 12, cumulative: 57 },
+        { hour: '+72h', mm: 8, cumulative: 65 }
+      ],
+      stationSource: 'IMD Station'
+    },
+    factors: [
+      {
+        id: 'f-base-1',
+        name: 'Normal Monsoon Rain',
+        category: 'Rainfall',
+        status: 'LOW',
+        contributionPercent: 40,
+        direction: 'neutral',
+        observedValue: '25 mm / 24h',
+        scientificExplanation: 'Regular seasonal precipitation patterns.'
+      }
+    ],
+    timeline: [
+      { hour: 0, label: 'Now (+0h)', riskScore: 35, riskLevel: 'LOW', floodProbability: 25.0, rainfallAccumulatedMm: 25, inundationAreaKm2: 12.5, populationAtRisk: 25000, riverStageM: 55.20, inundationOpacity: 0.2 },
+      { hour: 6, label: '+6h', riskScore: 36, riskLevel: 'LOW', floodProbability: 26.0, rainfallAccumulatedMm: 31, inundationAreaKm2: 13.0, populationAtRisk: 26000, riverStageM: 55.25, inundationOpacity: 0.2 },
+      { hour: 12, label: '+12h', riskScore: 37, riskLevel: 'LOW', floodProbability: 27.0, rainfallAccumulatedMm: 36, inundationAreaKm2: 13.5, populationAtRisk: 27000, riverStageM: 55.30, inundationOpacity: 0.25 },
+      { hour: 24, label: '+24h', riskScore: 38, riskLevel: 'LOW', floodProbability: 28.0, rainfallAccumulatedMm: 45, inundationAreaKm2: 14.0, populationAtRisk: 28000, riverStageM: 55.35, inundationOpacity: 0.25 },
+      { hour: 48, label: '+48h', riskScore: 35, riskLevel: 'LOW', floodProbability: 25.0, rainfallAccumulatedMm: 57, inundationAreaKm2: 12.5, populationAtRisk: 25000, riverStageM: 55.20, inundationOpacity: 0.2 },
+      { hour: 72, label: '+72h', riskScore: 30, riskLevel: 'LOW', floodProbability: 20.0, rainfallAccumulatedMm: 65, inundationAreaKm2: 10.0, populationAtRisk: 20000, riverStageM: 54.80, inundationOpacity: 0.15 }
+    ],
+    recommendedActions: [
+      'Maintain standard situational awareness.',
+      'Check local weather updates daily.'
+    ]
+  },
+
+  "karbianglong": {
+    id: 'karbianglong',
+    district: 'Karbi Anglong',
+    subdivision: 'Assam District',
+    state: 'Assam',
+    coordinates: { lat: 26.2, lng: 92.9 },
+    stationCode: 'CWC Station',
+    stationName: 'Karbi Anglong River Reach',
+    vulnerabilityIndex: 35,
+    hazardLevel: 'LOW',
+    levelBadge: 'Level 1',
+    statusSummary: 'BASELINE SEASONAL RUNOFF',
+    floodProb: 25.0,
+    confidence: 88.0,
+    peakWindow: 'Normal',
+    peakWindowDesc: 'Equilibrium',
+    riverStageDelta: '-0.80m',
+    riverStageDesc: 'Below Danger',
+    stageAbsolute: 55.20,
+    dangerLevel: 56.00,
+    riverName: 'Local Tributary',
+    warningMessage: 'Normal river stages for this season. Embankments hold firm.',
+    asdmaDirective: 'ASDMA BASELINE: Normal hydrologic monitoring.',
+
+    inundationAreaKm2: 12.5,
+    waterDepthAvgM: 0.20,
+    waterDepthPeakM: 0.50,
+    affectedNeighborhoods: ['Low-lying areas near riverbanks'],
+    inundationPathSummary: 'Seasonal river swell confined to natural channels.',
+    populationAtRisk: 25000,
+    vulnerableDemographics: {
+      childrenUnder5: 2500,
+      elderlyOver65: 1800,
+      livestockCount: 5000
+    },
+    infrastructureCounts: {
+      hospitals: 1,
+      schools: 5,
+      roads: 4,
+      bridges: 1
+    },
+    infrastructureList: [],
+    rainfall: {
+      currentRainfall24hMm: 25,
+      expectedRainfall48hMm: 45,
+      expectedRainfall72hMm: 65,
+      intensity: 'LIGHT',
+      trend: 'steady',
+      hourlyTimeline: [
+        { hour: '-18h', mm: 2, cumulative: 5 },
+        { hour: '-12h', mm: 5, cumulative: 10 },
+        { hour: '-6h', mm: 8, cumulative: 18 },
+        { hour: 'Now', mm: 7, cumulative: 25 },
+        { hour: '+6h', mm: 6, cumulative: 31 },
+        { hour: '+12h', mm: 5, cumulative: 36 },
+        { hour: '+24h', mm: 9, cumulative: 45 },
+        { hour: '+48h', mm: 12, cumulative: 57 },
+        { hour: '+72h', mm: 8, cumulative: 65 }
+      ],
+      stationSource: 'IMD Station'
+    },
+    factors: [
+      {
+        id: 'f-base-1',
+        name: 'Normal Monsoon Rain',
+        category: 'Rainfall',
+        status: 'LOW',
+        contributionPercent: 40,
+        direction: 'neutral',
+        observedValue: '25 mm / 24h',
+        scientificExplanation: 'Regular seasonal precipitation patterns.'
+      }
+    ],
+    timeline: [
+      { hour: 0, label: 'Now (+0h)', riskScore: 35, riskLevel: 'LOW', floodProbability: 25.0, rainfallAccumulatedMm: 25, inundationAreaKm2: 12.5, populationAtRisk: 25000, riverStageM: 55.20, inundationOpacity: 0.2 },
+      { hour: 6, label: '+6h', riskScore: 36, riskLevel: 'LOW', floodProbability: 26.0, rainfallAccumulatedMm: 31, inundationAreaKm2: 13.0, populationAtRisk: 26000, riverStageM: 55.25, inundationOpacity: 0.2 },
+      { hour: 12, label: '+12h', riskScore: 37, riskLevel: 'LOW', floodProbability: 27.0, rainfallAccumulatedMm: 36, inundationAreaKm2: 13.5, populationAtRisk: 27000, riverStageM: 55.30, inundationOpacity: 0.25 },
+      { hour: 24, label: '+24h', riskScore: 38, riskLevel: 'LOW', floodProbability: 28.0, rainfallAccumulatedMm: 45, inundationAreaKm2: 14.0, populationAtRisk: 28000, riverStageM: 55.35, inundationOpacity: 0.25 },
+      { hour: 48, label: '+48h', riskScore: 35, riskLevel: 'LOW', floodProbability: 25.0, rainfallAccumulatedMm: 57, inundationAreaKm2: 12.5, populationAtRisk: 25000, riverStageM: 55.20, inundationOpacity: 0.2 },
+      { hour: 72, label: '+72h', riskScore: 30, riskLevel: 'LOW', floodProbability: 20.0, rainfallAccumulatedMm: 65, inundationAreaKm2: 10.0, populationAtRisk: 20000, riverStageM: 54.80, inundationOpacity: 0.15 }
+    ],
+    recommendedActions: [
+      'Maintain standard situational awareness.',
+      'Check local weather updates daily.'
+    ]
+  },
+
+  "karimganj": {
+    id: 'karimganj',
+    district: 'Karimganj',
+    subdivision: 'Assam District',
+    state: 'Assam',
+    coordinates: { lat: 26.2, lng: 92.9 },
+    stationCode: 'CWC Station',
+    stationName: 'Karimganj River Reach',
+    vulnerabilityIndex: 35,
+    hazardLevel: 'LOW',
+    levelBadge: 'Level 1',
+    statusSummary: 'BASELINE SEASONAL RUNOFF',
+    floodProb: 25.0,
+    confidence: 88.0,
+    peakWindow: 'Normal',
+    peakWindowDesc: 'Equilibrium',
+    riverStageDelta: '-0.80m',
+    riverStageDesc: 'Below Danger',
+    stageAbsolute: 55.20,
+    dangerLevel: 56.00,
+    riverName: 'Local Tributary',
+    warningMessage: 'Normal river stages for this season. Embankments hold firm.',
+    asdmaDirective: 'ASDMA BASELINE: Normal hydrologic monitoring.',
+
+    inundationAreaKm2: 12.5,
+    waterDepthAvgM: 0.20,
+    waterDepthPeakM: 0.50,
+    affectedNeighborhoods: ['Low-lying areas near riverbanks'],
+    inundationPathSummary: 'Seasonal river swell confined to natural channels.',
+    populationAtRisk: 25000,
+    vulnerableDemographics: {
+      childrenUnder5: 2500,
+      elderlyOver65: 1800,
+      livestockCount: 5000
+    },
+    infrastructureCounts: {
+      hospitals: 1,
+      schools: 5,
+      roads: 4,
+      bridges: 1
+    },
+    infrastructureList: [],
+    rainfall: {
+      currentRainfall24hMm: 25,
+      expectedRainfall48hMm: 45,
+      expectedRainfall72hMm: 65,
+      intensity: 'LIGHT',
+      trend: 'steady',
+      hourlyTimeline: [
+        { hour: '-18h', mm: 2, cumulative: 5 },
+        { hour: '-12h', mm: 5, cumulative: 10 },
+        { hour: '-6h', mm: 8, cumulative: 18 },
+        { hour: 'Now', mm: 7, cumulative: 25 },
+        { hour: '+6h', mm: 6, cumulative: 31 },
+        { hour: '+12h', mm: 5, cumulative: 36 },
+        { hour: '+24h', mm: 9, cumulative: 45 },
+        { hour: '+48h', mm: 12, cumulative: 57 },
+        { hour: '+72h', mm: 8, cumulative: 65 }
+      ],
+      stationSource: 'IMD Station'
+    },
+    factors: [
+      {
+        id: 'f-base-1',
+        name: 'Normal Monsoon Rain',
+        category: 'Rainfall',
+        status: 'LOW',
+        contributionPercent: 40,
+        direction: 'neutral',
+        observedValue: '25 mm / 24h',
+        scientificExplanation: 'Regular seasonal precipitation patterns.'
+      }
+    ],
+    timeline: [
+      { hour: 0, label: 'Now (+0h)', riskScore: 35, riskLevel: 'LOW', floodProbability: 25.0, rainfallAccumulatedMm: 25, inundationAreaKm2: 12.5, populationAtRisk: 25000, riverStageM: 55.20, inundationOpacity: 0.2 },
+      { hour: 6, label: '+6h', riskScore: 36, riskLevel: 'LOW', floodProbability: 26.0, rainfallAccumulatedMm: 31, inundationAreaKm2: 13.0, populationAtRisk: 26000, riverStageM: 55.25, inundationOpacity: 0.2 },
+      { hour: 12, label: '+12h', riskScore: 37, riskLevel: 'LOW', floodProbability: 27.0, rainfallAccumulatedMm: 36, inundationAreaKm2: 13.5, populationAtRisk: 27000, riverStageM: 55.30, inundationOpacity: 0.25 },
+      { hour: 24, label: '+24h', riskScore: 38, riskLevel: 'LOW', floodProbability: 28.0, rainfallAccumulatedMm: 45, inundationAreaKm2: 14.0, populationAtRisk: 28000, riverStageM: 55.35, inundationOpacity: 0.25 },
+      { hour: 48, label: '+48h', riskScore: 35, riskLevel: 'LOW', floodProbability: 25.0, rainfallAccumulatedMm: 57, inundationAreaKm2: 12.5, populationAtRisk: 25000, riverStageM: 55.20, inundationOpacity: 0.2 },
+      { hour: 72, label: '+72h', riskScore: 30, riskLevel: 'LOW', floodProbability: 20.0, rainfallAccumulatedMm: 65, inundationAreaKm2: 10.0, populationAtRisk: 20000, riverStageM: 54.80, inundationOpacity: 0.15 }
+    ],
+    recommendedActions: [
+      'Maintain standard situational awareness.',
+      'Check local weather updates daily.'
+    ]
+  },
+
+  "kokrajhar": {
+    id: 'kokrajhar',
+    district: 'Kokrajhar',
+    subdivision: 'Assam District',
+    state: 'Assam',
+    coordinates: { lat: 26.2, lng: 92.9 },
+    stationCode: 'CWC Station',
+    stationName: 'Kokrajhar River Reach',
+    vulnerabilityIndex: 35,
+    hazardLevel: 'LOW',
+    levelBadge: 'Level 1',
+    statusSummary: 'BASELINE SEASONAL RUNOFF',
+    floodProb: 25.0,
+    confidence: 88.0,
+    peakWindow: 'Normal',
+    peakWindowDesc: 'Equilibrium',
+    riverStageDelta: '-0.80m',
+    riverStageDesc: 'Below Danger',
+    stageAbsolute: 55.20,
+    dangerLevel: 56.00,
+    riverName: 'Local Tributary',
+    warningMessage: 'Normal river stages for this season. Embankments hold firm.',
+    asdmaDirective: 'ASDMA BASELINE: Normal hydrologic monitoring.',
+
+    inundationAreaKm2: 12.5,
+    waterDepthAvgM: 0.20,
+    waterDepthPeakM: 0.50,
+    affectedNeighborhoods: ['Low-lying areas near riverbanks'],
+    inundationPathSummary: 'Seasonal river swell confined to natural channels.',
+    populationAtRisk: 25000,
+    vulnerableDemographics: {
+      childrenUnder5: 2500,
+      elderlyOver65: 1800,
+      livestockCount: 5000
+    },
+    infrastructureCounts: {
+      hospitals: 1,
+      schools: 5,
+      roads: 4,
+      bridges: 1
+    },
+    infrastructureList: [],
+    rainfall: {
+      currentRainfall24hMm: 25,
+      expectedRainfall48hMm: 45,
+      expectedRainfall72hMm: 65,
+      intensity: 'LIGHT',
+      trend: 'steady',
+      hourlyTimeline: [
+        { hour: '-18h', mm: 2, cumulative: 5 },
+        { hour: '-12h', mm: 5, cumulative: 10 },
+        { hour: '-6h', mm: 8, cumulative: 18 },
+        { hour: 'Now', mm: 7, cumulative: 25 },
+        { hour: '+6h', mm: 6, cumulative: 31 },
+        { hour: '+12h', mm: 5, cumulative: 36 },
+        { hour: '+24h', mm: 9, cumulative: 45 },
+        { hour: '+48h', mm: 12, cumulative: 57 },
+        { hour: '+72h', mm: 8, cumulative: 65 }
+      ],
+      stationSource: 'IMD Station'
+    },
+    factors: [
+      {
+        id: 'f-base-1',
+        name: 'Normal Monsoon Rain',
+        category: 'Rainfall',
+        status: 'LOW',
+        contributionPercent: 40,
+        direction: 'neutral',
+        observedValue: '25 mm / 24h',
+        scientificExplanation: 'Regular seasonal precipitation patterns.'
+      }
+    ],
+    timeline: [
+      { hour: 0, label: 'Now (+0h)', riskScore: 35, riskLevel: 'LOW', floodProbability: 25.0, rainfallAccumulatedMm: 25, inundationAreaKm2: 12.5, populationAtRisk: 25000, riverStageM: 55.20, inundationOpacity: 0.2 },
+      { hour: 6, label: '+6h', riskScore: 36, riskLevel: 'LOW', floodProbability: 26.0, rainfallAccumulatedMm: 31, inundationAreaKm2: 13.0, populationAtRisk: 26000, riverStageM: 55.25, inundationOpacity: 0.2 },
+      { hour: 12, label: '+12h', riskScore: 37, riskLevel: 'LOW', floodProbability: 27.0, rainfallAccumulatedMm: 36, inundationAreaKm2: 13.5, populationAtRisk: 27000, riverStageM: 55.30, inundationOpacity: 0.25 },
+      { hour: 24, label: '+24h', riskScore: 38, riskLevel: 'LOW', floodProbability: 28.0, rainfallAccumulatedMm: 45, inundationAreaKm2: 14.0, populationAtRisk: 28000, riverStageM: 55.35, inundationOpacity: 0.25 },
+      { hour: 48, label: '+48h', riskScore: 35, riskLevel: 'LOW', floodProbability: 25.0, rainfallAccumulatedMm: 57, inundationAreaKm2: 12.5, populationAtRisk: 25000, riverStageM: 55.20, inundationOpacity: 0.2 },
+      { hour: 72, label: '+72h', riskScore: 30, riskLevel: 'LOW', floodProbability: 20.0, rainfallAccumulatedMm: 65, inundationAreaKm2: 10.0, populationAtRisk: 20000, riverStageM: 54.80, inundationOpacity: 0.15 }
+    ],
+    recommendedActions: [
+      'Maintain standard situational awareness.',
+      'Check local weather updates daily.'
+    ]
+  },
+
+  "morigaon": {
+    id: 'morigaon',
+    district: 'Morigaon',
+    subdivision: 'Assam District',
+    state: 'Assam',
+    coordinates: { lat: 26.2, lng: 92.9 },
+    stationCode: 'CWC Station',
+    stationName: 'Morigaon River Reach',
+    vulnerabilityIndex: 35,
+    hazardLevel: 'LOW',
+    levelBadge: 'Level 1',
+    statusSummary: 'BASELINE SEASONAL RUNOFF',
+    floodProb: 25.0,
+    confidence: 88.0,
+    peakWindow: 'Normal',
+    peakWindowDesc: 'Equilibrium',
+    riverStageDelta: '-0.80m',
+    riverStageDesc: 'Below Danger',
+    stageAbsolute: 55.20,
+    dangerLevel: 56.00,
+    riverName: 'Local Tributary',
+    warningMessage: 'Normal river stages for this season. Embankments hold firm.',
+    asdmaDirective: 'ASDMA BASELINE: Normal hydrologic monitoring.',
+
+    inundationAreaKm2: 12.5,
+    waterDepthAvgM: 0.20,
+    waterDepthPeakM: 0.50,
+    affectedNeighborhoods: ['Low-lying areas near riverbanks'],
+    inundationPathSummary: 'Seasonal river swell confined to natural channels.',
+    populationAtRisk: 25000,
+    vulnerableDemographics: {
+      childrenUnder5: 2500,
+      elderlyOver65: 1800,
+      livestockCount: 5000
+    },
+    infrastructureCounts: {
+      hospitals: 1,
+      schools: 5,
+      roads: 4,
+      bridges: 1
+    },
+    infrastructureList: [],
+    rainfall: {
+      currentRainfall24hMm: 25,
+      expectedRainfall48hMm: 45,
+      expectedRainfall72hMm: 65,
+      intensity: 'LIGHT',
+      trend: 'steady',
+      hourlyTimeline: [
+        { hour: '-18h', mm: 2, cumulative: 5 },
+        { hour: '-12h', mm: 5, cumulative: 10 },
+        { hour: '-6h', mm: 8, cumulative: 18 },
+        { hour: 'Now', mm: 7, cumulative: 25 },
+        { hour: '+6h', mm: 6, cumulative: 31 },
+        { hour: '+12h', mm: 5, cumulative: 36 },
+        { hour: '+24h', mm: 9, cumulative: 45 },
+        { hour: '+48h', mm: 12, cumulative: 57 },
+        { hour: '+72h', mm: 8, cumulative: 65 }
+      ],
+      stationSource: 'IMD Station'
+    },
+    factors: [
+      {
+        id: 'f-base-1',
+        name: 'Normal Monsoon Rain',
+        category: 'Rainfall',
+        status: 'LOW',
+        contributionPercent: 40,
+        direction: 'neutral',
+        observedValue: '25 mm / 24h',
+        scientificExplanation: 'Regular seasonal precipitation patterns.'
+      }
+    ],
+    timeline: [
+      { hour: 0, label: 'Now (+0h)', riskScore: 35, riskLevel: 'LOW', floodProbability: 25.0, rainfallAccumulatedMm: 25, inundationAreaKm2: 12.5, populationAtRisk: 25000, riverStageM: 55.20, inundationOpacity: 0.2 },
+      { hour: 6, label: '+6h', riskScore: 36, riskLevel: 'LOW', floodProbability: 26.0, rainfallAccumulatedMm: 31, inundationAreaKm2: 13.0, populationAtRisk: 26000, riverStageM: 55.25, inundationOpacity: 0.2 },
+      { hour: 12, label: '+12h', riskScore: 37, riskLevel: 'LOW', floodProbability: 27.0, rainfallAccumulatedMm: 36, inundationAreaKm2: 13.5, populationAtRisk: 27000, riverStageM: 55.30, inundationOpacity: 0.25 },
+      { hour: 24, label: '+24h', riskScore: 38, riskLevel: 'LOW', floodProbability: 28.0, rainfallAccumulatedMm: 45, inundationAreaKm2: 14.0, populationAtRisk: 28000, riverStageM: 55.35, inundationOpacity: 0.25 },
+      { hour: 48, label: '+48h', riskScore: 35, riskLevel: 'LOW', floodProbability: 25.0, rainfallAccumulatedMm: 57, inundationAreaKm2: 12.5, populationAtRisk: 25000, riverStageM: 55.20, inundationOpacity: 0.2 },
+      { hour: 72, label: '+72h', riskScore: 30, riskLevel: 'LOW', floodProbability: 20.0, rainfallAccumulatedMm: 65, inundationAreaKm2: 10.0, populationAtRisk: 20000, riverStageM: 54.80, inundationOpacity: 0.15 }
+    ],
+    recommendedActions: [
+      'Maintain standard situational awareness.',
+      'Check local weather updates daily.'
+    ]
+  },
+
+  "nagaon": {
+    id: 'nagaon',
+    district: 'Nagaon',
+    subdivision: 'Assam District',
+    state: 'Assam',
+    coordinates: { lat: 26.2, lng: 92.9 },
+    stationCode: 'CWC Station',
+    stationName: 'Nagaon River Reach',
+    vulnerabilityIndex: 35,
+    hazardLevel: 'LOW',
+    levelBadge: 'Level 1',
+    statusSummary: 'BASELINE SEASONAL RUNOFF',
+    floodProb: 25.0,
+    confidence: 88.0,
+    peakWindow: 'Normal',
+    peakWindowDesc: 'Equilibrium',
+    riverStageDelta: '-0.80m',
+    riverStageDesc: 'Below Danger',
+    stageAbsolute: 55.20,
+    dangerLevel: 56.00,
+    riverName: 'Local Tributary',
+    warningMessage: 'Normal river stages for this season. Embankments hold firm.',
+    asdmaDirective: 'ASDMA BASELINE: Normal hydrologic monitoring.',
+
+    inundationAreaKm2: 12.5,
+    waterDepthAvgM: 0.20,
+    waterDepthPeakM: 0.50,
+    affectedNeighborhoods: ['Low-lying areas near riverbanks'],
+    inundationPathSummary: 'Seasonal river swell confined to natural channels.',
+    populationAtRisk: 25000,
+    vulnerableDemographics: {
+      childrenUnder5: 2500,
+      elderlyOver65: 1800,
+      livestockCount: 5000
+    },
+    infrastructureCounts: {
+      hospitals: 1,
+      schools: 5,
+      roads: 4,
+      bridges: 1
+    },
+    infrastructureList: [],
+    rainfall: {
+      currentRainfall24hMm: 25,
+      expectedRainfall48hMm: 45,
+      expectedRainfall72hMm: 65,
+      intensity: 'LIGHT',
+      trend: 'steady',
+      hourlyTimeline: [
+        { hour: '-18h', mm: 2, cumulative: 5 },
+        { hour: '-12h', mm: 5, cumulative: 10 },
+        { hour: '-6h', mm: 8, cumulative: 18 },
+        { hour: 'Now', mm: 7, cumulative: 25 },
+        { hour: '+6h', mm: 6, cumulative: 31 },
+        { hour: '+12h', mm: 5, cumulative: 36 },
+        { hour: '+24h', mm: 9, cumulative: 45 },
+        { hour: '+48h', mm: 12, cumulative: 57 },
+        { hour: '+72h', mm: 8, cumulative: 65 }
+      ],
+      stationSource: 'IMD Station'
+    },
+    factors: [
+      {
+        id: 'f-base-1',
+        name: 'Normal Monsoon Rain',
+        category: 'Rainfall',
+        status: 'LOW',
+        contributionPercent: 40,
+        direction: 'neutral',
+        observedValue: '25 mm / 24h',
+        scientificExplanation: 'Regular seasonal precipitation patterns.'
+      }
+    ],
+    timeline: [
+      { hour: 0, label: 'Now (+0h)', riskScore: 35, riskLevel: 'LOW', floodProbability: 25.0, rainfallAccumulatedMm: 25, inundationAreaKm2: 12.5, populationAtRisk: 25000, riverStageM: 55.20, inundationOpacity: 0.2 },
+      { hour: 6, label: '+6h', riskScore: 36, riskLevel: 'LOW', floodProbability: 26.0, rainfallAccumulatedMm: 31, inundationAreaKm2: 13.0, populationAtRisk: 26000, riverStageM: 55.25, inundationOpacity: 0.2 },
+      { hour: 12, label: '+12h', riskScore: 37, riskLevel: 'LOW', floodProbability: 27.0, rainfallAccumulatedMm: 36, inundationAreaKm2: 13.5, populationAtRisk: 27000, riverStageM: 55.30, inundationOpacity: 0.25 },
+      { hour: 24, label: '+24h', riskScore: 38, riskLevel: 'LOW', floodProbability: 28.0, rainfallAccumulatedMm: 45, inundationAreaKm2: 14.0, populationAtRisk: 28000, riverStageM: 55.35, inundationOpacity: 0.25 },
+      { hour: 48, label: '+48h', riskScore: 35, riskLevel: 'LOW', floodProbability: 25.0, rainfallAccumulatedMm: 57, inundationAreaKm2: 12.5, populationAtRisk: 25000, riverStageM: 55.20, inundationOpacity: 0.2 },
+      { hour: 72, label: '+72h', riskScore: 30, riskLevel: 'LOW', floodProbability: 20.0, rainfallAccumulatedMm: 65, inundationAreaKm2: 10.0, populationAtRisk: 20000, riverStageM: 54.80, inundationOpacity: 0.15 }
+    ],
+    recommendedActions: [
+      'Maintain standard situational awareness.',
+      'Check local weather updates daily.'
+    ]
+  },
+
+  "nalbari": {
+    id: 'nalbari',
+    district: 'Nalbari',
+    subdivision: 'Assam District',
+    state: 'Assam',
+    coordinates: { lat: 26.2, lng: 92.9 },
+    stationCode: 'CWC Station',
+    stationName: 'Nalbari River Reach',
+    vulnerabilityIndex: 35,
+    hazardLevel: 'LOW',
+    levelBadge: 'Level 1',
+    statusSummary: 'BASELINE SEASONAL RUNOFF',
+    floodProb: 25.0,
+    confidence: 88.0,
+    peakWindow: 'Normal',
+    peakWindowDesc: 'Equilibrium',
+    riverStageDelta: '-0.80m',
+    riverStageDesc: 'Below Danger',
+    stageAbsolute: 55.20,
+    dangerLevel: 56.00,
+    riverName: 'Local Tributary',
+    warningMessage: 'Normal river stages for this season. Embankments hold firm.',
+    asdmaDirective: 'ASDMA BASELINE: Normal hydrologic monitoring.',
+
+    inundationAreaKm2: 12.5,
+    waterDepthAvgM: 0.20,
+    waterDepthPeakM: 0.50,
+    affectedNeighborhoods: ['Low-lying areas near riverbanks'],
+    inundationPathSummary: 'Seasonal river swell confined to natural channels.',
+    populationAtRisk: 25000,
+    vulnerableDemographics: {
+      childrenUnder5: 2500,
+      elderlyOver65: 1800,
+      livestockCount: 5000
+    },
+    infrastructureCounts: {
+      hospitals: 1,
+      schools: 5,
+      roads: 4,
+      bridges: 1
+    },
+    infrastructureList: [],
+    rainfall: {
+      currentRainfall24hMm: 25,
+      expectedRainfall48hMm: 45,
+      expectedRainfall72hMm: 65,
+      intensity: 'LIGHT',
+      trend: 'steady',
+      hourlyTimeline: [
+        { hour: '-18h', mm: 2, cumulative: 5 },
+        { hour: '-12h', mm: 5, cumulative: 10 },
+        { hour: '-6h', mm: 8, cumulative: 18 },
+        { hour: 'Now', mm: 7, cumulative: 25 },
+        { hour: '+6h', mm: 6, cumulative: 31 },
+        { hour: '+12h', mm: 5, cumulative: 36 },
+        { hour: '+24h', mm: 9, cumulative: 45 },
+        { hour: '+48h', mm: 12, cumulative: 57 },
+        { hour: '+72h', mm: 8, cumulative: 65 }
+      ],
+      stationSource: 'IMD Station'
+    },
+    factors: [
+      {
+        id: 'f-base-1',
+        name: 'Normal Monsoon Rain',
+        category: 'Rainfall',
+        status: 'LOW',
+        contributionPercent: 40,
+        direction: 'neutral',
+        observedValue: '25 mm / 24h',
+        scientificExplanation: 'Regular seasonal precipitation patterns.'
+      }
+    ],
+    timeline: [
+      { hour: 0, label: 'Now (+0h)', riskScore: 35, riskLevel: 'LOW', floodProbability: 25.0, rainfallAccumulatedMm: 25, inundationAreaKm2: 12.5, populationAtRisk: 25000, riverStageM: 55.20, inundationOpacity: 0.2 },
+      { hour: 6, label: '+6h', riskScore: 36, riskLevel: 'LOW', floodProbability: 26.0, rainfallAccumulatedMm: 31, inundationAreaKm2: 13.0, populationAtRisk: 26000, riverStageM: 55.25, inundationOpacity: 0.2 },
+      { hour: 12, label: '+12h', riskScore: 37, riskLevel: 'LOW', floodProbability: 27.0, rainfallAccumulatedMm: 36, inundationAreaKm2: 13.5, populationAtRisk: 27000, riverStageM: 55.30, inundationOpacity: 0.25 },
+      { hour: 24, label: '+24h', riskScore: 38, riskLevel: 'LOW', floodProbability: 28.0, rainfallAccumulatedMm: 45, inundationAreaKm2: 14.0, populationAtRisk: 28000, riverStageM: 55.35, inundationOpacity: 0.25 },
+      { hour: 48, label: '+48h', riskScore: 35, riskLevel: 'LOW', floodProbability: 25.0, rainfallAccumulatedMm: 57, inundationAreaKm2: 12.5, populationAtRisk: 25000, riverStageM: 55.20, inundationOpacity: 0.2 },
+      { hour: 72, label: '+72h', riskScore: 30, riskLevel: 'LOW', floodProbability: 20.0, rainfallAccumulatedMm: 65, inundationAreaKm2: 10.0, populationAtRisk: 20000, riverStageM: 54.80, inundationOpacity: 0.15 }
+    ],
+    recommendedActions: [
+      'Maintain standard situational awareness.',
+      'Check local weather updates daily.'
+    ]
+  },
+
+  "sivasagar": {
+    id: 'sivasagar',
+    district: 'Sivasagar',
+    subdivision: 'Assam District',
+    state: 'Assam',
+    coordinates: { lat: 26.2, lng: 92.9 },
+    stationCode: 'CWC Station',
+    stationName: 'Sivasagar River Reach',
+    vulnerabilityIndex: 35,
+    hazardLevel: 'LOW',
+    levelBadge: 'Level 1',
+    statusSummary: 'BASELINE SEASONAL RUNOFF',
+    floodProb: 25.0,
+    confidence: 88.0,
+    peakWindow: 'Normal',
+    peakWindowDesc: 'Equilibrium',
+    riverStageDelta: '-0.80m',
+    riverStageDesc: 'Below Danger',
+    stageAbsolute: 55.20,
+    dangerLevel: 56.00,
+    riverName: 'Local Tributary',
+    warningMessage: 'Normal river stages for this season. Embankments hold firm.',
+    asdmaDirective: 'ASDMA BASELINE: Normal hydrologic monitoring.',
+
+    inundationAreaKm2: 12.5,
+    waterDepthAvgM: 0.20,
+    waterDepthPeakM: 0.50,
+    affectedNeighborhoods: ['Low-lying areas near riverbanks'],
+    inundationPathSummary: 'Seasonal river swell confined to natural channels.',
+    populationAtRisk: 25000,
+    vulnerableDemographics: {
+      childrenUnder5: 2500,
+      elderlyOver65: 1800,
+      livestockCount: 5000
+    },
+    infrastructureCounts: {
+      hospitals: 1,
+      schools: 5,
+      roads: 4,
+      bridges: 1
+    },
+    infrastructureList: [],
+    rainfall: {
+      currentRainfall24hMm: 25,
+      expectedRainfall48hMm: 45,
+      expectedRainfall72hMm: 65,
+      intensity: 'LIGHT',
+      trend: 'steady',
+      hourlyTimeline: [
+        { hour: '-18h', mm: 2, cumulative: 5 },
+        { hour: '-12h', mm: 5, cumulative: 10 },
+        { hour: '-6h', mm: 8, cumulative: 18 },
+        { hour: 'Now', mm: 7, cumulative: 25 },
+        { hour: '+6h', mm: 6, cumulative: 31 },
+        { hour: '+12h', mm: 5, cumulative: 36 },
+        { hour: '+24h', mm: 9, cumulative: 45 },
+        { hour: '+48h', mm: 12, cumulative: 57 },
+        { hour: '+72h', mm: 8, cumulative: 65 }
+      ],
+      stationSource: 'IMD Station'
+    },
+    factors: [
+      {
+        id: 'f-base-1',
+        name: 'Normal Monsoon Rain',
+        category: 'Rainfall',
+        status: 'LOW',
+        contributionPercent: 40,
+        direction: 'neutral',
+        observedValue: '25 mm / 24h',
+        scientificExplanation: 'Regular seasonal precipitation patterns.'
+      }
+    ],
+    timeline: [
+      { hour: 0, label: 'Now (+0h)', riskScore: 35, riskLevel: 'LOW', floodProbability: 25.0, rainfallAccumulatedMm: 25, inundationAreaKm2: 12.5, populationAtRisk: 25000, riverStageM: 55.20, inundationOpacity: 0.2 },
+      { hour: 6, label: '+6h', riskScore: 36, riskLevel: 'LOW', floodProbability: 26.0, rainfallAccumulatedMm: 31, inundationAreaKm2: 13.0, populationAtRisk: 26000, riverStageM: 55.25, inundationOpacity: 0.2 },
+      { hour: 12, label: '+12h', riskScore: 37, riskLevel: 'LOW', floodProbability: 27.0, rainfallAccumulatedMm: 36, inundationAreaKm2: 13.5, populationAtRisk: 27000, riverStageM: 55.30, inundationOpacity: 0.25 },
+      { hour: 24, label: '+24h', riskScore: 38, riskLevel: 'LOW', floodProbability: 28.0, rainfallAccumulatedMm: 45, inundationAreaKm2: 14.0, populationAtRisk: 28000, riverStageM: 55.35, inundationOpacity: 0.25 },
+      { hour: 48, label: '+48h', riskScore: 35, riskLevel: 'LOW', floodProbability: 25.0, rainfallAccumulatedMm: 57, inundationAreaKm2: 12.5, populationAtRisk: 25000, riverStageM: 55.20, inundationOpacity: 0.2 },
+      { hour: 72, label: '+72h', riskScore: 30, riskLevel: 'LOW', floodProbability: 20.0, rainfallAccumulatedMm: 65, inundationAreaKm2: 10.0, populationAtRisk: 20000, riverStageM: 54.80, inundationOpacity: 0.15 }
+    ],
+    recommendedActions: [
+      'Maintain standard situational awareness.',
+      'Check local weather updates daily.'
+    ]
+  },
+
+  "sonitpur": {
+    id: 'sonitpur',
+    district: 'Sonitpur',
+    subdivision: 'Assam District',
+    state: 'Assam',
+    coordinates: { lat: 26.2, lng: 92.9 },
+    stationCode: 'CWC Station',
+    stationName: 'Sonitpur River Reach',
+    vulnerabilityIndex: 35,
+    hazardLevel: 'LOW',
+    levelBadge: 'Level 1',
+    statusSummary: 'BASELINE SEASONAL RUNOFF',
+    floodProb: 25.0,
+    confidence: 88.0,
+    peakWindow: 'Normal',
+    peakWindowDesc: 'Equilibrium',
+    riverStageDelta: '-0.80m',
+    riverStageDesc: 'Below Danger',
+    stageAbsolute: 55.20,
+    dangerLevel: 56.00,
+    riverName: 'Local Tributary',
+    warningMessage: 'Normal river stages for this season. Embankments hold firm.',
+    asdmaDirective: 'ASDMA BASELINE: Normal hydrologic monitoring.',
+
+    inundationAreaKm2: 12.5,
+    waterDepthAvgM: 0.20,
+    waterDepthPeakM: 0.50,
+    affectedNeighborhoods: ['Low-lying areas near riverbanks'],
+    inundationPathSummary: 'Seasonal river swell confined to natural channels.',
+    populationAtRisk: 25000,
+    vulnerableDemographics: {
+      childrenUnder5: 2500,
+      elderlyOver65: 1800,
+      livestockCount: 5000
+    },
+    infrastructureCounts: {
+      hospitals: 1,
+      schools: 5,
+      roads: 4,
+      bridges: 1
+    },
+    infrastructureList: [],
+    rainfall: {
+      currentRainfall24hMm: 25,
+      expectedRainfall48hMm: 45,
+      expectedRainfall72hMm: 65,
+      intensity: 'LIGHT',
+      trend: 'steady',
+      hourlyTimeline: [
+        { hour: '-18h', mm: 2, cumulative: 5 },
+        { hour: '-12h', mm: 5, cumulative: 10 },
+        { hour: '-6h', mm: 8, cumulative: 18 },
+        { hour: 'Now', mm: 7, cumulative: 25 },
+        { hour: '+6h', mm: 6, cumulative: 31 },
+        { hour: '+12h', mm: 5, cumulative: 36 },
+        { hour: '+24h', mm: 9, cumulative: 45 },
+        { hour: '+48h', mm: 12, cumulative: 57 },
+        { hour: '+72h', mm: 8, cumulative: 65 }
+      ],
+      stationSource: 'IMD Station'
+    },
+    factors: [
+      {
+        id: 'f-base-1',
+        name: 'Normal Monsoon Rain',
+        category: 'Rainfall',
+        status: 'LOW',
+        contributionPercent: 40,
+        direction: 'neutral',
+        observedValue: '25 mm / 24h',
+        scientificExplanation: 'Regular seasonal precipitation patterns.'
+      }
+    ],
+    timeline: [
+      { hour: 0, label: 'Now (+0h)', riskScore: 35, riskLevel: 'LOW', floodProbability: 25.0, rainfallAccumulatedMm: 25, inundationAreaKm2: 12.5, populationAtRisk: 25000, riverStageM: 55.20, inundationOpacity: 0.2 },
+      { hour: 6, label: '+6h', riskScore: 36, riskLevel: 'LOW', floodProbability: 26.0, rainfallAccumulatedMm: 31, inundationAreaKm2: 13.0, populationAtRisk: 26000, riverStageM: 55.25, inundationOpacity: 0.2 },
+      { hour: 12, label: '+12h', riskScore: 37, riskLevel: 'LOW', floodProbability: 27.0, rainfallAccumulatedMm: 36, inundationAreaKm2: 13.5, populationAtRisk: 27000, riverStageM: 55.30, inundationOpacity: 0.25 },
+      { hour: 24, label: '+24h', riskScore: 38, riskLevel: 'LOW', floodProbability: 28.0, rainfallAccumulatedMm: 45, inundationAreaKm2: 14.0, populationAtRisk: 28000, riverStageM: 55.35, inundationOpacity: 0.25 },
+      { hour: 48, label: '+48h', riskScore: 35, riskLevel: 'LOW', floodProbability: 25.0, rainfallAccumulatedMm: 57, inundationAreaKm2: 12.5, populationAtRisk: 25000, riverStageM: 55.20, inundationOpacity: 0.2 },
+      { hour: 72, label: '+72h', riskScore: 30, riskLevel: 'LOW', floodProbability: 20.0, rainfallAccumulatedMm: 65, inundationAreaKm2: 10.0, populationAtRisk: 20000, riverStageM: 54.80, inundationOpacity: 0.15 }
+    ],
+    recommendedActions: [
+      'Maintain standard situational awareness.',
+      'Check local weather updates daily.'
+    ]
+  },
+
+  "southsalmara-mankachar": {
+    id: 'southsalmara-mankachar',
+    district: 'South Salmara-Mankachar',
+    subdivision: 'Assam District',
+    state: 'Assam',
+    coordinates: { lat: 26.2, lng: 92.9 },
+    stationCode: 'CWC Station',
+    stationName: 'South Salmara-Mankachar River Reach',
+    vulnerabilityIndex: 35,
+    hazardLevel: 'LOW',
+    levelBadge: 'Level 1',
+    statusSummary: 'BASELINE SEASONAL RUNOFF',
+    floodProb: 25.0,
+    confidence: 88.0,
+    peakWindow: 'Normal',
+    peakWindowDesc: 'Equilibrium',
+    riverStageDelta: '-0.80m',
+    riverStageDesc: 'Below Danger',
+    stageAbsolute: 55.20,
+    dangerLevel: 56.00,
+    riverName: 'Local Tributary',
+    warningMessage: 'Normal river stages for this season. Embankments hold firm.',
+    asdmaDirective: 'ASDMA BASELINE: Normal hydrologic monitoring.',
+
+    inundationAreaKm2: 12.5,
+    waterDepthAvgM: 0.20,
+    waterDepthPeakM: 0.50,
+    affectedNeighborhoods: ['Low-lying areas near riverbanks'],
+    inundationPathSummary: 'Seasonal river swell confined to natural channels.',
+    populationAtRisk: 25000,
+    vulnerableDemographics: {
+      childrenUnder5: 2500,
+      elderlyOver65: 1800,
+      livestockCount: 5000
+    },
+    infrastructureCounts: {
+      hospitals: 1,
+      schools: 5,
+      roads: 4,
+      bridges: 1
+    },
+    infrastructureList: [],
+    rainfall: {
+      currentRainfall24hMm: 25,
+      expectedRainfall48hMm: 45,
+      expectedRainfall72hMm: 65,
+      intensity: 'LIGHT',
+      trend: 'steady',
+      hourlyTimeline: [
+        { hour: '-18h', mm: 2, cumulative: 5 },
+        { hour: '-12h', mm: 5, cumulative: 10 },
+        { hour: '-6h', mm: 8, cumulative: 18 },
+        { hour: 'Now', mm: 7, cumulative: 25 },
+        { hour: '+6h', mm: 6, cumulative: 31 },
+        { hour: '+12h', mm: 5, cumulative: 36 },
+        { hour: '+24h', mm: 9, cumulative: 45 },
+        { hour: '+48h', mm: 12, cumulative: 57 },
+        { hour: '+72h', mm: 8, cumulative: 65 }
+      ],
+      stationSource: 'IMD Station'
+    },
+    factors: [
+      {
+        id: 'f-base-1',
+        name: 'Normal Monsoon Rain',
+        category: 'Rainfall',
+        status: 'LOW',
+        contributionPercent: 40,
+        direction: 'neutral',
+        observedValue: '25 mm / 24h',
+        scientificExplanation: 'Regular seasonal precipitation patterns.'
+      }
+    ],
+    timeline: [
+      { hour: 0, label: 'Now (+0h)', riskScore: 35, riskLevel: 'LOW', floodProbability: 25.0, rainfallAccumulatedMm: 25, inundationAreaKm2: 12.5, populationAtRisk: 25000, riverStageM: 55.20, inundationOpacity: 0.2 },
+      { hour: 6, label: '+6h', riskScore: 36, riskLevel: 'LOW', floodProbability: 26.0, rainfallAccumulatedMm: 31, inundationAreaKm2: 13.0, populationAtRisk: 26000, riverStageM: 55.25, inundationOpacity: 0.2 },
+      { hour: 12, label: '+12h', riskScore: 37, riskLevel: 'LOW', floodProbability: 27.0, rainfallAccumulatedMm: 36, inundationAreaKm2: 13.5, populationAtRisk: 27000, riverStageM: 55.30, inundationOpacity: 0.25 },
+      { hour: 24, label: '+24h', riskScore: 38, riskLevel: 'LOW', floodProbability: 28.0, rainfallAccumulatedMm: 45, inundationAreaKm2: 14.0, populationAtRisk: 28000, riverStageM: 55.35, inundationOpacity: 0.25 },
+      { hour: 48, label: '+48h', riskScore: 35, riskLevel: 'LOW', floodProbability: 25.0, rainfallAccumulatedMm: 57, inundationAreaKm2: 12.5, populationAtRisk: 25000, riverStageM: 55.20, inundationOpacity: 0.2 },
+      { hour: 72, label: '+72h', riskScore: 30, riskLevel: 'LOW', floodProbability: 20.0, rainfallAccumulatedMm: 65, inundationAreaKm2: 10.0, populationAtRisk: 20000, riverStageM: 54.80, inundationOpacity: 0.15 }
+    ],
+    recommendedActions: [
+      'Maintain standard situational awareness.',
+      'Check local weather updates daily.'
+    ]
+  },
+
+  "tamulpur": {
+    id: 'tamulpur',
+    district: 'Tamulpur',
+    subdivision: 'Assam District',
+    state: 'Assam',
+    coordinates: { lat: 26.2, lng: 92.9 },
+    stationCode: 'CWC Station',
+    stationName: 'Tamulpur River Reach',
+    vulnerabilityIndex: 35,
+    hazardLevel: 'LOW',
+    levelBadge: 'Level 1',
+    statusSummary: 'BASELINE SEASONAL RUNOFF',
+    floodProb: 25.0,
+    confidence: 88.0,
+    peakWindow: 'Normal',
+    peakWindowDesc: 'Equilibrium',
+    riverStageDelta: '-0.80m',
+    riverStageDesc: 'Below Danger',
+    stageAbsolute: 55.20,
+    dangerLevel: 56.00,
+    riverName: 'Local Tributary',
+    warningMessage: 'Normal river stages for this season. Embankments hold firm.',
+    asdmaDirective: 'ASDMA BASELINE: Normal hydrologic monitoring.',
+
+    inundationAreaKm2: 12.5,
+    waterDepthAvgM: 0.20,
+    waterDepthPeakM: 0.50,
+    affectedNeighborhoods: ['Low-lying areas near riverbanks'],
+    inundationPathSummary: 'Seasonal river swell confined to natural channels.',
+    populationAtRisk: 25000,
+    vulnerableDemographics: {
+      childrenUnder5: 2500,
+      elderlyOver65: 1800,
+      livestockCount: 5000
+    },
+    infrastructureCounts: {
+      hospitals: 1,
+      schools: 5,
+      roads: 4,
+      bridges: 1
+    },
+    infrastructureList: [],
+    rainfall: {
+      currentRainfall24hMm: 25,
+      expectedRainfall48hMm: 45,
+      expectedRainfall72hMm: 65,
+      intensity: 'LIGHT',
+      trend: 'steady',
+      hourlyTimeline: [
+        { hour: '-18h', mm: 2, cumulative: 5 },
+        { hour: '-12h', mm: 5, cumulative: 10 },
+        { hour: '-6h', mm: 8, cumulative: 18 },
+        { hour: 'Now', mm: 7, cumulative: 25 },
+        { hour: '+6h', mm: 6, cumulative: 31 },
+        { hour: '+12h', mm: 5, cumulative: 36 },
+        { hour: '+24h', mm: 9, cumulative: 45 },
+        { hour: '+48h', mm: 12, cumulative: 57 },
+        { hour: '+72h', mm: 8, cumulative: 65 }
+      ],
+      stationSource: 'IMD Station'
+    },
+    factors: [
+      {
+        id: 'f-base-1',
+        name: 'Normal Monsoon Rain',
+        category: 'Rainfall',
+        status: 'LOW',
+        contributionPercent: 40,
+        direction: 'neutral',
+        observedValue: '25 mm / 24h',
+        scientificExplanation: 'Regular seasonal precipitation patterns.'
+      }
+    ],
+    timeline: [
+      { hour: 0, label: 'Now (+0h)', riskScore: 35, riskLevel: 'LOW', floodProbability: 25.0, rainfallAccumulatedMm: 25, inundationAreaKm2: 12.5, populationAtRisk: 25000, riverStageM: 55.20, inundationOpacity: 0.2 },
+      { hour: 6, label: '+6h', riskScore: 36, riskLevel: 'LOW', floodProbability: 26.0, rainfallAccumulatedMm: 31, inundationAreaKm2: 13.0, populationAtRisk: 26000, riverStageM: 55.25, inundationOpacity: 0.2 },
+      { hour: 12, label: '+12h', riskScore: 37, riskLevel: 'LOW', floodProbability: 27.0, rainfallAccumulatedMm: 36, inundationAreaKm2: 13.5, populationAtRisk: 27000, riverStageM: 55.30, inundationOpacity: 0.25 },
+      { hour: 24, label: '+24h', riskScore: 38, riskLevel: 'LOW', floodProbability: 28.0, rainfallAccumulatedMm: 45, inundationAreaKm2: 14.0, populationAtRisk: 28000, riverStageM: 55.35, inundationOpacity: 0.25 },
+      { hour: 48, label: '+48h', riskScore: 35, riskLevel: 'LOW', floodProbability: 25.0, rainfallAccumulatedMm: 57, inundationAreaKm2: 12.5, populationAtRisk: 25000, riverStageM: 55.20, inundationOpacity: 0.2 },
+      { hour: 72, label: '+72h', riskScore: 30, riskLevel: 'LOW', floodProbability: 20.0, rainfallAccumulatedMm: 65, inundationAreaKm2: 10.0, populationAtRisk: 20000, riverStageM: 54.80, inundationOpacity: 0.15 }
+    ],
+    recommendedActions: [
+      'Maintain standard situational awareness.',
+      'Check local weather updates daily.'
+    ]
+  },
+
+  "udalguri": {
+    id: 'udalguri',
+    district: 'Udalguri',
+    subdivision: 'Assam District',
+    state: 'Assam',
+    coordinates: { lat: 26.2, lng: 92.9 },
+    stationCode: 'CWC Station',
+    stationName: 'Udalguri River Reach',
+    vulnerabilityIndex: 35,
+    hazardLevel: 'LOW',
+    levelBadge: 'Level 1',
+    statusSummary: 'BASELINE SEASONAL RUNOFF',
+    floodProb: 25.0,
+    confidence: 88.0,
+    peakWindow: 'Normal',
+    peakWindowDesc: 'Equilibrium',
+    riverStageDelta: '-0.80m',
+    riverStageDesc: 'Below Danger',
+    stageAbsolute: 55.20,
+    dangerLevel: 56.00,
+    riverName: 'Local Tributary',
+    warningMessage: 'Normal river stages for this season. Embankments hold firm.',
+    asdmaDirective: 'ASDMA BASELINE: Normal hydrologic monitoring.',
+
+    inundationAreaKm2: 12.5,
+    waterDepthAvgM: 0.20,
+    waterDepthPeakM: 0.50,
+    affectedNeighborhoods: ['Low-lying areas near riverbanks'],
+    inundationPathSummary: 'Seasonal river swell confined to natural channels.',
+    populationAtRisk: 25000,
+    vulnerableDemographics: {
+      childrenUnder5: 2500,
+      elderlyOver65: 1800,
+      livestockCount: 5000
+    },
+    infrastructureCounts: {
+      hospitals: 1,
+      schools: 5,
+      roads: 4,
+      bridges: 1
+    },
+    infrastructureList: [],
+    rainfall: {
+      currentRainfall24hMm: 25,
+      expectedRainfall48hMm: 45,
+      expectedRainfall72hMm: 65,
+      intensity: 'LIGHT',
+      trend: 'steady',
+      hourlyTimeline: [
+        { hour: '-18h', mm: 2, cumulative: 5 },
+        { hour: '-12h', mm: 5, cumulative: 10 },
+        { hour: '-6h', mm: 8, cumulative: 18 },
+        { hour: 'Now', mm: 7, cumulative: 25 },
+        { hour: '+6h', mm: 6, cumulative: 31 },
+        { hour: '+12h', mm: 5, cumulative: 36 },
+        { hour: '+24h', mm: 9, cumulative: 45 },
+        { hour: '+48h', mm: 12, cumulative: 57 },
+        { hour: '+72h', mm: 8, cumulative: 65 }
+      ],
+      stationSource: 'IMD Station'
+    },
+    factors: [
+      {
+        id: 'f-base-1',
+        name: 'Normal Monsoon Rain',
+        category: 'Rainfall',
+        status: 'LOW',
+        contributionPercent: 40,
+        direction: 'neutral',
+        observedValue: '25 mm / 24h',
+        scientificExplanation: 'Regular seasonal precipitation patterns.'
+      }
+    ],
+    timeline: [
+      { hour: 0, label: 'Now (+0h)', riskScore: 35, riskLevel: 'LOW', floodProbability: 25.0, rainfallAccumulatedMm: 25, inundationAreaKm2: 12.5, populationAtRisk: 25000, riverStageM: 55.20, inundationOpacity: 0.2 },
+      { hour: 6, label: '+6h', riskScore: 36, riskLevel: 'LOW', floodProbability: 26.0, rainfallAccumulatedMm: 31, inundationAreaKm2: 13.0, populationAtRisk: 26000, riverStageM: 55.25, inundationOpacity: 0.2 },
+      { hour: 12, label: '+12h', riskScore: 37, riskLevel: 'LOW', floodProbability: 27.0, rainfallAccumulatedMm: 36, inundationAreaKm2: 13.5, populationAtRisk: 27000, riverStageM: 55.30, inundationOpacity: 0.25 },
+      { hour: 24, label: '+24h', riskScore: 38, riskLevel: 'LOW', floodProbability: 28.0, rainfallAccumulatedMm: 45, inundationAreaKm2: 14.0, populationAtRisk: 28000, riverStageM: 55.35, inundationOpacity: 0.25 },
+      { hour: 48, label: '+48h', riskScore: 35, riskLevel: 'LOW', floodProbability: 25.0, rainfallAccumulatedMm: 57, inundationAreaKm2: 12.5, populationAtRisk: 25000, riverStageM: 55.20, inundationOpacity: 0.2 },
+      { hour: 72, label: '+72h', riskScore: 30, riskLevel: 'LOW', floodProbability: 20.0, rainfallAccumulatedMm: 65, inundationAreaKm2: 10.0, populationAtRisk: 20000, riverStageM: 54.80, inundationOpacity: 0.15 }
+    ],
+    recommendedActions: [
+      'Maintain standard situational awareness.',
+      'Check local weather updates daily.'
+    ]
+  },
+
+  "westkarbianglong": {
+    id: 'westkarbianglong',
+    district: 'West Karbi Anglong',
+    subdivision: 'Assam District',
+    state: 'Assam',
+    coordinates: { lat: 26.2, lng: 92.9 },
+    stationCode: 'CWC Station',
+    stationName: 'West Karbi Anglong River Reach',
+    vulnerabilityIndex: 35,
+    hazardLevel: 'LOW',
+    levelBadge: 'Level 1',
+    statusSummary: 'BASELINE SEASONAL RUNOFF',
+    floodProb: 25.0,
+    confidence: 88.0,
+    peakWindow: 'Normal',
+    peakWindowDesc: 'Equilibrium',
+    riverStageDelta: '-0.80m',
+    riverStageDesc: 'Below Danger',
+    stageAbsolute: 55.20,
+    dangerLevel: 56.00,
+    riverName: 'Local Tributary',
+    warningMessage: 'Normal river stages for this season. Embankments hold firm.',
+    asdmaDirective: 'ASDMA BASELINE: Normal hydrologic monitoring.',
+
+    inundationAreaKm2: 12.5,
+    waterDepthAvgM: 0.20,
+    waterDepthPeakM: 0.50,
+    affectedNeighborhoods: ['Low-lying areas near riverbanks'],
+    inundationPathSummary: 'Seasonal river swell confined to natural channels.',
+    populationAtRisk: 25000,
+    vulnerableDemographics: {
+      childrenUnder5: 2500,
+      elderlyOver65: 1800,
+      livestockCount: 5000
+    },
+    infrastructureCounts: {
+      hospitals: 1,
+      schools: 5,
+      roads: 4,
+      bridges: 1
+    },
+    infrastructureList: [],
+    rainfall: {
+      currentRainfall24hMm: 25,
+      expectedRainfall48hMm: 45,
+      expectedRainfall72hMm: 65,
+      intensity: 'LIGHT',
+      trend: 'steady',
+      hourlyTimeline: [
+        { hour: '-18h', mm: 2, cumulative: 5 },
+        { hour: '-12h', mm: 5, cumulative: 10 },
+        { hour: '-6h', mm: 8, cumulative: 18 },
+        { hour: 'Now', mm: 7, cumulative: 25 },
+        { hour: '+6h', mm: 6, cumulative: 31 },
+        { hour: '+12h', mm: 5, cumulative: 36 },
+        { hour: '+24h', mm: 9, cumulative: 45 },
+        { hour: '+48h', mm: 12, cumulative: 57 },
+        { hour: '+72h', mm: 8, cumulative: 65 }
+      ],
+      stationSource: 'IMD Station'
+    },
+    factors: [
+      {
+        id: 'f-base-1',
+        name: 'Normal Monsoon Rain',
+        category: 'Rainfall',
+        status: 'LOW',
+        contributionPercent: 40,
+        direction: 'neutral',
+        observedValue: '25 mm / 24h',
+        scientificExplanation: 'Regular seasonal precipitation patterns.'
+      }
+    ],
+    timeline: [
+      { hour: 0, label: 'Now (+0h)', riskScore: 35, riskLevel: 'LOW', floodProbability: 25.0, rainfallAccumulatedMm: 25, inundationAreaKm2: 12.5, populationAtRisk: 25000, riverStageM: 55.20, inundationOpacity: 0.2 },
+      { hour: 6, label: '+6h', riskScore: 36, riskLevel: 'LOW', floodProbability: 26.0, rainfallAccumulatedMm: 31, inundationAreaKm2: 13.0, populationAtRisk: 26000, riverStageM: 55.25, inundationOpacity: 0.2 },
+      { hour: 12, label: '+12h', riskScore: 37, riskLevel: 'LOW', floodProbability: 27.0, rainfallAccumulatedMm: 36, inundationAreaKm2: 13.5, populationAtRisk: 27000, riverStageM: 55.30, inundationOpacity: 0.25 },
+      { hour: 24, label: '+24h', riskScore: 38, riskLevel: 'LOW', floodProbability: 28.0, rainfallAccumulatedMm: 45, inundationAreaKm2: 14.0, populationAtRisk: 28000, riverStageM: 55.35, inundationOpacity: 0.25 },
+      { hour: 48, label: '+48h', riskScore: 35, riskLevel: 'LOW', floodProbability: 25.0, rainfallAccumulatedMm: 57, inundationAreaKm2: 12.5, populationAtRisk: 25000, riverStageM: 55.20, inundationOpacity: 0.2 },
+      { hour: 72, label: '+72h', riskScore: 30, riskLevel: 'LOW', floodProbability: 20.0, rainfallAccumulatedMm: 65, inundationAreaKm2: 10.0, populationAtRisk: 20000, riverStageM: 54.80, inundationOpacity: 0.15 }
+    ],
+    recommendedActions: [
+      'Maintain standard situational awareness.',
+      'Check local weather updates daily.'
+    ]
+  },};
 
 export const CWC_GAUGE_STATIONS: GaugeStation[] = [
   { id: 'cwc-01', name: 'Jiadhal Gauge #04 (Dhemaji)', river: 'Jiadhal', currentStage: 104.85, dangerLevel: 103.00, highestFloodLevel: 105.10, trend: 'rising', discharge: 28400, stationCode: 'AS-CWC-04', coordinates: { lat: 27.4812, lng: 94.5822 } },
