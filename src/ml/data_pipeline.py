@@ -2,7 +2,9 @@ import os
 import json
 import pandas as pd
 import urllib.request
+import time
 from datetime import datetime, timedelta
+from src.ml.feature_engineering import generate_features
 
 def prepare_features(raw_data_df):
     """
@@ -53,8 +55,9 @@ def fetch_historical_weather(lat, lon, start_date, end_date):
 
 def generate_sample_dataset():
     """
-    Creates the first ML-ready dataset. 
-    Due to API rate limits, we generate data for the top 5 regions over the last 30 days.
+    Creates the final ML-ready dataset for Digpal (ML Member 2). 
+    Fetches 1 year of daily historical weather data for the top 10 regions
+    to build a robust dataset without timing out our API limits.
     """
     base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     circles_path = os.path.join(base_dir, "backend", "data", "assam_circles.json")
@@ -63,40 +66,47 @@ def generate_sample_dataset():
         circles = json.load(f)
         
     end_date = datetime.now().date() - timedelta(days=1)
-    start_date = end_date - timedelta(days=30)
+    start_date = end_date - timedelta(days=365) # 1 full year
     
     all_data = []
     
-    # Process just the first 5 regions to avoid API rate limits
-    for circle in circles[:5]:
-        print(f"Fetching actual historical data for Region: {circle['object_id']} ({circle['name']})...")
+    # Process 10 regions (balance between data volume and API safety)
+    for circle in circles[:10]:
+        print(f"Fetching 1 YEAR of historical data for Region: {circle['object_id']} ({circle['name']})...")
         weather_df = fetch_historical_weather(circle["lat"], circle["lon"], start_date.strftime("%Y-%m-%d"), end_date.strftime("%Y-%m-%d"))
         
         if not weather_df.empty:
             weather_df["region_id"] = circle["object_id"]
+            # Mock forecast data for history (Assume forecast is ~80% of actual next day rain)
+            weather_df["forecast_rainfall_6h"] = weather_df["rainfall_24h"].shift(-1) * 0.8
+            
             # Append static features
             weather_df["elevation"] = circle.get("elevation", None)
             weather_df["distance_to_river_m"] = circle.get("distance_from_river_m", None)
             weather_df["soil_clay_pct"] = circle.get("soil_clay_pct", None)
             weather_df["population_density"] = circle.get("population_density", None)
             
-            # Dummy target variable (since we don't have real daily inundation labels from ISRO yet)
-            # We flag floods if rainfall > 50mm purely for ML Member 2 to have something to train on today.
+            # Dummy target variable: Flood occurs if rain > 50mm
             weather_df["flood_occurred"] = (weather_df["rainfall_24h"] > 50).astype(int)
             
             all_data.append(weather_df)
+        
+        # Sleep to avoid Open-Meteo rate limit (10,000/day, but fast bursts might trigger throttling)
+        time.sleep(1)
             
     if all_data:
         master_df = pd.concat(all_data, ignore_index=True)
         # Pass through the robust preprocessing pipeline
         cleaned_df = prepare_features(master_df)
+        # Apply advanced Feature Engineering
+        final_df = generate_features(cleaned_df)
         
         output_dir = os.path.join(base_dir, "backend", "data", "processed")
         os.makedirs(output_dir, exist_ok=True)
-        out_path = os.path.join(output_dir, "assam_flood_ml_ready.csv")
-        cleaned_df.to_csv(out_path, index=False)
-        print(f"\n[SUCCESS] Saved clean, ML-ready dataset to {out_path}")
-        print(f"Total Rows: {len(cleaned_df)}")
+        out_path = os.path.join(output_dir, "assam_flood_ml_ready_FINAL.csv")
+        final_df.to_csv(out_path, index=False)
+        print(f"\n[SUCCESS] Saved clean, heavily-engineered ML-ready dataset to {out_path}")
+        print(f"Total Rows: {len(final_df)}")
     else:
         print("Failed to generate dataset.")
 
